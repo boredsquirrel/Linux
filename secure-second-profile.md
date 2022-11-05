@@ -15,7 +15,7 @@ This is the folder in which a normal user can write. It is recommended to stay i
 in commands instead of `/home/USERNAME/` you can write `~/`
 
 your `/home/USERNAME/` folder, where all your files are stored. You can access all the files in there without sudo permissions!
-- Folders you create like **Pictures, Downloads, Files,...*
+- Folders you create like **Pictures, Downloads, Files,...**
 - The **Nextcloud** folder, that `nextcloud-client` (The end-user app) uses for synchronisation
 - in `~/.config/`: config files of apps like **Firefox** Profiles, **Thunderbird**, **KDE Desktop**, ...
 - in `~/.wine/`: your complete Windows-filesystem with apps e.g. when using WINE
