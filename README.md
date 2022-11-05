@@ -1,7 +1,11 @@
 # - - - - - - - - Linux-Help - - - - - - - - 
 Some little things that make Linux distros easier to use!
 
-## Appstarters
+## 1. Creating a safe profile
+
+When you want other people to use your machine, in a secure way.
+
+## 2. Appstarters
 
 Using Linux often requires some technical knowledge. And that is fine, learn what you want. But many people are afraid of that, so "Appstarters" are awesome! You can create an "app" containing any command, and use that app to do a lot of stuff.
 
@@ -49,11 +53,11 @@ Some apps are only available as Appimages, meaning you have to execute the file 
 You can create your own Appstarters in the KDE Menueditor.
 ---
 
-## Setup-Scripts
+## 3. Setup-Scripts
 Setting up a Linux Distribution is more work than just installing the System. You will have to install and uninstall a lot of apps, and set some settings.
 [Here is a cool example of creating a minimal Fedora KDE Operating System, without anything not wanted installed](https://www.reddit.com/r/Fedora/comments/9a0i93/howto_minimal_kde_install_on_fedora/)
 
-I have created my own scripts for Kubuntu, Fedora KDE, Fedora Kionite and RockyLinux (in use as a server).
+I have created my own scripts for Kubuntu/KDE Neon, Fedora KDE, Fedora Kionite and RockyLinux (superstable Desktop or server).
 
 The scripts include:
 
