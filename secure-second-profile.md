@@ -21,7 +21,7 @@ your `/home/USERNAME/` folder, where all your files are stored. You can access a
 - in `~/.wine/`: your complete Windows-filesystem with apps e.g. when using WINE
 - in `~/.var/app/` all Flatpak app data is stored
 - in `~/.ssh/` all SSH-keys are, used for remote control over a terminal
-- in ~/.gnupg/` all your PGP-keys are
+- in `~/.gnupg/` all your PGP-keys are
 
 So you can do pretty much everything in the userspace, and guest users should do even more, so that they cannot break your system.
 
