@@ -51,6 +51,7 @@ Some apps are only available as Appimages, meaning you have to execute the file 
 `~/Programs/Appimages/Session.appimage`
 
 You can create your own Appstarters in the KDE Menueditor.
+
 ---
 
 ## 3. Setup-Scripts
