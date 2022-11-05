@@ -10,7 +10,7 @@ Maybe you want to allow guests to do basic browsing or complete usage of your de
 **sudo**: a way to use root privileges as a normal user, you need the root password for that. Standard behavior.
 
 ### Home directory
-This is the folder in which a normal user can write. It is recommended to stay in this directory all the time when possible. Only normal exception is the install of apps, which can be automated.
+This is the folder in which a normal user can write. It is recommended to stay in this directory all the time when possible. Only normal exception is the install/ updating of apps, which can be automated.
 
 in commands instead of `/home/USERNAME/` you can write `~/`
 
