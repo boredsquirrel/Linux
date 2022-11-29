@@ -47,6 +47,8 @@ In the end you have to reboot, to apply changes when installing RPMs. Configure 
     - Automatic Flatpak updates via cron.daily (every day)
     - enabling Mac-Adress randomization for privacy
     - enabling TLP as systemd module for Battery saving
+    - setting up a nice GRUB theme
+    - applying UEFI Firmware updates
 
 
 6. Downloading Microsoft Fonts for compatibility (Times, Arial, Cambria,...)
@@ -252,10 +254,11 @@ Installing Microsoft Fonts to ~/.local/share/fonts/mscorefonts
 
 mkdir -p ~/.local/share/fonts/mscorefonts
 
-wget https://cloud.uol.de/s/6HtRPcJZeMip7aC
+wget https://cloud.uol.de/s/6HtRPcJZeMip7aC -P ~/
 
-unzip ~/ms-corefonts.zip
-rm ~/ms-corefonts.zip
+cd ~/
+unzip ms-corefonts.zip
+rm ms-corefonts.zip
 
 cp -v ms-corefonts/*.ttf ms-corefonts/*.TTF ~/.local/share/fonts/mscorefonts/
 
