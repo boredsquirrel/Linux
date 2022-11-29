@@ -219,12 +219,6 @@ Installing RPMs to layer over the Fedora base. Use layered RPMs as little as pos
 #rpm-ostree group upgrade --with-optional Multimedia
 
 
-############# MullvadVPN ##############
-
-wget https://mullvad.net/download/app/rpm/latest/ -P ~/Programme/Externe-RPMs
-sudo rpm-ostree install ~/Programme/Externe-RPMs/MullvadVPN*.rpm
-#rm ~/Programme/Externe-RPMs/MullvadVPN*.rpm
-
 echo """
 #################################################################
 
