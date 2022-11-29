@@ -6,10 +6,20 @@ echo """
 #####################                                         #####################
 #####################                                         #####################
 
+Execute the scripts:
+- Download
+- Open the Terminal in its folder (cd PATH/TO/FOLDER or right-click in Dolphin)
+- do "sudo chmod +x Fedora-Kionite-setupscript-part1.sh Fedora-Kionite-setupscript-part2.sh"
+- do "sudo sh Fedora-Kionite-setupscript-part1.sh"
+
+
 This script sets up all you really need to enjoy the unbreakable,
 stable and secure experience of Fedora Kionite.
 
+In the end you have to reboot, to apply changes when installing RPMs. Configure Waydroid in the second script.
+
 1. removing unwanted apps
+    - this has to be activated manually, as changing the tree have negative effects
     - Gwenview, replaced with XNView
     - Kmousetool
     - KMag
@@ -23,55 +33,51 @@ stable and secure experience of Fedora Kionite.
     - GNOME Nightly if you activate that
 
 
-4. Setting up RPMfusion repositories
-    - deactivated by default, as you should install as little as possible
-    - This includes the RPMFusion "free" and "nonfree" variant
-    - a special RPMfusion repo is needed to play DVDs (VLC has that package included, other Flatpaks don't)
-
-    - Added Repositories slow down rpm-ostree updates even more!
-
-
-5.  installing Flatpaks
+3.  installing Flatpaks
     - you have to edit this script, remove the "#" to install the packages
 
 
-6. Installing RPM Packages
-    - A lot is deactivated, try to get along without it, then use it
-    - RPMs needed to deal with Windows stuff
-    - RPMs not yet available as Flatpaks
-
-
-7. Installing and setting up Waydroid, the well integrated Android emulator
-    - Adding the aleasto/waydroid COPR repo
-    - downloading needed Android system
-    - configuring freeform Windows
-    - MISSING: configuring keyboard layout
-    - not added: downloading and installing Android apps per ADB
-
-
-8. Installing Snap Package manager
+4. Installing Snap Package manager
     - you have to manually activate that
     - allowing /home to be used through /var/home, this removes the containerization of Kionite in a way!
 
 
-9. Installing the Android Emulator Waydroid
-    - Adding
-    - Downloading Android
-    - configuring free form windows to use Android apps normally
-    - NOT YET: configuring keyboard layout
-
-
-10. Configuring settings
+5. Configuring settings
     - enabling automatic rpm-ostree updates (you still need to reboot)
     - Automatic Flatpak updates via cron.daily (every day)
     - enabling Mac-Adress randomization for privacy
     - enabling TLP as systemd module for Battery saving
 
 
-11. Downloading Microsoft Fonts for compatibility (Times, Arial, Cambria,...)
+6. Downloading Microsoft Fonts for compatibility (Times, Arial, Cambria,...)
 
 
-12. Downloading Lynis and making a security audit
+7. Downloading Lynis and making a security audit
+
+
+8. Setting up RPMfusion repositories
+    - deactivated by default, as you should install as little as possible
+    - This includes the RPMFusion "free" and "nonfree" variant
+    - a special RPMfusion repo is needed to play DVDs (VLC has that package included, other Flatpaks don't)
+
+    - Added Repositories slow down rpm-ostree updates even more!
+    
+
+9. Installing RPM Packages
+    - A lot is deactivated, try to get along without it, then use it
+    - RPMs needed to deal with Windows stuff
+    - RPMs not yet available as Flatpaks
+
+
+10. Installing the Android Emulator Waydroid
+    - Adding the aleasto/waydroid repo
+    
+Part 2:
+    - Downloading Android
+    - configuring free form windows to use Android apps normally
+    - NOT YET: configuring keyboard layout
+    - not added: downloading and installing Android apps per ADB
+
 
 
 Find Tips here: https://fedoramagazine.org/how-i-customize-fedora-silverblue-and-fedora-kinoite/
@@ -84,7 +90,7 @@ echo """
 1. Removing some unwanted Apps
 """
 
-sudo rpm-ostree override remove gwenview kmag kmouse*
+# sudo rpm-ostree override remove gwenview kmag kmouse*
 
 echo """
 #################################################################
@@ -111,30 +117,6 @@ flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kde
 #flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 
 flatpak update --appstream && flatpak update
-
-
-
-# echo """
-#################################################################
-Adding RPMfusion repos"""
-
-#sudo rpm-ostree install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-
-#sudo rpm-ostree install https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-
-# echo "adding special RPMfusion repo for playing DVDs"
-#sudo rpm-ostree install rpmfusion-free-release-tainted
-
-echo """
-#################################################################
-
-If you want to add a COPR repository, download its ".repo" file or do the ostree command:
-
-sudo wget URL-TO-.repo-FILE -P /etc/yum.repos.d
-
-sudo ostree remote add <name-of-repo> <repository-url>
-"""
-
 
 
 echo """
@@ -189,89 +171,6 @@ flatpak install -y flatub org.keepassxc.KeePassXC
 
 echo "removing unused Flatpak Libraries (probably none)"
 flatpak uninstall -y --unused
-
-
-
-echo """
-#################################################################
-
-Installing RPMs to layer over the Fedora base. Use layered RPMs as little as possible.
-
-
-    If you just need a specific app not integrated into the system, try toolbox:
-
-    toolbox create
-    toolbox enter
-    sudo dnf install APPNAME
-
-#################################################################
-"""
-
-#echo """RPMs for Intel hardware video acceleration:"""
-
-# rpm-ostree install intel-gpu-tools libva-intel-driver libva-intel-hybrid-driver libva-utils libva-vdpau-driver libvdpau-va-gl mpv vdpauinfo
-
-#echo """Installing Media Codecs, for apps not integrating them
-"""
-
-#sudo rpm-ostree install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
-#sudo rpm-ostree install -y lame\* --exclude=lame-devel
-#rpm-ostree group upgrade --with-optional Multimedia
-
-
-echo """
-#################################################################
-
-Installing some needed RPMs:
-
-Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails
-"""
-
-sudo rpm-ostree install -y clamtk* fail2ban tlp R rstudio btfs unrar stacer ffmpegthumbs
-
-# already there: ntfs-3g, wget udftools
-
-#sudo rpm-ostree install -y needrestart preload #only needed for RPMs ?
-#sudo rpm-ostree install -y smem
-#sudo rpm-ostree install -y libdvdcss* # maybe not needed, VLC Flatpak has it integrated, Handbrake doesnt
-
-# sudo rpm-ostree install -y btrbk ctags edk2-ovmf exfat-utils fuse-exfat fzf kitty net-snmp postfix syncthing tmux-powerline waypipe zsh fish flatpak-builder kernel-tools power-profiles-daemon pulseaudio-utils systemd-container ffmpeg-libs
-
-
-########### windows stuff: ############
-
-# echo """
-#################################################################
-
-If you deal with Windows, these RPMs are useful, installing...
-
-"""
-
-#sudo rpm-ostree install -y woeusb* exfat-utils fuse-exfat
-
-
-echo """
-#################################################################
-
-Installing Waydroid from the aleasto/waydroid COPR
-
-(Currently there is no Flatpak for Waydroid, so it will be installed as overlay)
-
-Using the Freeform Windows, you can start Waydroid Apps directly from your App menu!
-"""
-
-# other way, not sure if works
-#sudo ostree remote add aleasto-waydroid-fedora-37.repo https://copr.fedorainfracloud.org/coprs/aleasto/waydroid/repo/fedora-37/aleasto-waydroid-fedora-37.repo
-
-sudo wget https://copr.fedorainfracloud.org/coprs/aleasto/waydroid/repo/fedora-37/aleasto-waydroid-fedora-37.repo -P /etc/yum.repos.d/
-sudo rpm-ostree install -y waydroid
-
-
-sudo waydroid init -c https://ota.waydro.id/system -v https://ota.waydro.id/vendor
-sudo waydroid container start
-waydroid session start
-waydroid show-full-ui
-waydroid prop set persist.waydroid.multi_windows true
 
 
 echo """
@@ -374,3 +273,100 @@ https://github.com/CISOfy/lynis
 
 git clone https://github.com/CISOfy/lynis && sudo ~/lynis/lynis audit system
 
+
+# echo """
+#################################################################
+Adding RPMfusion repos, please uncomment what you need
+
+"rpmfusion-free-release-tainted" is needed for playing DVDs if the flatpak app requests it
+"""
+
+#sudo rpm-ostree --install rpmfusion-free-release-tainted #--install rpmfusion-free-release #--install rpmfusion-nonfree-release
+
+echo """
+#################################################################
+
+If you want to add a COPR repository, download its ".repo" file or do the ostree command:
+
+sudo wget URL-TO-.repo-FILE -P /etc/yum.repos.d
+
+sudo ostree remote add <name-of-repo> <repository-url>
+"""
+
+
+
+echo """
+#################################################################
+
+Installing RPMs to layer over the Fedora base. Use layered RPMs as little as possible.
+
+
+    If you just need a specific app not integrated into the system, try toolbox:
+
+    toolbox create
+    toolbox enter
+    sudo dnf install APPNAME
+
+#################################################################
+"""
+
+#echo """RPMs for Intel hardware video acceleration:"""
+
+# rpm-ostree install intel-gpu-tools libva-intel-driver libva-intel-hybrid-driver libva-utils libva-vdpau-driver libvdpau-va-gl mpv vdpauinfo
+
+#echo """Installing Media Codecs, for apps not integrating them
+"""
+
+#sudo rpm-ostree install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+#sudo rpm-ostree install -y lame\* --exclude=lame-devel
+#rpm-ostree group upgrade --with-optional Multimedia
+
+
+echo """
+#################################################################
+
+Installing some needed RPMs:
+
+Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails
+"""
+
+sudo rpm-ostree install -y clamtk* fail2ban tlp R rstudio btfs unrar stacer ffmpegthumbs
+
+# already there: ntfs-3g, wget udftools
+
+#sudo rpm-ostree install -y needrestart preload #only needed for RPMs ?
+#sudo rpm-ostree install -y smem
+#sudo rpm-ostree install -y libdvdcss* # maybe not needed, VLC Flatpak has it integrated, Handbrake doesnt
+
+# sudo rpm-ostree install -y btrbk ctags edk2-ovmf exfat-utils fuse-exfat fzf kitty net-snmp postfix syncthing tmux-powerline waypipe zsh fish flatpak-builder kernel-tools power-profiles-daemon pulseaudio-utils systemd-container ffmpeg-libs
+
+
+########### windows stuff: ############
+
+# echo """
+#################################################################
+
+If you deal with Windows, these RPMs are useful, installing...
+
+"""
+
+#sudo rpm-ostree install -y woeusb* exfat-utils fuse-exfat
+
+
+echo """
+#################################################################
+
+Installing Waydroid from the aleasto/waydroid COPR repository
+
+(Currently there is no Flatpak for Waydroid, so it will be installed as overlay)
+
+Using the Freeform Windows, you can start Waydroid Apps directly from your App menu!
+"""
+
+# other way, not sure if works
+#sudo ostree remote add aleasto-waydroid-fedora-37.repo https://copr.fedorainfracloud.org/coprs/aleasto/waydroid/repo/fedora-37/aleasto-waydroid-fedora-37.repo
+
+sudo wget https://copr.fedorainfracloud.org/coprs/aleasto/waydroid/repo/fedora-37/aleasto-waydroid-fedora-37.repo -P /etc/yum.repos.d/
+sudo rpm-ostree install -y waydroid
+
+systemctl reboot
