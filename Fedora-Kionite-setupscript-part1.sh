@@ -191,6 +191,19 @@ see: https://snapcraft.io/docs/home-outside-home
 
 # Repo to discover?
 
+# ---------- Different method ------------
+echo """
+Or install it through Toolbox (less security impact but requires more resources)
+"""
+
+# toolbox create -y snap && toolbox enter snap && sudo dnf install -y snapd
+
+echo """
+##########################
+find Snaps using snap find
+install snaps using snap install
+"""
+
 
 echo """
 #################################################################
