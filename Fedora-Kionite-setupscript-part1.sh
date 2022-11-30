@@ -299,6 +299,12 @@ Adding RPMfusion repos, please uncomment what you need
 
 #sudo rpm-ostree --install rpmfusion-free-release-tainted #--install rpmfusion-free-release #--install rpmfusion-nonfree-release
 
+#echo """
+#################################################################
+adding the BTFS COPR repository
+"""
+# sudo wget https://copr.fedorainfracloud.org/coprs/elxreno/btfs/repo/fedora-37/elxreno-btfs-fedora-37.repo -P /etc/yum.repos.d/
+
 echo """
 #################################################################
 
@@ -346,7 +352,7 @@ Installing some needed RPMs:
 Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails, Python installer
 """
 
-sudo rpm-ostree install clamtk* fail2ban tlp R rstudio btfs unrar stacer ffmpegthumbs pip
+#sudo rpm-ostree override remove libavcodec-free --install clamtk* fail2ban tlp unrar stacer ffmpegthumbs pip #btfs
 
 # already there: ntfs-3g, wget, udftools
 
