@@ -130,7 +130,9 @@ flatpak install -y flathub com.github.tchx84.Flatseal;
 flatpak install -y flathub com.xnview.XnViewMP;
 flatpak install -y flatub org.keepassxc.KeePassXC
 
-#sudo rpm-ostree override remove -y org.mozilla.firefox && exit && flatpak install flathub org.mozilla.firefox
+sudo rpm-ostree override remove org.mozilla.firefox && exit && flatpak install -y flathub org.mozilla.firefox
+
+xdg-settings set default-web-browser org.mozilla.firefox.desktop
 
 #flatpak install -y flathub org.freefilesync.FreeFileSync;
 #flatpak instal -y flathub com.github.zocker_160.SyncThingy
