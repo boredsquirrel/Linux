@@ -49,6 +49,7 @@ In the end you have to reboot, to apply changes when installing RPMs. Configure 
     - enabling TLP as systemd module for Battery saving
     - setting up a nice GRUB theme
     - applying UEFI Firmware updates
+    - theme flatpaks using your set GTK theme
 
 
 6. Downloading Microsoft Fonts for compatibility (Times, Arial, Cambria,...)
@@ -286,6 +287,16 @@ cp -v ms-corefonts/*.ttf ms-corefonts/*.TTF ~/.local/share/fonts/mscorefonts/
 #echo "Enabling System wide, currently no Flatpak support:"
 #sudo mkdir -p /usr/local/share/fonts/mscorefonts/
 #sudo cp -v fonts/*.ttf fonts/*.TTF /usr/local/share/fonts/mscorefonts/
+
+echo """#################################################################
+Enabling Flatpaks to use the local GTK theme. The GTK theme can be set in KDE Settings and may adapt to the KDE (Qt) Theme.
+
+https://itsfoss.com/flatpak-app-apply-theme/
+
+reset with: sudo flatpak override --reset
+"""
+
+sudo flatpak override --filesystem=$HOME/.themes
 
 
 echo """#################################################################
