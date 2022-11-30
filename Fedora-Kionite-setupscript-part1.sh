@@ -123,6 +123,9 @@ flatpak update --appstream && flatpak update
 
 echo """
 #################################################################
+
+YOU NEED TO EDIT THIS SECTION
+
 Installing Flatpak apps
 """
 
@@ -179,6 +182,9 @@ flatpak uninstall -y --unused
 
 echo """
 #################################################################
+
+YOU NEED TO EDIT THIS SECTION
+
 Adding the Snapd app for installing Snaps
 
 see: https://snapcraft.io/docs/home-outside-home
@@ -294,6 +300,9 @@ git clone https://github.com/CISOfy/lynis && sudo ~/lynis/lynis audit system
 
 # echo """
 #################################################################
+
+YOU NEED TO EDIT THIS SECTION
+
 Adding RPMfusion repos, please uncomment what you need
 
 "rpmfusion-free-release-tainted" is needed for playing DVDs if the flatpak app requests it
@@ -322,6 +331,8 @@ sudo ostree remote add <name-of-repo> <repository-url>
 echo """
 #################################################################
 
+YOU NEED TO EDIT THIS SECTION
+
 Installing RPMs to layer over the Fedora base. Use layered RPMs as little as possible.
 
 
@@ -349,26 +360,29 @@ Installing RPMs to layer over the Fedora base. Use layered RPMs as little as pos
 echo """
 #################################################################
 
+YOU NEED TO EDIT THIS SECTION
+
 Installing some needed RPMs:
 
 Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails, Python installer
 """
 
-#sudo rpm-ostree override remove libavcodec-free --install clamtk* fail2ban tlp unrar stacer ffmpegthumbs pip #btfs
+#sudo rpm-ostree override remove libavcodec-free --install clamtk* fail2ban tlp unrar stacer ffmpegthumbs pip qemu qemu-user-static kffmpegthumbnailer android-tools #btfs 
 
-# already there: ntfs-3g, wget, udftools
+
 
 #sudo rpm-ostree install -y needrestart preload #only needed for RPMs ?
 #sudo rpm-ostree install -y smem
 #sudo rpm-ostree install -y libdvdcss* # maybe not needed, VLC Flatpak has it integrated, Handbrake doesnt
 
-# sudo rpm-ostree install -y btrbk ctags edk2-ovmf exfat-utils fuse-exfat fzf kitty net-snmp postfix syncthing tmux-powerline waypipe zsh fish flatpak-builder kernel-tools power-profiles-daemon pulseaudio-utils systemd-container ffmpeg-libs
+# sudo rpm-ostree install -y btrbk ctags edk2-ovmf net-snmp postfix tmux-powerline waypipe flatpak-builder kernel-tools power-profiles-daemon pulseaudio-utils systemd-container ffmpeg-libs
 
 
-########### windows stuff: ############
 
 # echo """
 #################################################################
+
+YOU NEED TO EDIT THIS SECTION
 
 If you deal with Windows, these RPMs are useful, installing...
 
@@ -376,6 +390,30 @@ If you deal with Windows, these RPMs are useful, installing...
 
 #sudo rpm-ostree install -y woeusb* exfat-utils fuse-exfat
 
+# echo """
+#################################################################
+If you have an Intel CPU, you may need these...
+"""
+#sudo rpm-ostree install intel-media-driver
+
+
+# echo """
+#################################################################
+
+YOU NEED TO EDIT THIS SECTION
+
+If you have an NVIDIA GPU, you need these, from the RPM-Fusion nonfree repo...
+
+First determine what GPU you have
+
+https://itsfoss.com/install-nvidia-drivers-fedora/
+
+"""
+lspci -vnn | grep VGA
+
+xdg-open https://www.nvidia.com/Download/index.aspx?lang=en-us
+
+#sudo rpm-ostree install akmod-nvidia xorg-x11-drv-nvidia-390xx akmod-nvidia-390xx xorg-x11-drv-nvidia-340xx akmod-nvidia-340xx
 
 echo """
 #################################################################
