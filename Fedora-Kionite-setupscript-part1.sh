@@ -343,12 +343,12 @@ echo """
 
 Installing some needed RPMs:
 
-Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails
+Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails, Python installer
 """
 
-sudo rpm-ostree install -y clamtk* fail2ban tlp R rstudio btfs unrar stacer ffmpegthumbs
+sudo rpm-ostree install clamtk* fail2ban tlp R rstudio btfs unrar stacer ffmpegthumbs pip
 
-# already there: ntfs-3g, wget udftools
+# already there: ntfs-3g, wget, udftools
 
 #sudo rpm-ostree install -y needrestart preload #only needed for RPMs ?
 #sudo rpm-ostree install -y smem
