@@ -271,10 +271,15 @@ sudo chmod +x /etc/cron.hourly/flatpak-update.sh
 echo "enabling mac adress randomization for privacy"
 sudo printf "[device-mac-randomization]\nwifi.scan-rand-mac-address=yes\n[connection-mac-randomization]\nethernet.cloned\nmac-address=random\nwifi.cloned-mac-address=random" > /etc/NetworkManager/conf.d/99-custom.conf
 
-# --- tlp
+# --- TLP
 
 echo "enabling TLP for saving battery"
-sudo systemctl enable --now tlp
+
+sudo systemctl enable --now tlp.service
+sudo systemctl mask power-profiles-daemon.service #overwrites system internal power management
+sudo systemctl mask systemd-rfkill.socket #enable radion device switching
+sudo systemctl mask systemd-rfkill.socket
+
 
 
 echo """#################################################################
