@@ -409,7 +409,7 @@ Installing some needed RPMs:
 Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails, Python installer, ADB, Qemu emulator, OpenGL (for 3D-rendering)
 """
 
-#sudo rpm-ostree override remove libavcodec-free --install clamtk* fail2ban tlp unrar stacer ffmpegthumbs pip qemu qemu-user-static kffmpegthumbnailer android-tools make gcc-c++ #btfs 
+#sudo rpm-ostree override remove libavcodec-free --install clamtk* fail2ban tlp unrar stacer ffmpegthumbs pip qemu-kvm qemu-img qemu-user-static kffmpegthumbnailer android-tools make gcc-c++ #btfs 
 
 
 
