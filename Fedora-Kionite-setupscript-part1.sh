@@ -46,7 +46,8 @@ In the end you have to reboot, to apply changes when installing RPMs. Configure 
     - enabling automatic rpm-ostree updates (you still need to reboot)
     - Automatic Flatpak updates via cron.daily (every day)
     - enabling Mac-Adress randomization for privacy
-    - enabling TLP as systemd module for Battery saving
+    - enabling 
+    - TLP as systemd module for Battery saving
     - setting up a nice GRUB theme
     - applying UEFI Firmware updates
     - theme flatpaks using your set GTK theme
