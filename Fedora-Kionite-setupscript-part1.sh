@@ -272,7 +272,15 @@ sudo chmod +x /etc/cron.hourly/flatpak-update.sh
 echo "enabling mac adress randomization for privacy"
 sudo printf "[device-mac-randomization]\nwifi.scan-rand-mac-address=yes\n[connection-mac-randomization]\nethernet.cloned\nmac-address=random\nwifi.cloned-mac-address=random" > /etc/NetworkManager/conf.d/99-custom.conf
 
-# --- TLP
+echo """ 
+Setting TLP as energy saving service
+
+What is better, power profiles or TLP?
+- different opinions
+- Power profiles is more agressive on CPU
+- TLP is more agressive on external ports
+- TLP is reported to increase battery life more
+"""
 
 echo "enabling TLP for saving battery"
 
