@@ -254,7 +254,7 @@ Auto-Updates (rpm-ostree and Flatpak):
 https://github.com/tonywalker1/silverblue-update
 """
 
-git clone https://github.com/tonywalker1/silverblue-update.git
+git clone https://github.com/tonywalker1/silverblue-update.git ~/silverblue-update
 cd silverblue-update/
 sudo chmod +x install.sh
 sudo sh install.sh
