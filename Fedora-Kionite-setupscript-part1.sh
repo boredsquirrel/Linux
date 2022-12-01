@@ -250,22 +250,21 @@ echo """
 #################################################################
 Configuring Settings
 
-Auto-updates: https://barnix.io/how-to-enable-automatic-update-staging-in-fedora-silverblue/
+Auto-Updates (rpm-ostree and Flatpak):
+https://github.com/tonywalker1/silverblue-update
 """
 
-# --- rpm-ostree automatic
-sudo sed -i 's/none/stage/g' /etc/rpm-ostreed.conf  #set to install if set to none
-sudo sed -i 's/check/stage/g' /etc/rpm-ostreed.conf #set to install if set to check
-
-rpm-ostree reload
-
-systemctl enable rpm-ostreed-automatic.timer --now
+git clone https://github.com/tonywalker1/silverblue-update.git
+cd silverblue-update/
+sudo chmod +x install.sh
+sudo sh install.sh
 
 
-# ---- Flatpaks
-
-sudo printf "#!/bin/sh\n/usr/bin/flatpak -y update 2>&1 >> ~/cron/cron-flatpak.log" > /etc/cron.hourly/flatpak-update.sh
-sudo chmod +x /etc/cron.hourly/flatpak-update.sh
+# --- rpm-ostree timer native way
+#sudo sed -i 's/none/stage/g' /etc/rpm-ostreed.conf  #set to install if set to none
+#sudo sed -i 's/check/stage/g' /etc/rpm-ostreed.conf #set to install if set to check
+#rpm-ostree reload
+#systemctl enable rpm-ostreed-automatic.timer --now
 
 # ---- mac adresses
 
