@@ -134,7 +134,7 @@ flatpak install -y flathub com.github.tchx84.Flatseal;
 flatpak install -y flathub com.xnview.XnViewMP;
 flatpak install -y flatub org.keepassxc.KeePassXC
 
-sudo rpm-ostree override remove org.mozilla.firefox && exit && flatpak install -y flathub org.mozilla.firefox
+sudo rpm-ostree override firefox && exit && flatpak install -y flathub org.mozilla.firefox
 
 xdg-settings set default-web-browser org.mozilla.firefox.desktop
 
@@ -375,10 +375,10 @@ YOU NEED TO EDIT THIS SECTION
 
 Installing some needed RPMs:
 
-Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails, Python installer
+Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails, Python installer, ADB, Qemu emulator, OpenGL (for 3D-rendering)
 """
 
-#sudo rpm-ostree override remove libavcodec-free --install clamtk* fail2ban tlp unrar stacer ffmpegthumbs pip qemu qemu-user-static kffmpegthumbnailer android-tools #btfs 
+#sudo rpm-ostree override remove libavcodec-free --install clamtk* fail2ban tlp unrar stacer ffmpegthumbs pip qemu qemu-user-static kffmpegthumbnailer android-tools make gcc-c++ #btfs 
 
 
 
