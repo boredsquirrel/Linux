@@ -188,17 +188,48 @@ YOU NEED TO EDIT THIS SECTION
 
 Adding the Snapd app for installing Snaps
 
-see: https://snapcraft.io/docs/home-outside-home
+see: https://nelsonaloysio.medium.com/installing-ubuntus-snap-on-fedora-silverblue-e82ca6fd6108
 """
 
-#sudo mkdir -p /home/$USER
-#sudo mount --bind /var/home/$USER /home/$USER
+#sudo printf """[Unit]
+Description=Enable mount points in / for OSTree
+DefaultDependencies=no[Service]
+Type=oneshot
+ExecStartPre=chattr -i /
+ExecStart=/bin/sh -c "[ -L '%f' ] && rm '%f'; mkdir -p '%f'"
+ExecStopPost=chattr +i /""" > /etc/systemd/system/mkdir-rootfs@.service
+
+#sudo printf """[Unit]
+After=mkdir-rootfs@snap.service
+Wants=mkdir-rootfs@snap.service
+Before=snapd.socket[Mount]
+What=/var/lib/snapd/snap
+Where=/snap
+Options=bind
+Type=none[Install]
+WantedBy=snapd.socket""" > /etc/systemd/system/snap.mount
+
+#sudo printf """[Unit]
+After=mkdir-rootfs@home.service
+Wants=mkdir-rootfs@home.service
+Before=snapd.socket[Mount]
+What=/var/home
+Where=/home
+Options=bind
+Type=none[Install]
+WantedBy=snapd.socket""" > /etc/systemd/system/home.mount
+
+#sudo cp /etc/passwd /etc/passwd.bak &&
+#sudo sed -i 's:/var/home:/home:' /etc/passwd
+
+#sudo systemctl daemon-reload &&
+#sudo systemctl start {home.mount,snap.mount} &&
+#sudo systemctl enable {home.mount,snap.mount}
 
 #echo "installing Snapd..."
 #sudo rpm-ostree install snapd
 #sudo snap update
 
-# Repo to discover?
 
 # ---------- Different method ------------
 echo """
