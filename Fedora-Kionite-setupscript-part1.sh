@@ -285,6 +285,10 @@ cd silverblue-update/
 sudo chmod +x install.sh
 sudo sh install.sh
 
+echo """
+Removing Discover notification...
+"""
+sudo rm /etc/xdg/autostart/org.kde.discover.notifier.desktop
 
 # --- rpm-ostree timer native way
 #sudo sed -i 's/none/stage/g' /etc/rpm-ostreed.conf  #set to install if set to none
