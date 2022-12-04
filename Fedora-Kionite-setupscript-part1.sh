@@ -448,7 +448,7 @@ Installing some needed RPMs:
 Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cleaner, Video Thumbnails, Python installer, ADB, Qemu emulator, OpenGL (for 3D-rendering)
 """
 
-#sudo rpm-ostree override remove libavcodec-free --install clamtk* fail2ban tlp unrar stacer ffmpegthumbs pip qemu-kvm qemu-img qemu-user-static kffmpegthumbnailer android-tools make gcc-c++ #btfs 
+sudo rpm-ostree override remove libavcodec-free --install exiftool perl-Image-ExifTool clamtk* fail2ban tlp make gcc-c++ qemu-kvm qemu-img qemu-user-static kffmpegthumbnailer #unrar stacer pip android-tools btfs 
 
 
 
@@ -456,7 +456,8 @@ Antivirus, Brute-Force Blocker, Battery-saver, Bittorrent filesystem, System cle
 #sudo rpm-ostree install -y smem
 #sudo rpm-ostree install -y libdvdcss* # maybe not needed, VLC Flatpak has it integrated, Handbrake doesnt
 
-# sudo rpm-ostree install -y btrbk ctags edk2-ovmf net-snmp postfix tmux-powerline waypipe flatpak-builder kernel-tools power-profiles-daemon pulseaudio-utils systemd-container ffmpeg-libs
+# other packages you may want:
+# sudo rpm-ostree install -y ffmpegthumbs btrbk ctags edk2-ovmf net-snmp postfix tmux-powerline waypipe flatpak-builder kernel-tools power-profiles-daemon pulseaudio-utils systemd-container ffmpeg-libs
 
 
 
