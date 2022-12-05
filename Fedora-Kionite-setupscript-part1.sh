@@ -203,6 +203,8 @@ xdg-settings set default-web-browser org.mozilla.firefox.desktop
 #flatpak install -y flathub monero-gui;
 #flatpak install -y flathub org.cryptomator.Cryptomator;
 
+# Wine
+# flatpak install -y flathub org.winehq.Wine org.winehq.Wine.DLLs.dxvk org.winehq.Wine.gecko org.winehq.Wine.mono
 
 echo "removing unused Flatpak Libraries (probably none)"
 flatpak uninstall -y --unused
