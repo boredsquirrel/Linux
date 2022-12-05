@@ -38,3 +38,7 @@ sudo nano /var/lib/waydroid/rootfs/system/usr/keylayout/Generic.kl
 
 # 6. Enable Clipboard
 pip3 install pyclip
+
+# 7. Enable App-install appstarter
+printf """[Desktop Entry]\nComment=\nExec=waydroid app install\nGenericName=Installs Apps to the Waydroid container\nIcon=install\nName=Waydroid install\nNoDisplay=false\nPath=\nStartupNotify=true\nTerminal=false\nTerminalOptions=\nType=Application\nX-KDE-SubstituteUID=false\nX-KDE-Username=""" > ~/.local/share/applications/waydroid-install.desktop
+
