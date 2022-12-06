@@ -1,5 +1,23 @@
 #!/usr/bin/env sh
 
+echo "Setting up systemd timers"
+
+# echo "Mullvad"
+# sudo systemctl enable mullvad-daemon mullvad-early-boot-blocking qemu-guest-agent
+
+echo "ClamAV Antivirus, TLP, CPUPower, Fail2Ban, SELinux, Silverblue-update, Systemd boot check & Bootloader update, Thermal monitor, TLP, Disk manager"
+sudo systemctl enable clamav-clamonacc clamav-freshclam cpupower fail2ban selinux-autorelabel-mark selinux-check-proper-disable silverblue-update systemd-boot-check-no-failures systemd-boot-update systemd-time-wait-sync thermald tlp udisks2  
+
+# echo "remove unwanted background processes"
+# sudo systemctl disable waydroid-container vboxservice
+
+# echo "Podman autoupdate"
+# sudo systemctl enable podman-auto-update
+
+# echo "Disable CUPS Printer service and Bluetooth"
+# sudo systemctl disable cups-browsed bluetooth #cups
+
+
 echo "Installing and setting up Waydroid"
 
 # 1. Install waydroid
