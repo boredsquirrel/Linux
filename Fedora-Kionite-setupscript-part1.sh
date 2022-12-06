@@ -97,12 +97,15 @@ In the end you have to reboot, to apply changes when installing RPMs. Configure 
     - A lot is deactivated, try to get along without it, then use it
     - RPMs needed to deal with Windows stuff
     - RPMs not yet available as Flatpaks
+    - MullvadVPN + setup (optional)
 
 
 10. Installing the Android Emulator Waydroid
     - Adding the aleasto/waydroid repo
     
 Part 2:
+    - enabling TLP, fail2ban and more as systemd services
+    
     - Downloading Android
     - configuring free form windows to use Android apps normally
     - NOT YET: configuring keyboard layout
@@ -465,6 +468,11 @@ sudo rpm-ostree override remove libavcodec-free --install exiftool perl-Image-Ex
 # other packages you may want:
 # sudo rpm-ostree install -y ffmpegthumbs btrbk ctags edk2-ovmf net-snmp postfix tmux-powerline waypipe flatpak-builder kernel-tools power-profiles-daemon pulseaudio-utils systemd-container ffmpeg-libs
 
+
+# MullvadVPN
+# xdg-open https://mullvad.net/download/app/rpm/latest/
+# sudo rpm-ostree install ~/Downloads/mullvad*.rpm
+# rm ~/Downloads/mullvad*.rpm
 
 
 # echo """
