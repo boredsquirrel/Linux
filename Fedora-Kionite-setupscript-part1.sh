@@ -323,7 +323,9 @@ sudo systemctl mask power-profiles-daemon.service #overwrites system internal po
 sudo systemctl mask systemd-rfkill.socket #enable radion device switching
 sudo systemctl mask systemd-rfkill.socket
 
+echo "disabling Geoclue agent (localizaion, important but running in the background all the time)"
 
+sudo systemctl disable geoclue
 
 echo """#################################################################
 
@@ -527,4 +529,4 @@ Using the Freeform Windows, you can start Waydroid Apps directly from your App m
 sudo wget https://copr.fedorainfracloud.org/coprs/aleasto/waydroid/repo/fedora-37/aleasto-waydroid-fedora-37.repo -P /etc/yum.repos.d/
 sudo rpm-ostree install -y waydroid
 
-systemctl reboot
+reboot
