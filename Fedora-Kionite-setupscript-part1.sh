@@ -121,9 +121,14 @@ echo """
 #################################################################
 
 1. Removing some unwanted Apps
+
+Gwenview is kept, although XNView is better, as it can view JXL images
+
+tmp2-abrmd resulted in crashes, thats why you may want it removed
+(https://www.ifconfig.it/hugo/2020/01/linux-on-huawei-matebook-d/)
 """
 
-# sudo rpm-ostree override remove gwenview kmag kmouse*
+# sudo rpm-ostree override remove kmag kmouse* #gwenview #tpm2-abrmd
 
 echo """
 #################################################################
@@ -164,7 +169,7 @@ flatpak install -y flathub com.github.tchx84.Flatseal;
 flatpak install -y flathub com.xnview.XnViewMP;
 flatpak install -y flatub org.keepassxc.KeePassXC
 
-sudo rpm-ostree override firefox && exit && flatpak install -y flathub org.mozilla.firefox
+sudo rpm-ostree override remove firefox && exit && flatpak install -y flathub org.mozilla.firefox
 
 xdg-settings set default-web-browser org.mozilla.firefox.desktop
 
