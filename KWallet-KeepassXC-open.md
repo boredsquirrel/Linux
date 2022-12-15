@@ -36,3 +36,13 @@ Type=Application
 """ > ~/.local/share/applications/KeepassXC-open.desktop```
 
 On Fedora Kionite you may need to print that entry to `~/.local/share/applications/ons/KeepassXC-open.desktop`, dont know why.
+
+---
+
+## KeepassDX on Android 
+
+Depending on your threat model, if you use Android and KeepassDX, you can now once enter the password and save it using your fingerprint.
+
+Transfer: for example via a QR internet-less transfer: create a QR code in the KDE clipboard and scan it with an open-source qr-scanner with no internet access
+
+Warning: in many states a Fingerprint is less secure than a password. Law enforcement can "enforce" you to touch your fingerprint sensor, while they can't force you to say your password.
