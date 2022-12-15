@@ -13,7 +13,7 @@ Maybe you want to allow guests to do basic browsing or complete usage of your de
 
 **native app**: an app developed on the resources your Linux distro offers, without any extra runtime etc. It uses your system and can break it that way.
 
-### Home directory
+## 1. Home directory
 This is the folder in which a normal user can write. It is recommended to stay in this directory all the time when possible. Only normal exception is the install/ updating of app.
 
 - this can be automated so the user doesn't have to know the root password
@@ -33,7 +33,7 @@ In your home folder, all your files are stored. You can access everything in the
 
 So you can do pretty much everything in the userspace, and guest users should do even more, so that they cannot break your system.
 
-## Root or normal user?
+## 2. Root or normal user?
 root users can edit anything stored in `/`, the complete filesystem. This user should be secured with a pretty strong password, depending on your threat-model. Dont use the root user for anything, except needed. This is the default on Linux, so if you dont't know which user you are, you are not root.
 
 (You can enter an X11-session by pressing `Ctrl+Alt+4` on the login screen, logging in and writing `sudo startx`. But don't use that, except there is no other way, maybe because you broke your user profile.
@@ -42,7 +42,7 @@ You can also use Dolphin File manager with root entering `pkexec env 'DISPLAY=$D
 
 Use a normal user for your guest, when creating a second profile under "Settings -> Profiles" or similar.
 
-## Problem: Read-access to your files
+## 3. Problem: Read-access to your files
 On linux the normal configuration is, that other users can view every filesystem in `/home/`, so they can view all your files, just not edit or delete them.
 
 You can solve this problem with one command:
@@ -70,7 +70,7 @@ Graphically you can do this in the Dolphin-Filemanager of KDE by going to `/home
 
 Nautilus will have something for that too.
 
----
+## 4. Only safe with LUKS disk encryption
 
 Now other users won't be able to view your files anymore and can safely use your computer, if you have also enabled `LUKS` or `LVM encryption` with a good startup at system setup.
 
