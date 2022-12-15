@@ -11,7 +11,7 @@ Setting up a Linux Distribution is more work than just installing the System. Yo
 [Here is a cool example of creating a minimal Fedora KDE Operating System, without anything not wanted installed](https://www.reddit.com/r/Fedora/comments/9a0i93/howto_minimal_kde_install_on_fedora/)
 
 I have created my own scripts for
-- [Fedora Kionite](https://github.com/trytomakeyouprivate/Linux-help/blob/main/Fedora-Kionite-SETUP.sh) (super stable containerized Distro, the future)
+- [Fedora Kionite](https://github.com/trytomakeyouprivate/Fedora-OSTree-Setup) (super stable containerized Distro, the future)
 - easy Linux Mint setup for low-end computers
 - Kubuntu/KDE Neon
 
