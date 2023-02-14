@@ -43,7 +43,7 @@ you can extend this of course. I could not make this work well with rpm-ostree, 
 #### Android (ADB)
 If you use ADB via a connected android device, you can install apps (.apk) through the terminal and automate smartphone setups by that.
 
-***ADB-install**: requires "adb" to be installed, installs the .apk directly to the device
+**ADB-install**: requires "adb" to be installed, installs the .apk directly to the device
 
 #### Waydroid
 This uses the `waydroid app install` command, to install an .apk directly to the Android container
