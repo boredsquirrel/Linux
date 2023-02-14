@@ -1,0 +1,39 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=KonqPopupMenu/Plugin
+MimeType=text/markdown
+Icon=text-markdown
+Actions=A4;smartphone;eReader;default
+X-KDE-Priority=TopLevel
+X-KDE-StartupNotify=false
+X-KDE-Submenu=Export as
+X-KDE-Submenu[it]=Esporta come
+X-KDE-Submenu[de]=Exportieren als
+
+[Desktop Action A4]
+Name=PDF document (A4)
+Name[it]=Documento PDF (A4)
+Name[de]=PDF Dokument (A4)
+Icon=application-pdf
+Exec=filename=%f; distrobox enter fedora --exec pandoc -V geometry:margin=0.95in -o "${filename%.*}.pdf" %f
+
+[Desktop Action smartphone]
+Name=PDF document (for smartphone)
+Name[it]=Documento PDF (per smartphone)
+Name[de]=PDF Dokument (für Smartphones)
+Icon=application-pdf
+Exec=filename=%f; distrobox enter fedora --exec pandoc -V geometry:margin=0.2in -V geometry:paperwidth=270pt -V geometry:paperheight=480pt -V fontsize=8pt -o "${filename%.*}.pdf" %f
+
+[Desktop Action eReader]
+Name=PDF document (for eReader)
+Name[it]=Documento PDF (per eReader)
+Name[de]=PDF Dokument (für eReader)
+Icon=application-pdf
+Exec=filename=%f; distrobox enter fedora --exec pandoc -V geometry:margin=0.2in -V geometry:paperwidth=320pt -V geometry:paperheight=400pt -V fontsize=8pt -o "${filename%.*}.pdf" %f
+
+[Desktop Action default]
+Name=PDF document (default)
+Name[it]=Documento PDF (default)
+Name[de]=PDF Dokument (standard)
+Icon=application-pdf
+Exec=filename=%f; distrobox enter fedora --exec pandoc -o "${filename%.*}.pdf" %f
