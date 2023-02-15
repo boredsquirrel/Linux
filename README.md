@@ -9,13 +9,15 @@ I use KDE and tried different Distributions, at the moment staying with Fedora K
 
 
 ## 3. Setup-Scripts
-Setting up a Linux Distribution is more work than just installing the System. You will have to install and uninstall a lot of apps, and set some settings.
+Setting up a Linux Distribution is more work than just installing the System.
+You will have to install and uninstall a lot of apps, and set some settings.
+
 [Here is a cool example of creating a minimal Fedora KDE Operating System, without anything not wanted installed](https://www.reddit.com/r/Fedora/comments/9a0i93/howto_minimal_kde_install_on_fedora/)
 
 I have created my own scripts for
-- [Fedora Kinoite](https://github.com/trytomakeyouprivate/Fedora-OSTree-Setup) (super stable containerized Distro, the future)
-- easy Linux Mint setup for low-end computers
-- Kubuntu/KDE Neon
+- [Fedora Kinoite & Silverblue](https://github.com/iaacornus/Fedora-OSTree-Setup) (super stable containerized Distro, the future)
+- Kubuntu / KDE Neon (dont use it anymore)
+- Linux Mint (has nice features but not recommended)
 
 The scripts include:
 
@@ -23,9 +25,9 @@ The scripts include:
 2. Adding the Flatpak repository Flathub
 3. Optional: adding Snap repo
 4. Installing basic apps (some are better replacements of previously uninstalled apps!)
-5. Get external apps (.deb or .rpm respectively) and download them (check integrity yourself! I have no automatic checks yet)
+5. Optional: Get external apps (.deb or .rpm respectively) and download them (check integrity yourself! I have no automatic checks yet)
 6. Set some settings like systemd timers
-7. Downloading useful appstarters
-8. Lynis security audit
-9. Waydroid install
-10. ...
+7. Downloading useful appstarters, link folders, Dolphin servicemenus e.g.
+9. Lynis security audit
+10. Waydroid install
+11. ...
