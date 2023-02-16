@@ -1,0 +1,4 @@
+- [ ] find out how to make automatic system-updates
+- [ ] enable Mycroft
+- [ ] maybe problems with launcher and apps, flatpaks e.g.
+- [ ] lets see
