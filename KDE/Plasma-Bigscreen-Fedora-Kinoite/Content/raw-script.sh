@@ -13,18 +13,34 @@ flatpak update && flatpak install -y freetube firefox amberol vlc blanket flatse
 git clone https://github.com/tonywalker1/silverblue-update
 sudo sh ./silverblue-update/install.sh
 
+# enable Plasma-Bigscreen
+printf"""#!/bin/bash
+plasmashell --replace -p org.kde.plasma.mycroft.bigscreen
+""" > ~/.config/autostart/enable-bigscreen.sh
+
+# restart script
+wget https://github.com/trytomakeyouprivate/Linux/raw/main/KDE/Plasma-Bigscreen-Fedora-Kinoite/Content/reboot-script.sh -P ~/.config/autostart
+
+chmod +x ~/.config/autostart/*
+
 #------------Create firefox profile ---------
 cd ~/.var/app/org.mozilla.firefox/.mozilla/firefox
 
-# remove weird standard profiles
 rm -rf *default
-rm -rf *default-release
 
-#
-printf"""[Profile]
-Name=TV-Firefox
-IsRelative=0
-Path=/var/home/user/.var/app/org.mozilla.firefox/.mozilla/firefox/TV-Firefox""" >> profiles.ini
+wget x
+rsync -a TV-Firefox/ *.default-release
+rm -rf TV-Firefox
+
+
+
+# ---------- create Appstarters for Firefox Webapps -----------
+
+# Just simple links with icons opening in firefox?
+# needs some efford adding the icons
+
+wget x -P ~/.local/share/applications #-----------------------------------------------------------------
+
 
 # ---- restore COPR command ------
 # yes this is a really nice hack! Thanks to https://www.reddit.com/user/telemachuszero/
