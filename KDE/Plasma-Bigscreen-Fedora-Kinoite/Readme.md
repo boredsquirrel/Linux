@@ -1,7 +1,7 @@
 # Linux TV using Plasma Bigscreen and Fedora Kinoite?
 
 
-This is an experiment on creating the perfect TV operating system. It includes a few hacks
+This is an experiment on creating the perfect TV operating system. It should result in a modern, secure, self-maintaining, immutable and easy-to-use Linux TV you dont need to care about, because no update can break it.
 
 **No Guarantee that everything works! It is based off unofficial COPR repositories and may break in the future. It probably works very well though**
 
