@@ -110,5 +110,10 @@ rpm-ostree install cheat lm_sensors ksysguard tlp cargo && reboot
 #also nice: waydroid fish kate gocryptfs powertop bat qemu+qemu-kvm+virt-manager
 
 # Example local RPM: rpm-ostree install "/home/user/Downloads/MullvadVPN.rpm" && reboot
+```
 
+### Update firmware
+
+```
 fwupdmgr update #update firmware
+```
