@@ -6,12 +6,13 @@ Using UBlue you get autoupdates, restricted Codecs and drivers and even an NVidi
 
 ### Install
 
-Download from kinoite.fedoraproject.org , burn with Balena Etcher or any other Tool.
+Download from [kinoite.fedoraproject.org](kinoite.fedoraproject.org) , burn with Balena Etcher, Fedora Media Writer, dd or whatever.
 
 Setup installation:
 
-- Dont create a root account
+- Don't create a root account
 - Encrypt your Disk using LUKS
+- use strong passwords
 
 ### Post installation
 
