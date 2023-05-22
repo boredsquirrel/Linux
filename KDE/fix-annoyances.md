@@ -13,15 +13,17 @@ echo "Baloo disabled!"
 1. Enable autoupdates through anything using your package manager and Flatpak.
 
 ```
+# move the autostart file. It has to be renamed to not be recognized anymore. This is easily reversible.
 sudo mv /etc/xdg/autostart/org.kde.discover.notifier.desktop /etc/xdg/autostart/org.kde.discover.notifier.txt
 
-# If that was not enough:
+# If that was not enough, kill the process on startup.
 cat > ~/.config/autostart/kill-plasma-notifier <<EOF
 #!/bin/sh
 sleep 10
 killall -15 DiscoverNotifier &&\
-printf """$date:\n\nPlasmanotifier killed.""" > ~/.config/autostart/plasmanotifierlog ||\
-printf """$date:\n\nPlasmanotifier not present""" > ~/.config/autostart/plasmanotifierlog
+date > ~/.config/autostart/plasmanotifierlog
+printf """\n\nPlasmanotifier killed.""" >> ~/.config/autostart/plasmanotifierlog ||\
+printf """\n\nPlasmanotifier not present""" >> ~/.config/autostart/plasmanotifierlog
 EOF
 chmod +x ~/.config/autostart/kill-plasma-notifier
 ```
