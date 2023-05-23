@@ -15,7 +15,7 @@ echo "Baloo disabled!"
 1. Enable autoupdates through anything using your package manager and Flatpak.
 
 ```
-# move the autostart file. It has to be renamed to not be recognized anymore. This is easily reversible.
+# User autostart overrides System autostart
 sudo cp /etc/xdg/autostart/org.kde.discover.notifier.desktop ~/.config/autostart/org.kde.discover.notifier.desktop
 echo "Hidden=True" >> ~/.config/autostart/org.kde.discover.notifier.desktop
 
