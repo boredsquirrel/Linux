@@ -54,6 +54,24 @@ Replace these permissions with
 - smb shares
 - ...
 
+### flatpak shortcut creator flatalias
+This really simple script does this:
+
+1. List your installed Flatpak apps
+2. Extract appname and appID
+3. convert the appname to lowercase, remove numbers and dashes
+4. check if the appID is already aliased and if not:
+5. alias the cleaned appname to run the Flatpak in your bashrc, zshrc and fish.conf
+
+Example:
+
+```
+# installed app:
+QGIS-Desktop    org.qgis.qgis 3.30.1  stable  flathub system
+
+# alias
+alias qgisdesktop="flatpak run QGIS-Desktop"
+```
 
 ### [copr](https://github.com/trytomakeyouprivate/COPR-command)
 Add COPR repos on Fedora without using DNF.
@@ -86,6 +104,14 @@ Needs revisioning currently-
 ### [Flatpak-updater](https://github.com/trytomakeyouprivate/Flatpak-updater)
 
 Keep your Flatpak apps updated via a systemd service
+
+[Simpler alternative to this python script](https://gist.github.com/ssokolow/db565fd8a82d6002baada946adb81f68) working with aliases instead of runfiles.
+
+### flatalias
+
+A simple tool that lists your installed flatpaks and aliases a cleaned up name to your bashrc, zshrc and fish config.
+
+It recognizes existing aliases, so you can easily run it hourly with a systemd service.
 
 ### cd2
 
