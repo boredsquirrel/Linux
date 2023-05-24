@@ -140,6 +140,13 @@ Useful for servers with a buffer battery or other scenarios.
 ### git-clone-all
 Enter a user or group, clone all repositories
 
+### mic-set
+Problem: Your microphone is overamplified.
+
+This script can be run in `~/.config/autostart/` and set your mic volume to 40% and mute it.
+
+It workes on pulseaudio systems. Not sure about pipewire.
+
 ### website-language-checker
 Useful for creating Lists of Websites with domains for specific languages.
 
