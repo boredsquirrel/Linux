@@ -37,10 +37,12 @@ Two scripts that are part of a UDEV-rule + Systemd-service + Script complex
 Goal is:
 
 1. Detect Battery and AC state
-2. If Energysaving mode is useful, deactivate random CPU cores
+2. If Energysaving mode is useful, deactivate a set number of random CPU cores
 3. On AC activate all cores again
 
-This works on all systems where TLP doesnt work.
+This works on all systems where TLP doesnt work. Random means always different cores get disabled, to not get unequal usage or something.
+
+Its a brutal solution over things like setting to a batterysave governor, but its reliable.
 
 ### flatpak-permission-cleaner
 Many Flatpak apps have whole root access over your system for compatibility.
