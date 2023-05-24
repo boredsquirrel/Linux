@@ -31,7 +31,7 @@ Video memory: 2048MB
 
 ```
 
-### Energysaver
+### [Energysaver](https://github.com/trytomakeyouprivate/battery-saving)
 Two scripts that are part of a UDEV-rule + Systemd-service + Script complex
 
 Goal is:
@@ -66,6 +66,25 @@ Rsync is already integrated in most Linux distros and supports offline backups p
 
 This script helps you to setup your own Rsync service, running automatically, with specified Location and so on.
 
+### [fwupd-GUI](https://github.com/trytomakeyouprivate/fwupd-GUI)
+Firmware updates dependend on a save batterystate and AC conection.
+
+You get asked via a window and can accept or postpone.
+
+currenty not finished.
+
+### [Polkit-helper](https://github.com/trytomakeyouprivate/Polkit-helper)
+
+Easily create polkit rules so that you dont need to enter a password to launch e.g. Virt-manager or mount LUKS drives.
+
+Use sparely!
+
+Needs revisioning currently-
+
+### [Flatpak-updater](https://github.com/trytomakeyouprivate/Flatpak-updater)
+
+Keep your Flatpak apps updated via a systemd service
+
 ### cd2
 
 The better but simple Linux Filemanager Terminal experience.
@@ -93,7 +112,7 @@ a combination of `whereis` and your editor of choice, in my case "Kate"
 
 just type `findmod sysinfo` and it opens up!
 
-### flatpurge (currently not ready)
+### [flatpurge (currently not ready)](https://github.com/trytomakeyouprivate/Flatpak-trash-remover)
 
 Find leftover directories of deleted Flatpak apps and allow you to remove them
 
@@ -104,6 +123,18 @@ A customizable command for unlocking a KeepassXC Wallet with a password stored i
 
 For sure this could also be extended to Gnome wallet, feel free to do so
 
+### (Distrobox-autosetup](https://github.com/trytomakeyouprivate/Distrobox-autosetup)
+
+Setup scripts for some common Linux environments.
+
+Using Distrobox you can run any Linux app on every Linux Distro supporting Podman.
+
+### [Security-shutdown](https://github.com/trytomakeyouprivate/Security-shutdown)
+
+Various ways to detect that the power source is removed, shutdown the machine in that case.
+
+Useful for servers with a buffer battery or other scenarios.
+
 ### git-clone-all
 Enter a user or group, clone all repositories
 
@@ -111,6 +142,18 @@ Enter a user or group, clone all repositories
 Useful for creating Lists of Websites with domains for specific languages.
 
 Used for creating KDE Search engine .desktop files, but can easily be extended.
+
+### [Mullvad-Reminder](https://github.com/trytomakeyouprivate/Mullvad-Reminder)
+currently for some reason not working.
+
+Goal: keep the GUI app open (shown in apptray) if the VPN is disconnected, so that you dont forget to connect again.
+
+### [Systemd-hold-active](https://github.com/trytomakeyouprivate/systemd-hold-active)
+Experimental, currently not working
+
+Idea: Enable a service, launch an app, disable the service again when app is closed.
+
+Useful for temporarily enabling CUPS, Bluetooth e.g.
 
 ### remove
 
