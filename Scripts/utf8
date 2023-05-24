@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kdesu localectl set-locale LANG=de_DE.UTF-8
