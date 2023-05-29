@@ -55,7 +55,7 @@ EOF
 ```
 
 Only if you want to use your normal profile:
-<!--
+
 ```
 cat > ~/.local/share/applications/captiveportal.desktop <<EOF
 [Desktop Entry]
@@ -65,7 +65,6 @@ Name=Captive Portal
 Type=Application
 EOF
 ```
--->
 
 (replace `firefox` with `flatpak run org.mozilla.firefox` if you use the Flatpak. Replace it with the location of the binary if you use that.)
 
@@ -103,7 +102,6 @@ EOF
 ```
 
 Using your normal browser profile (opening a new window):
-<!--
 
 ```
 
@@ -129,7 +127,6 @@ Name=Captive Portal
 Type=Application
 EOF
 ```
--->
 
 **Not-so-fun-fact**: On Android Captive Portals work with enabled VPN, because the Chromium Dialog "Captive-Portal-Chooser" (and any other system app) can even bypass the "always on, block other connections" VPN. This is a privacy nightmare.
 
@@ -147,7 +144,6 @@ sudo -i
 
 Currently not working as intended, DNS gets resolved anyways:
 
-<!--
 ```
 mkdir /etc/systemd/resolved.conf.d
 cp /etc/systemd/resolved.conf /etc/systemd/resolved.conf.d/block-dns-without-vpn.conf
@@ -170,6 +166,5 @@ systemctl restart systemd-resolved
 ```
 
 Even with Mullvad turned off (no blocking) it can resolve Domains.
--->
 
 An alternative would be to whitelist the Browser Profile as an app ("Split Tunneling"), to connect without the VPN, but while this works great on Android, it crashes my Client on Linux.
