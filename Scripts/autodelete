@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# This script includes 2 functions
+# function 1 deletes Files older than x days
+# function 2 deletes all but the newest x files
+# You can put this in your ~/.config/autostart folder, to autodelete files you dont need
+# You can also use a systemd service or else, if you dont reboot (lol)
+
+function del_old() {
+  # Check if the directory exists
+  if [ ! -d "$1" ]; then
+    echo "Error: directory $1 does not exist."
+    return 1
+  fi
+
+  # Delete files older than given number of days
+  find "$1" -type f -mtime +"$2" -exec rm {} \;
+
+  echo "Deleted files older than $2 days in $1"
+}
+
+# Usage: del_old <directory_path> <num_days>
+
+function del_outdated() {
+    dir=$1
+    num_files_to_keep=$2
+
+    # Change to the specified directory
+    cd "$dir" || return
+
+    # Get a list of all files and sort them by modification time (newest first)
+    files=($(ls -t))
+
+    # Determine the number of files to delete
+    num_files_to_delete=$(( ${#files[@]} - $num_files_to_keep ))
+
+    # Loop through the list of files and delete the excess ones
+    for (( i=0; i<$num_files_to_delete; i++ )); do
+        rm "${files[$i]}"
+    done
+}
+
+# Usage: del_outdated <directory_path> <num_files_to_keep>
