@@ -151,7 +151,7 @@ A customizable command for unlocking a KeepassXC Wallet with a password stored i
 
 For sure this could also be extended to Gnome wallet, feel free to do so
 
-### (Distrobox-autosetup](https://github.com/trytomakeyouprivate/Distrobox-autosetup)
+### [Distrobox-autosetup](https://github.com/trytomakeyouprivate/Distrobox-autosetup)
 
 Setup scripts for some common Linux environments.
 
