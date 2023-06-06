@@ -18,16 +18,36 @@ important:
 
 Quick:
 
+Not-NVIDIA-GPU:
 ```
 wget https://github.com/trytomakeyouprivate/Linux/raw/main/Setupscripts/Fedora-Kinoite-Setup | sudo bash
+
+echo "Rebasing to ublue Fedora Kinoite. This will take a while, the machine will shutdown afterwards."
+echo
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:38 && shutdown -h now
+```
+
+NVIDIA-GPU:
+```
+wget https://github.com/trytomakeyouprivate/Linux/raw/main/Setupscripts/Fedora-Kinoite-Setup- | sudo bash
+
+echo "Rebasing to ublue Fedora Kinoite. This will take a while, the machine will shutdown afterwards."
+echo
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/kinoite-nvidia:38 && shutdown -h now
 ```
 
 # Manual setup
 
 Switch to Fedora Kinoite from ublue.it: 
 
+normal:
 ```
 rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:38 && reboot
+```
+
+NVIDIA:
+```
+rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/kinoite-nvidia:38
 ```
 
 ### after reboot
