@@ -6,7 +6,7 @@ Using UBlue you get autoupdates, restricted Codecs and drivers and even an NVidi
 
 ## Install
 
-Download from [kinoite.fedoraproject.org](kinoite.fedoraproject.org) , burn with [Balena Etcher](https://etcher.balena.io/#download-etcher), [Fedora Media Writer](https://flathub.org/apps/org.fedoraproject.MediaWriter). Ventoy doesnt work as far as I have tested.
+Download from [kinoite.fedoraproject.org](kinoite.fedoraproject.org) , burn with [Balena Etcher](https://etcher.balena.io/#download-etcher) or [Fedora Media Writer](https://flathub.org/apps/org.fedoraproject.MediaWriter). Ventoy doesnt work as far as I have tested.
 
 important:
 
