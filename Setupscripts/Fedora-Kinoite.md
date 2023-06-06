@@ -1,22 +1,30 @@
-## Fedora Kinoite Setup
+# Fedora Kinoite Setup
 
 Kinoite is a really nice Distro. KDE-desktop, immutable, up-to-date Fedora packages.
 
 Using UBlue you get autoupdates, restricted Codecs and drivers and even an NVidia version.
 
-### Install
+## Install
 
-Download from [kinoite.fedoraproject.org](kinoite.fedoraproject.org) , burn with Balena Etcher, Fedora Media Writer, dd or whatever.
+Download from [kinoite.fedoraproject.org](kinoite.fedoraproject.org) , burn with [Balena Etcher](https://etcher.balena.io/#download-etcher), [Fedora Media Writer](https://flathub.org/apps/org.fedoraproject.MediaWriter). Ventoy doesnt work as far as I have tested.
 
-Setup installation:
+important:
 
 - Don't create a root account
 - Encrypt your Disk using LUKS
 - use strong passwords
 
-### Post installation
+# Post installation
 
-Switch to Fedora Kinoite:
+Quick:
+
+```
+wget https://github.com/trytomakeyouprivate/Linux/raw/main/Setupscripts/Fedora-Kinoite-Setup | sudo bash
+```
+
+# Manual setup
+
+Switch to Fedora Kinoite from ublue.it: 
 
 ```
 rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:38 && reboot
@@ -41,7 +49,7 @@ balooctl disable && balooctl purge
 echo "create useful distroboxes and install packages"
 distrobox create Ubuntu -i docker.io/library/ubuntu:22.04 && distrobox enter Ubuntu -- exit
 
-distrobox create Fedora -i registry.fedoraproject.org/fedora-toolbox:37 && distrobox enter Fedora -- exit
+distrobox create fedora -i registry.fedoraproject.org/fedora-toolbox:37 && distrobox enter Fedora -- exit
 
 echo "disable Geoclue location service"
 sudo systemctl disable geoclue
