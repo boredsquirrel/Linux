@@ -152,8 +152,3 @@ EOF
 cat ~/.bashrc-addition >> ~/.bashrc && echo "Bash aliasses added." || echo "Bash alias copy failed."
 mkdir -p ~/.config/fish/ && echo "Fish config dir premade."
 cat ~/.bashrc-addition >> ~/.config/fish/config.fish && echo "Fish aliasses added." || echo "Fish alias copy failed."
-
-
-echo "Rebasing to ublue Fedora Kinoite. This will take a while, the machine will shutdown afterwards."
-echo
-rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:38 && shutdown -h now
