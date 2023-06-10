@@ -93,6 +93,11 @@ You get asked via a window and can accept or postpone.
 
 currenty not finished.
 
+### [Easy bash loop helper](https://github.com/trytomakeyouprivate/easy-bash-loops)
+This tool interactively allows you to create yes/no loops for interactive scripts. This means the user gets asked a question, and you can enter what happens if yes/no is entered.
+
+It supports copying the result to clipboard (for use in scripts) or save it to a file.
+
 ### [Polkit-helper](https://github.com/trytomakeyouprivate/Polkit-helper)
 
 Easily create polkit rules so that you dont need to enter a password to launch e.g. Virt-manager or mount LUKS drives.
