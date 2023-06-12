@@ -1,0 +1,42 @@
+#!/bin/sh
+
+printf"""
+
+------ Debian Updater script
+
+Preperation:
+- The updates should work completely normal
+- If you want to be sure, do a backup of all your files and more importantly App configs
+- To do the update, you need to upgrade your packages to the latest version supported by the current release
+- 3rd Party repositories in /etc/apt/sources.list.d/ will probably break the update. Remove the old repo and add the new repo after doing your upgrades.
+
+
+"""
+
+#!/bin/bash
+
+while true; do
+    read -p "Do you want to update your system now? (y/n) > " yn
+    case  in
+        [Yy]* ) echo "Current Debian version:" && lsb_release -a
+echo "Getting updates" && apt update &&  apt upgrade -y
+echo "Doing a full upgrade" && apt full-upgrade -y && echo "Updates done"
+echo "Showing packages on hold (these did not update and may break an upgrade process)" && apt-mark showhold | more || dpkg --get-selections | grep 'hold$' | more
+echo "Showing non-Debian packages. You need to remove them or add their own new repo to proceed." && apt list '?narrow(?installed, ?not(?origin(Debian)))'
+echo "Making a backup of your current sources." &&  cp -v /etc/apt/sources.list /opt/sources.list-bakup-debian11 && echo "Backup created."
+echo "Changing your repos to Debian Bookwork 12." &&  sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list && echo "Repos changed."
+mkdir -v ~/.config/autostart
+cat > ~/.config/autostart/Debian-postupgrade <<EOF && echo "Writing a finish script to your autostart location."
+echo "Updating again" &&  apt full-upgrade -y
+echo "Removing unneeded packages and cleaning their files. Accept to cleanup storage." &&  apt --purge autoremove
+echo
+echo "Checking Debian version" && lsb_release -a
+echo "Kernel: $(uname -rms)"
+EOF
+echo "All done" && sleep 2
+echo "Doing the upgrade. You will need to click 'Yes' on a few questions and also reboot the system." && sleep 4 && apt update && apt full-upgrade -y && systemctl reboot
+break;;
+        [Nn]* ) echo "Upgrade cancelled" && exit && break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
