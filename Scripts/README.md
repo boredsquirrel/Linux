@@ -151,6 +151,11 @@ Find leftover directories of deleted Flatpak apps and allow you to remove them
 
 Interactively of course, nothing deleted without consent
 
+### [Flatpak binary linker](https://github.com/trytomakeyouprivate/Linux/blob/main/Scripts/Flatpak-binaries)
+
+This script searches for some Flatpak apps and links binaries like ffmpeg to ~/.bin, where the user can directly access them.
+
+
 ### Keelock
 A customizable command for unlocking a KeepassXC Wallet with a password stored in KWallet.
 
