@@ -200,6 +200,12 @@ Idea: Enable a service, launch an app, disable the service again when app is clo
 
 Useful for temporarily enabling CUPS, Bluetooth e.g.
 
+### [Matlab GUI system integration](https://github.com/trytomakeyouprivate/Matlab-Linux-Install)
+- fish, bash, zsh integration
+- linking of the binary
+- creating an appstarter
+- setting mimetype so .m files should be opened automatically
+
 ### remove
 
 a simple tool for removing .exe, .bat and .dmg files from archives you Downloaded.
