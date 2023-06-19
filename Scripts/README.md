@@ -132,6 +132,13 @@ using custom shortcuts you can modify the ls output to
 - sort files "newest first"
 - show advanced info
 
+currently broken
+
+### [apkverify](https://github.com/trytomakeyouprivate/Android-Tipps/tree/main/APK-Signer)
+A tool to easily verify if an Android app is secure.
+
+`apkverify test.apk`
+
 ### logout
 For some reason this is way too complicated.
 
