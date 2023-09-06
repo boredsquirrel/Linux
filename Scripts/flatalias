@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# This tool gets the names and ID of installed Flatpak apps,
+# and if there is no alias currently, it prints a cleaned up alias to your bashrc, zshrc and fish config.
+# You can run it through a systemd service to automate this process.
+
+
+# Get list of Flatpak apps
+app_list=$(flatpak list)
+
+# Loop through each app in the list
+while read -r line; do
+    # Extract app ID from line
+    app_id=$(echo "$line" | awk '{print $1}')
+
+    # Extract app name from app ID
+    app_name=$(echo "$app_id" | awk -F. '{print $NF}' | tr -d '[:digit:]_-')
+
+    # Convert app name to lowercase
+    app_name=$(echo "$app_name" | tr '[:upper:]' '[:lower:]')
+
+    # Search for app name and ID in ~/.bashrc and ~/.config/fish/config.fish
+    if ! grep -q "$app_id" ~/.bashrc; then
+        echo "alias $app_name=\"flatpak run $app_id\"" >> ~/.bashrc && echo "$app_name alias created in bashrc"
+    fi
+
+    if ! grep -q "$app_id" ~/.config/fish/config.fish; then
+        echo "alias $app_name='flatpak run $app_id'" >> ~/.config/fish/config.fish && echo "$app_name alias created in config.fish"
+    fi
+
+    if ! grep -q "$app_id" ~/.zshrc; then
+        echo "alias $app_name='flatpak run $app_id'" >> ~/.zshrc && echo "$app_name alias created in zshrc"
+    fi
+
+done <<< "$app_list"

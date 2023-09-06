@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# This will log you out to SDDM
+qdbus org.kde.ksmserver /KSMServer logout 0 3 3

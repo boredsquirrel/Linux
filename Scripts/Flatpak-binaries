@@ -1,0 +1,15 @@
+#!/bin/bash
+# This script simply checks the existence of some apps shipping ffmpeg in some form, and links it to the user path.
+echo 
+echo "Flatpak-binary linker"
+echo
+echo "This tool links some useful binaries to path locations, so that you can directly use their CLI interfaces. They will be equally restricted as the Apps they belong to and not work with protals!"
+echo
+echo "Trying to link Flatpak ffmpeg to ~/.bin. Make sure this folder exists and is in your $PATH"
+flatpak list | grep -q 'VLC' && ln -s /var/lib/flatpak/app/org.videolan.VLC/current/active/files/bin/ffmpeg ~/.bin/ffmpeg 
+notify-send -a "ffmpeg-Flatpak" "ffmpeg successfully linked" "You can now use VLCs embedded ffmpeg for your needs" ||\
+flatpak list | grep org.freedesktop.Platform.openh264 && ln -s /var/lib/flatpak/runtime/org.fr.bin/ffmpeg 
+notify-send -a "ffmpeg-Flatpak" "ffmpeg successfully linked" "You can now use freedesktop.org's embedded ffmpeg for your needs" ||\
+ln -s /var/lib/flatpak/runtime/org.freedesktop.Platform/x86_64/21.08/active/files/bin/ffmpeg ~/.bin/ffmpeg 
+notify-send -a "ffmpeg-Flatpak" "ffmpeg successfully linked" "You can now use freedesktop.org's (outdated version!) embedded ffmpeg for your needs" ||\
+notify-send "You seem to not have any Flatpak containing ffmpeg installed. Install the freedesktop.org runtime, or VLC Flatpak."

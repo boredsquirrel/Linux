@@ -9,11 +9,13 @@ X-KDE-StartupNotify=false
 X-KDE-Submenu=Export as
 X-KDE-Submenu[it]=Esporta come
 X-KDE-Submenu[de]=Exportieren als
+X-KDE-Submenu[nl]=Exporteren als…
 
 [Desktop Action A4]
 Name=PDF document (A4)
 Name[it]=Documento PDF (A4)
 Name[de]=PDF Dokument (A4)
+Name[nl]=Pdf-bestand (A4)
 Icon=application-pdf
 Exec=filename=%f; distrobox enter fedora --exec pandoc -V geometry:margin=0.95in -o "${filename%.*}.pdf" %f
 
@@ -21,6 +23,7 @@ Exec=filename=%f; distrobox enter fedora --exec pandoc -V geometry:margin=0.95in
 Name=PDF document (for smartphone)
 Name[it]=Documento PDF (per smartphone)
 Name[de]=PDF Dokument (für Smartphones)
+Name[nl]=Pdf-bestand (voor smartphones)
 Icon=application-pdf
 Exec=filename=%f; distrobox enter fedora --exec pandoc -V geometry:margin=0.2in -V geometry:paperwidth=270pt -V geometry:paperheight=480pt -V fontsize=8pt -o "${filename%.*}.pdf" %f
 
@@ -28,6 +31,7 @@ Exec=filename=%f; distrobox enter fedora --exec pandoc -V geometry:margin=0.2in 
 Name=PDF document (for eReader)
 Name[it]=Documento PDF (per eReader)
 Name[de]=PDF Dokument (für eReader)
+Name[nl]=Pdf-bestand (voor e-readers)
 Icon=application-pdf
 Exec=filename=%f; distrobox enter fedora --exec pandoc -V geometry:margin=0.2in -V geometry:paperwidth=320pt -V geometry:paperheight=400pt -V fontsize=8pt -o "${filename%.*}.pdf" %f
 
@@ -35,5 +39,6 @@ Exec=filename=%f; distrobox enter fedora --exec pandoc -V geometry:margin=0.2in 
 Name=PDF document (default)
 Name[it]=Documento PDF (default)
 Name[de]=PDF Dokument (standard)
+Name[nl]=Pdf-bestand (standaard)
 Icon=application-pdf
 Exec=filename=%f; distrobox enter fedora --exec pandoc -o "${filename%.*}.pdf" %f

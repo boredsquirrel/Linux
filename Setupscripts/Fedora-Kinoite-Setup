@@ -1,0 +1,154 @@
+#!/bin/sh
+
+print"""
+
+-------------------------------
+
+Fedora Kinoite full setup
+
+-------------------------------
+
+
+"""
+
+echo "Adding Flathub, removing Fedora Flatpak..."
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && echo "Done." || echo "Failed."
+flatpak remote-delete Fedora && echo "Done." || echo "Failed"
+
+echo "Reloading PackageKit sources"
+pkcon refresh && echo "Done." || echo "Failed"
+
+
+
+
+echo "Installing some basic flatpak apps."
+
+echo "1" | flatpak install -y org.libreoffice.LibreOffice && echo "Libreoffice installed" || echo "Failed"
+echo "14" | flatpak install -y org.videolan.VLC && echo "VLC installed" || echo "Failed"
+echo "12" | flatpak install -y org.gimp.GIMP && echo "GIMP installed" || echo "Failed"
+flatpak install -y eu.betterbird.Betterbird com.github.micahflee.torbrowser-launcher org.qbittorrent.qBittorrent ch.imatt.ClipQR com.github.jeromerobert.pdfarranger com.xnview.XnViewMP org.gimp.GIMP org.gnome.SimpleScan org.kde.kolourpaint com.github.zocker_160.SyncThingy && echo "Betterbird (Thunderbird), Tor-Browser, qBitttorrent, ClipQR, PDFArranger, XNViewMP, SimpleScan and Kolourpaint and SyncThingy (Syncthing + Tray icon) installed" || echo "Failed"
+
+
+
+
+echo "Setting up automatic updates"
+mkdir -p ~/.config/autostart/
+cat > ~/.config/autostart/update <<EOF
+#!/bin/sh
+sleep 120
+flatpak update -y
+rpm-ostree update && notify-send -a "Updater" "Updates finished."
+pkcon refresh
+EOF && echo "Done." || echo "Failed"
+
+
+
+
+echo "Removing unnessecary systemd services"
+echo "Disabling geoclue"
+sudo systemctl disable geoclue && echo "Done." || echo "Failed"
+
+
+
+
+echo "Disabling Discover-notifier"
+sudo cp /usr/share/applications/org.kde.discover.notifier.desktop ~/.local/share/applications/ && \
+echo "Hidden=True" >> ~/.local/share/applications/org.kde.discover.notifier.desktop &&\
+echo "Done." || echo "Failed"
+
+
+
+echo "Disabling Baloo"
+balooctl disable && balooctl purge && echo "Done." || echo "Failed"
+
+
+echo "------------ Hardening Firefox ------------"
+
+echo "Firefox will open, click 'Create new Profile', name it 'Arkenfox', select a custom folder and name choose 'ARKENFOX'"
+
+mkdir -p ~/.mozilla/firefox/ARKENFOX
+echo "Getting Arkenfox..."
+wget https://raw.githubusercontent.com/arkenfox/user.js/master/user.js -P ~/.mozilla/firefox/*.default-release/ && echo "Arkenfox downloaded!" || echo "Failed."
+
+echo "Killing Firefox and restarting to Profile chooser..."
+pkill -9 firefox
+firefox -p
+
+echo "Install some Firefox Addons!"
+xdg-open https://addons.mozilla.org/de/firefox/addon/ublock-origin/
+xdg-open https://addons.mozilla.org/de/firefox/addon/add-custom-search-engine/
+xdg-open https://addons.mozilla.org/de/firefox/addon/noscript
+xdg-open https://addons.mozilla.org/de/firefox/addon/sci-hub-x-now/
+
+printf"""
+
+Also:
+
+Settings:
+- Change search engine
+- Add custom search engines using the Addon
+- Set shortcuts
+- Keep Arkenfox updated
+
+
+"""
+
+echo "You can manually install 'Bypass Paywalls clean'"
+xdg-open https://gitlab.com/magnolia1234/bypass-paywalls-firefox-clean/-/releases
+
+
+echo "Setting up aliasses"
+cat >> ~/.bashrc-additon <<EOF
+alias ls="ls --color=auto -GF"
+alias firmwareup="fwupdmgr update"
+alias logout="stop -q login_shell && logout || qdbus org.kde.ksmserver /KSMServer logout 0 0 1 || loginctl terminate-session $(loginctl session-status | head -n 1 | awk '{print $1}')"
+
+alias httpcode="curl --head --silent --output /dev/null --write-out '%{http_code}' "
+
+alias "pin-this"="ostree admin pin 0"
+alias "ostree-kernel-arg"="rpm-ostree update kargs --editor"
+alias "q"="exit"
+alias c="clear"
+alias untar='tar -xvf'
+alias upfin="flatpak update -y && rpm-ostree update && poweroff"
+alias rpmlist="rpm -qa"
+alias rpmfind="rpm -qa | grep"
+
+ # Flatpak
+alias flatup='flatpak update -y && notify-send -a "Flatpak" "Apps updated"'
+alias flfatinst='flatpak install -y'
+alias flatrm='flatpak remove --delete-data'
+alias flatlist="flatpak list"
+alias flatfind="flatpak list | grep"
+alias flatinst="flatpak install -y"
+
+alias update='flatpak update -y && rpm-ostree update'
+
+  # rpm-ostree
+
+alias rpmup='rpm-ostree update'
+alias rpmrem='rpm-ostree override remove'
+alias rpminst='rpm-ostree update --install'
+alias rpmq="distrobox enter -n fedora -- dnf search"
+alias rstat="rpm-ostree status"
+
+function copy
+    if test -f $argv[1]
+        cat $argv[1] | wl-copy
+        echo "Copied to clipboard"
+    else
+        echo "Error: '$argv[1]' is not a file!"
+    end
+end
+
+alias off="shutdown -h now"
+
+function findmod
+    set mod_path (whereis $argv[1] | cut -d' ' -f2)
+    kate $mod_path;
+end
+EOF
+
+cat ~/.bashrc-addition >> ~/.bashrc && echo "Bash aliasses added." || echo "Bash alias copy failed."
+mkdir -p ~/.config/fish/ && echo "Fish config dir premade."
+cat ~/.bashrc-addition >> ~/.config/fish/config.fish && echo "Fish aliasses added." || echo "Fish alias copy failed."
