@@ -12,7 +12,7 @@ distrobox-enter Fedora39
 
 Install needed QGIS & Dependencies
 ```
-sudo dnf install -y qgis python3-qgis PyQt5 python3 qgis-grass
+sudo dnf install -y qgis python3-qgis
 ```
 
 Create a custom App launcher that forces X11 (avoid QGIS Warning, supposedly more features)
