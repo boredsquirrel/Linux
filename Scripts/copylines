@@ -1,0 +1,14 @@
+local word=$1
+local file=$2
+
+if [ "$word" = "-h" ]; then
+  echo
+  echo "Usage: copylines WORD FILE"
+  echo "Copy lines containing WORD from FILE to the clipboard."
+  echo "Example: copylines usb dmesg-log.txt"
+  echo
+  return
+fi
+      
+sed -n "/$word/p" file.txt | wl-copy
+echo "Lines including $word copied."
