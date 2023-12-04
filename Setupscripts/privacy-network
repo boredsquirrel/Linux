@@ -1,0 +1,61 @@
+#!/bin/bash
+# -------------- MAC-Address ----------------
+# set MAC address randomization when using NetworkManager (default on GNOME and KDE)
+# every new Wifi gets a random mac, which is not changing
+# this does not leak your device MAC, but it will be transparent if you login repeatedly.
+
+sudo cat > /etc/NetworkManager/conf.d/random-mac.conf <<EOF
+[device-mac-randomization]
+# "yes" is already the default for scanning
+wifi.scan-rand-mac-address=yes
+ 
+[connection-mac-randomization]
+# Generate a random MAC for each Network and associate the two permanently.
+ethernet.cloned-mac-address=stable
+wifi.cloned-mac-address=stable
+EOF
+
+# ---------------- Hostname ------------------
+# Change your hostname to "PC"
+# otherwise many distros scream out their name, making you very identifiable in Wifis
+
+sudo hostnamectl hostnamectl hostname PC ||\
+sudo echo "PC" > /etc/hostname
+
+# --------------- DNS ------------------------
+# secure DNS breaks Captive portals (Train, cafe, hotel etc. Wifis with a login page)
+# when using systemd-resolved (also default on many Distros)
+
+sudo mkdir /etc/systemd/resolved.conf.d
+sudo cat /etc/systemd/resolved.conf.d/securedns.conf <<EOF
+# DNS Server
+# https://www.privacy-handbuch.de/handbuch_93d.htm
+# Mullvad mit Filter: 194.242.2.3, 193.19.108.3 2a07:e340::3 adblock.doh.mullvad.net
+# Mullvad ohne Filter: 194.242.2.2, 193.19.108.2 2a07:e340::2 doh.mullvad.net
+# Adguard mit Filter: 94.140.14.14 94.140.15.15  2a10:50c0::ad1:ff 2a10:50c0::ad2:ff dns.adguard-dns.com
+# Adguard ohne Filter: 94.140.14.140 94.140.14.141 2a10:50c0::1:ff 2a10:50c0::2:ff unfiltered.adguard-dns.com
+# Digitale Gesellschaft CH: 185.95.218.42 185.95.218.43 2a05:fc84::42 2a05:fc84::43 dns.digitale-gesellschaft.ch
+# Freifunk München: 5.1.66.255 185.150.99.255 2001:678:e68:f000:: 2001:678:ed0:f000:: dot.ffmuc.net
+# Dismail.de: 116.203.32.217 159.69.114.157 2a01:4f8:1c1b:44aa::1 2a01:4f8:c17:739a::2 fdns1.dismail.de fdns2.dismail.de
+# DNSForge: 176.9.93.198 176.9.1.117 2a01:4f8:151:34aa::198 2a01:4f8:141:316d::117 dnsforge.de
+# BlahDNS.com: 78.46.244.143 45.91.92.121 2a01:4f8:c17:ec67::1 2a0e:dc0:6:23::2 dot-de.blahdns.com dot-ch.blahdns.com
+
+
+[Resolve]
+DNS=185.95.218.43 194.242.2.2
+FallbackDNS=45.91.92.121 185.150.99.255
+#Domains=
+LLMNR=yes
+#MulticastdNS=no
+DNSOverTLS=yes
+Cache=yes
+#DNSStubListener=yes
+DNSSEC=true
+EOF
+
+# ------------ More Privacy tips ----------
+# Use Flatpaks if they are well maintained. Its the easiest way to get a working permission system on Linux.
+# Use Tails if you need systemwide onionrouting
+# notable projects:
+# https://github.com/hardcore-sushi/TorVirt
+# https://flathub.org/apps/io.frama.tractor.carburetor
