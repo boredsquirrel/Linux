@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# this is currently outdated,
+# I will update it to a good GUI version using Kdialog soon
+
 print"""
 
 -------------------------------
