@@ -1,22 +1,58 @@
 ## KDE is awesome!
 
-Here are some things where I try to help KDE a bit.
+Here are some things that make it better for certain use cases.
 
+## Dolphin
 ### ServiceMenus
 If you know the syntax, you can create lots of useful right-click actions for Dolphin.
 
 Just download a service-menu (.desktop) to the folder (~/.local/share/kservices5/ServiceMenus) and it will work!
 
-These can be any commands that work with Files. Especially Flatpak extensions are missing.
+### App Desktop Entries
+Desktop entries are the graphical icons with text for running apps.
 
-### Appstarters
+Create your own in `~/.local/share/applications/`, and [follow this syntax](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html)
 
-You can execute any Command using the start menu, this makes a lot easier and beginner-friendlier.
+These entries are preferred over system and Flatpak entries, so if you want to edit apps, do it there!
+
+Examples:
+- [Custom Konsole entry](https://lemmy.kde.social/post/947963) with actions for Distrobox, root shell and ssh
+- Custom Firefox entry (coming soon)
+
+Konsole:
+```
+[Desktop Entry]
+Type=Application
+TryExec=konsole
+Exec=konsole --new-tab
+Icon=utilities-terminal
+Categories=System;TerminalEmulator;
+Actions=FedoraBox;root;ssh;
+X-DocPath=konsole/index.html
+X-DBUS-StartupType=Unique
+X-KDE-AuthorizeAction=shell_access
+X-KDE-Shortcuts=Ctrl+Alt+T
+StartupWMClass=konsole
+Keywords=terminal;console
+Name=Konsole
+GenericName=Terminal
+Comment="$GenericName"
+
+[Desktop Action FedoraBox]
+Name=Distrobox
+Icon=fedora-logo-icon
+Exec=konsole --profile FedoraBox # this launches "distrobox enter FedoraBox"
+
+[Desktop Action root]
+Name=root Terminal
+Icon=folder-root-symbolic
+Exec=konsole -e pkexec $SHELL #or define a shell
+
+[Desktop Action ssh]
+Name=ssh to X
+Icon=folder-remote-symbolic
+Exec=konsole -e ssh user@IP:PORT -i /path/to/key
+```
 
 ### SDDM-Themes
-There are awesome presets online.
-
-Problem is, that OStree based Distros like Fedora Kinoite or OpenSuse microOS block users from changing the /usr/ path completely, where also the themes are at.
-So using the nice tool "sddm2rpm" you can convert normal SDDM themes to RPM-packages that are then installable.
-
-I have some presets available for ease of use.
+There are awesome presets online, buy SDDM needs them placed in a `/usr` directory, which is not writable on Fedora Atomic and other "immutable" Distros. You can use [sddm2rpm](https://github.com/Lunarequest/sddm2rpm) ([crate](https://crates.io/crates/sddm2rpm)) to convert the theme files to RPMs, which can be layered!
