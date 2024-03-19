@@ -1,4 +1,8 @@
-Polkit rules to allow certain actions. Prefer to use separate groups, on Fedora
+Polkit rules to allow certain actions. Place them in `/etc/polkit-1/rules.d/`. 
+
+Note: the old pkla format is deprecated and should not be used.
+
+Prefer to use separate groups, on Fedora
 
 ```
 # create new group
