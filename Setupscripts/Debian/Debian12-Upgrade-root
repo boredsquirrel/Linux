@@ -1,8 +1,8 @@
 #!/bin/sh
 
-printf"""
+cat <<EOF && sleep 6
 
------- Debian Updater script
+------ Debian Updater script --------
 
 Preperation:
 - The updates should work completely normal
@@ -11,7 +11,7 @@ Preperation:
 - 3rd Party repositories in /etc/apt/sources.list.d/ will probably break the update. Remove the old repo and add the new repo after doing your upgrades.
 
 
-""" && sleep 3
+EOF
 
 while true; do
     read -p "Do you want to update your system now? (y/n) > " yn
