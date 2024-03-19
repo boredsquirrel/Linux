@@ -25,7 +25,7 @@ normal:
 rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:($rpm -E %fedora)
 
 # after reboot, important
-rpm-ostree rebase ostree-image-signed:docker://ghcr.io/ublue-os/kinoite-main:($rpm -E %fedora)
+rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/ublue-os/kinoite-main:($rpm -E %fedora)
 ```
 
 For nVIDIA, Framework, Asus, Surface and other variants, [see their image list](https://github.com/orgs/ublue-os/packages).
@@ -64,13 +64,13 @@ github.com/trytomakeyouprivate/flatpak-remotes
 # Recommended Flatpak apps
 github.com/trytomakeyouprivate/recommended-flatpak-apps
 
-echo "Alias your flatpak apps for cli usage"
+# Alias your flatpak apps for cli usage
 github.com/trytomakeyouprivate/flatalias
 
-echo "Cleanup unused flatpak data"
+# Cleanup unused flatpak data
 github.com/trytomakeyouprivate/flatpak-trash-remover
 
-echo "Add COPR repos easily"
+# Add COPR repos easily
 github.com/trytomakeyouprivate/copr-command
 
 EOF
@@ -81,7 +81,7 @@ xdg-open github.com/trytomakeyouprivate/flatalias
 xdg-open github.com/trytomakeyouprivate/flatpak-trash-remover
 xdg-open github.com/trytomakeyouprivate/copr-command
 
-echo "refresh Disvover sources"
+echo "refresh Discover sources"
 pkcon refresh
 
 echo "Deactivate Baloo (may cause problems on ostree systems)"
