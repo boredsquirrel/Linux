@@ -3,30 +3,29 @@
      width="250"
      height="70" />
      
-Create a Distrobox on Base Fedora 39
+Create a minimal Fedora Distrobox (Container)
 
 ```
-distrobox-create Fedora39 -i registry.fedoraproject.org/fedora-toolbox:39
-distrobox-enter Fedora39
+distrobox-create Fedora -i registry.fedoraproject.org/fedora-toolbox:$(rpm -E %fedora) #or use the latest version manually
+distrobox-enter Fedora
 ```
 
-Install needed QGIS & Dependencies
+Install QGIS & needed Dependencies
 ```
 sudo dnf install -y qgis python3-qgis
 ```
 
-Create a custom App launcher that forces X11 (avoid QGIS Warning, supposedly more features)
+Create a custom App launcher that forces X11/XWayland (needed to prevent breakages on Wayland, until Qt6 port is done)
 ```
-cat > ~/.local/share/applications/Fedora39-org.qgis.qgis.desktop <<EOF
+cat > ~/.local/share/applications/Distrobox-org.qgis.qgis.desktop <<EOF
 [Desktop Entry]
 Categories=Education;Science;Geography;
-Exec=env QT_QPA_PLATFORM=xcb /usr/bin/distrobox-enter -n Fedora39 -- qgis %F
+Exec=env QT_QPA_PLATFORM=xcb /usr/bin/distrobox-enter Fedora -- qgis %F
 Icon=qgis
 Keywords=map;globe;postgis;wms;wfs;ogc;osgeo;
 MimeType=image/tiff;image/jpeg;image/jp2;application/vnd.google-earth.kmz;application/vnd.google-earth.kml+xml;
-Name=QGIS Desktop  (on Fedora39)
+Name=QGIS Desktop (Distrobox)
 StartupWMClass=QGIS3
 Type=Application
-X-Desktop-File-Install-Version=0.26
 EOF
 ```
