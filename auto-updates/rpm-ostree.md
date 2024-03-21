@@ -86,3 +86,17 @@ sudo systemctl enable --now rpm-ostree-update.timer
 
 ### Note
 Fedora wants to implement automatic updates in future releases, as does ublue by default. If this service is not upstreamed, disable those services to avoid high data usage or other unwanted behaviors.
+
+### ToDo
+- [ ] custom non-daily interval
+- [ ] interactive message using zenity or kdialog
+- [ ] list updated apps in message
+- [ ] warn on security critical updates
+
+Similar todos:
+- [ ] notify when a system upgrade is there (possible to suspend or ignore)
+- [ ] notify when version is EOL without the possibility to ignore (but not enforcing)
+- [ ] notify on firmware updates
+- [ ] automatic flatpak updates (could just be added here)
+- [ ] automatic `distrobox upgrade --all` (could just be added here)
+- [ ] add a reboot button to the message (especially on security critical updates)
