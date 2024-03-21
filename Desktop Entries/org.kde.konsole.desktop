@@ -1,0 +1,31 @@
+[Desktop Entry]
+Type=Application
+TryExec=konsole
+Exec=konsole --new-tab
+Icon=utilities-terminal
+Categories=System;TerminalEmulator;
+Actions=FedoraBox;root;ssh;
+X-DocPath=konsole/index.html
+X-DBUS-StartupType=Unique
+X-KDE-AuthorizeAction=shell_access
+X-KDE-Shortcuts=Ctrl+Alt+T
+StartupWMClass=konsole
+Keywords=terminal;console;script;run;execute;command;command-line;commandline;cli;bash;sh;shell;zsh;cmd;command prompt
+Name=Konsole
+GenericName=Terminal
+Comment="$GenericName"
+
+[Desktop Action FedoraBox]
+Name=Distrobox
+Icon=fedora-logo-icon
+Exec=konsole --new-tab --profile FedoraBox # this launches "distrobox enter FedoraBox"
+
+[Desktop Action root]
+Name=root Terminal
+Icon=folder-root-symbolic
+Exec=konsole --new-tab -e pkexec $SHELL #or define a shell like fish
+
+[Desktop Action ssh]
+Name=ssh to X
+Icon=folder-remote-symbolic
+Exec=konsole --new-tab -e ssh user@IP:PORT -i /path/to/key
