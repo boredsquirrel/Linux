@@ -7,7 +7,7 @@ Desktop entries are the graphical icons+name in your app menu, and in other area
 Systemwide installed applications have their .desktop entry in `/usr/share/applications/`, to edit them, copy them to `~/.local/share/applications/`. These will be preferred over the system entries, practically overwriting them.
 
 ### Konsole
-![screenshot](https://feddit.de/pictrs/image/a9f059a1-a558-43be-b967-1184fd90e5f5.jpeg)
+![screenshot](https://raw.githubusercontent.com/trytomakeyouprivate/Linux/main/Desktop%20Entries/Images/konsole-desktop-entry.jpg)
 
 Konsole has a few annoyances that can be easily fixed. It always opens in a new Window, while it has support for tabs.
 
@@ -36,6 +36,8 @@ You can do the same for
 Now place my desktop entry in the correct location and it will change immediately.
 
 ### Firefox
+![screenshot](https://raw.githubusercontent.com/trytomakeyouprivate/Linux/main/Desktop%20Entries/Images/firefox-desktop-entry.jpg)
+
 Firefox can use Profiles too. Or you might want to run it in private browsing mode, or exclude it from a VPN (here MullvadVPN as example)
 
 Use `firefox -p` or `flatpak run org.mozilla.firefox -p` respectively, create a new profile, use a custom location and use a Folder with a dedicated name. Otherwise it will be a cryptic sequence of symbols.
