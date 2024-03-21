@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Decoder
+Comment=Scan and Generate QR Codes
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=decoder com.belmoussaoui.Decoder && rm -rf ~/.var/app/com.belmoussaoui.Decoder
+Type=Application
+Categories=Utility;Scanning;
+Keywords=QR;Scan;Generate;Code;
+Icon=com.belmoussaoui.Decoder
+X-Flatpak=com.belmoussaoui.Decoder
