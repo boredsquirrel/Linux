@@ -29,3 +29,9 @@ StartupWMClass=QGIS3
 Type=Application
 EOF
 ```
+
+Keep your apps updated!
+
+```
+distrobox upgrade --all
+```
