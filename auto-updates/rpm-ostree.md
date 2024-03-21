@@ -34,16 +34,19 @@ ExecStartPre=sh -c '! $(nmcli -t -f GENERAL.METERED dev show | grep -q 'yes')'
 
 ExecStart=/usr/bin/rpm-ostree update
 
+# delete old logs
+ExecStartPost=rm -f /var/log/rpm-ostree-automatic.log
 # log the updates
-ExecStartPost=/bin/bash -c 'echo "Last system update: $(date)" >> /var/log/rpm-ostree-automatic.log'
+ExecStartPost=sh -c 'echo "Last system update: $(date)" > /var/log/rpm-ostree-automatic.log'
 StandardOutput=file:/var/log/rpm-ostree-automatic.log
 StandardError=file:/var/log/rpm-ostree-automatic.log
-
+# GUI message
+ExecStartPost=/usr/bin/notify-send -a "System" "Updates finished." "Your System has been updated.\nReboot to apply them."
 # run with low priority, when idling
 Nice=15
 IOSchedulingClass=idle
 
-# when conditions were not met, it tries after 15 minutes
+# when conditions were not met, try again after 15 minutes
 Restart=on-failure
 RestartSec=900
 
@@ -54,7 +57,7 @@ EOF
 
 It is important to manually set metered networks as so, as Networkmanager has no way of differentiating phone hotspots, USB-tethering over a phone or other indirectly metered connections from regular Wifis.
 
-(This is way easier on Android, where one can assume that cell data is limited and the device uses a different antenna for it.)
+(This is way easier on Android, where one can assume that cell data is limited and the device uses a different antenna for it, and Wifi is mostly unmetered.)
 
 ### 2. A timer repeating that service daily
 
