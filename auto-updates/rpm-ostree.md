@@ -40,8 +40,8 @@ ExecStart=/usr/bin/rpm-ostree update
 ExecStartPost=sh -c 'echo "Last system update: $(date)" > /var/log/rpm-ostree-automatic.log'
 # write errors to log
 StandardError=file:/var/log/rpm-ostree-automatic.log
-# GUI message
-ExecStartPost=/usr/bin/notify-send -a "System" "Updates finished." "Your System has been updated.\nReboot to apply them."
+# GUI message displaying package changes, never disappearing
+ExecStartPost=/usr/bin/notify-send -t 0 -a "System" "System upgrade finished." "$(rpm-ostree db diff | awk '/Upgraded:/,0')"
 # run with low priority, when idling
 Nice=15
 IOSchedulingClass=idle
