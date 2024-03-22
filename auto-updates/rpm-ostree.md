@@ -34,11 +34,11 @@ ExecStartPre=sh -c '! $(nmcli -t -f GENERAL.METERED dev show | grep -q 'yes')'
 
 ExecStart=/usr/bin/rpm-ostree update
 
-# delete old logs
-ExecStartPost=rm -f /var/log/rpm-ostree-automatic.log
+# delete old logs (disabled for testing)
+# ExecStartPost=rm -f /var/log/rpm-ostree-automatic.log
 # log the updates
 ExecStartPost=sh -c 'echo "Last system update: $(date)" > /var/log/rpm-ostree-automatic.log'
-StandardOutput=file:/var/log/rpm-ostree-automatic.log
+# write errors to log
 StandardError=file:/var/log/rpm-ostree-automatic.log
 # GUI message
 ExecStartPost=/usr/bin/notify-send -a "System" "Updates finished." "Your System has been updated.\nReboot to apply them."
@@ -77,11 +77,29 @@ WantedBy=timers.target
 EOF
 ```
 
-Start the service
+### 3. Change some parameters if needed
+In the service:
+- enable removing old logs
+- change `Nice=15` and `IOSchedulingClass=idle` if they prevent updates
+
+In the timer:
+- change interval
+
+### 4. Start the service
 
 ```
 sudo systemctl enable --now rpm-ostree-update.service
 sudo systemctl enable --now rpm-ostree-update.timer
+```
+
+You may want to remove the redundant GUI store integration. It works well but is not needed.
+
+```
+# Silverblue / Workstation Atomic / GNOME Atomic
+rpm-ostree override remove gnome-software-rpm-ostree
+
+# Kinoite / KDE Atomic
+rpm-ostree override remove plasma-discover-rpm-ostree
 ```
 
 ### Note
