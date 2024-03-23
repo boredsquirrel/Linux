@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# KDE confif archiver
+# this script will move every KDE config into a single archive
+# and restore the configs from that archive again.
+# 
+# This is a workaround until KDE/Plasma fixes the location of their dotfiles
+# 
+# An idea would also be to put everything into `~/.config/kde`
+# and hardlink the files to the used directories
+#
