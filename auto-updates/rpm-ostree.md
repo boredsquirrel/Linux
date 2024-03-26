@@ -35,6 +35,9 @@ ExecStartPre=sh -c '[ $(cat /sys/class/power_supply/BAT0/capacity) -ge 40 ]'
 ExecStartPre=sh -c '! $(nmcli -t -f GENERAL.METERED dev show | grep -q 'yes')'
 
 ExecStart=/usr/bin/rpm-ostree update
+# you might add everything you need
+# ExecStart=/usr/bin/distrobox upgrade --all
+# ExecStart=/usr/bin/flatpak update -y
 
 # delete old logs (disabled for testing)
 # ExecStartPost=rm -f /var/log/rpm-ostree-automatic.log
