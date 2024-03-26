@@ -6,6 +6,8 @@ This means that you cannot install these Distributions as they are on "your gran
 
 Instead of relying on the user to determine when an update is wanted, this should be done logically and automated.
 
+Also take a look at [ublue-update](https://github.com/ublue-os/ublue-update), a project doing something very similar, but in a more generalistic way, using [topgrade](https://github.com/topgrade-rs/topgrade).
+
 ### 1. A Service detecting if conditions are met
 
 Conditions:
