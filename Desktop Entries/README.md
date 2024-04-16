@@ -2,6 +2,14 @@
 
 Desktop entries are the graphical icons+name in your app menu, and in other areas. They follow [the Freedesktop specification](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html) and are used by all apps (not Appimages lol) and in other areas.
 
+## System Actions
+Some useful system actions can be "gui-fied" using desktop entries. They will show up as apps.
+
+If you want to run `sudo` actions, use `pkexec` instead, which shows a GUI password prompt.
+
+### Bluetooth toggle
+If you want to disable bluetooth for good, but keep the ability to enable it when wanted.
+
 ## Applications
 
 Systemwide installed applications have their .desktop entry in `/usr/share/applications/`, to edit them, copy them to `~/.local/share/applications/`. These will be preferred over the system entries, practically overwriting them.
