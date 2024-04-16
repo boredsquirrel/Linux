@@ -1,0 +1,11 @@
+[Desktop Entry]
+Exec=adb install
+GenericName[de_DE]=Installiert eine APK über USB auf dein Handy oder Emulator
+GenericName=Installs an APK over USB to your phone or emulator
+Icon=application-vnd.android.package-archive
+MimeType=application/vnd.android.package-archive
+Name=install
+Name[de]=installieren
+Terminal=true
+TerminalOptions=--hold
+Type=Application
