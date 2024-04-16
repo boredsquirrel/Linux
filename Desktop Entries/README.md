@@ -15,6 +15,13 @@ Some files like .jar archives, or Android .apk packages don't have a graphical "
 
 Most others, like system packages or also `.flatpakref`, `.flatpakrepo` normally have a  graphical appstore assigned to open them.
 
+### Journalctl errors
+Sometimes you may need to get some logs of your system. Systemd's `journalctl` is pretty standardized as the way to get them.
+
+That entry uses multiple actions for the log types.
+
+![screenshot of the journalctl error entry](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/journalctl-entry.jpg)
+
 ## Applications
 
 Systemwide installed applications have their .desktop entry in `/usr/share/applications/`, to edit them, copy them to `~/.local/share/applications/`. These will be preferred over the system entries, practically overwriting them.
