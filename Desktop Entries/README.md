@@ -10,6 +10,11 @@ If you want to run `sudo` actions, use `pkexec` instead, which shows a GUI passw
 ### Bluetooth toggle
 If you want to disable bluetooth for good, but keep the ability to enable it when wanted.
 
+### Execute or install files
+Some files like .jar archives, or Android .apk packages don't have a graphical "app" registered to execute them.
+
+Most others, like system packages or also `.flatpakref`, `.flatpakrepo` normally have a  graphical appstore assigned to open them.
+
 ## Applications
 
 Systemwide installed applications have their .desktop entry in `/usr/share/applications/`, to edit them, copy them to `~/.local/share/applications/`. These will be preferred over the system entries, practically overwriting them.
@@ -141,3 +146,37 @@ KeepassXC
 keepassxc --keyfile="/path/to/keyfile"
 ```
 
+## Tips
+If you want to find system icons or mimetypes (the name a file is recognized by), you can do both graphically in KDE.
+
+### Find System Icons
+
+| Open the app menu | Find the icon name in the list |
+|---------|---------|
+| ![applauncher](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/applauncher-find-icons.jpg) | ![app icon list](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/find-icons.jpg) |
+
+Change "programs" to "all" to display all icons. These names can directly be used in the `Icon=` line.
+
+### Find Mimetypes
+To associate an "app" to a specific filetype (see "adb install" and "java execute"), in the terminal, you can use
+
+```
+cat /etc/mime.types | grep FILEEXTENSION
+
+# example:
+cat /etc/mime.types | grep jar
+```
+
+Or you can use KDE's "file association" settings page and search for the file extension (here "jar").
+
+![systemsettings page for mimetypes](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/file-names.jpg)
+
+Here the mimetype is `application/x-java-archive`.
+
+As an example, see KDE Discover's associated mimetypes:
+
+```bash
+$ cat /usr/share/applications/org.kde.discover.desktop | grep Mime
+
+MimeType=application/x-rpm;application/vnd.flatpak;application/vnd.flatpak.repo;application/vnd.flatpak.ref;
+```
