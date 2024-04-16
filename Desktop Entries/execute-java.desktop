@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=java -jar %f
+GenericName=executes .jar file with Java
+GenericName[de]=führt .jar Datei mit Java aus
+Icon=application-x-java
+Name=Execute with Java
+Name[de]=Mit Java ausführen
+Type=Application
