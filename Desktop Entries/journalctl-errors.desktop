@@ -1,0 +1,67 @@
+[Desktop Entry]
+#Exec=konsole -e "journalctl -f --priority err"
+Exec=notify-send -a "Journalctl Errors" "Choose a type" "right click and choose what error to display"
+Name=Journalctl Logs
+Name[de]=Journalctl Berichte
+Comment=Display Error reports on the system
+Comment[de]=Fehlerberichte des Systems anzeigen
+Icon=emblem-error
+Actions=current;thisboot;lastboot;shutdown;Separator;acurrent;athisboot;alastboot;ashutdown
+
+# ---------------
+
+[Desktop Action current]
+Name=Errors: Upcoming
+Name[de]=Fehler: ab jetzt
+Exec=konsole -e "journalctl -f --priority err"
+Icon=media-playback-start-symbolic
+
+[Desktop Action thisboot]
+Name=Errors: Since boot
+Name[de]=Fehler: Seit dem Start
+Exec=konsole -e "journalctl --priority err"
+Icon=preferences-system-startup
+
+[Desktop Action lastboot]
+Name=Errors: Last boot
+Name[de]=Fehler: Vorheriger Systemstart
+Exec=konsole -e "journalctl -b -1 --priority err"
+Icon=window-previous
+
+[Desktop Action shutdown]
+Name=Errors: Last shutdown
+Name[de]=Fehler: Beim letzten Herunterfahren
+Exec=konsole -e "journalctl -b -1 -r --priority err"
+Icon=system-shutdown
+
+# ------------------
+
+[Desktop Action Separator]
+Name=-----------------------------
+Exec=notify-send -a "Journalctl Errors" "Choose a type" "right click and choose what error to display"
+
+# ------------------
+
+[Desktop Action acurrent]
+Name=All: Upcoming
+Name[de]=Alle: ab jetzt
+Exec=konsole -e "journalctl -f"
+Icon=media-playback-start-symbolic
+
+[Desktop Action athisboot]
+Name=All: Since boot
+Name[de]=Alle: Seit dem Start
+Exec=konsole -e "journalctl"
+Icon=preferences-system-startup
+
+[Desktop Action alastboot]
+Name=All: Last boot
+Name[de]=Alle: Vorheriger Systemstart
+Exec=konsole -e "journalctl -b -1"
+Icon=window-previous
+
+[Desktop Action ashutdown]
+Name=All: Last shutdown
+Name[de]=Alle: Beim letzten Herunterfahren
+Exec=konsole -e "journalctl -b -1 -r"
+Icon=system-shutdown
