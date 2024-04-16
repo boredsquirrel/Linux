@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=xdg-open ~/.local/share/applications
+GenericName=open the local app entry folder
+GenericName[de]=Den App-Eintragsordner öffnen
+Icon=show-grid
+Name=Edit Applications
+Name[de]=Anwendungen bearbeiten
+Type=Application
