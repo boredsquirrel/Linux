@@ -15,6 +15,6 @@ X-KDE-Submenu[nl]=Exporteren als…
 Name=PDF document
 Name[it]=Documento PDF
 Name[de]=PDF Dokument
-Name[nl]=Pdf-bestand
+Name[nl]=PDF-bestand
 Icon=application-pdf
 Exec=flatpak run org.libreoffice.LibreOffice --headless --convert-to pdf %f
