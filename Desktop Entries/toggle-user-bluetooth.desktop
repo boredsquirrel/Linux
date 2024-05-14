@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=if [[ $(systemctl --user is-active bluetooth-user) == "active" ]]; then systemctl --user disable --now bluetooth && systemctl --user mask bluetooth; else systemctl --user unmask bluetooth ; systemctl --user enable --now bluetooth; fi
+GenericName=disable/ enable bluetooth with systemd
+Comment=disable/ enable bluetooth with systemd
+Icon=network-bluetooth
+Name=Toggle Bluetooth
+Type=Application
