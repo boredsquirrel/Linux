@@ -10,6 +10,22 @@ If you want to run `sudo` actions, use `pkexec` instead, which shows a GUI passw
 ### Bluetooth toggle
 If you want to disable bluetooth for good, but keep the ability to enable it when wanted.
 
+I recommend to use the user variant, but it requires these steps before:
+
+```
+# copy system service to user dir
+sudo cp /usr/lib/systemd/system/bluetooth.service /etc/systemd/user/bluetooth-user.service
+
+# disable and mask the system service
+sudo systemctl disable --now bluetooth
+sudo systemctl mask bluetooth
+
+# reload to make it work
+systemctl --user daemon-reload
+```
+
+The user variant does not require `wheel` group permissions and does not display a password prompt.
+
 ### Execute or install files
 Some files like .jar archives, or Android .apk packages don't have a graphical "app" registered to execute them.
 
