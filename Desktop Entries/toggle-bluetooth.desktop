@@ -1,6 +1,7 @@
 [Desktop Entry]
-Exec=if [[ $(systemctl is-active bluetooth) == "active" ]]; then pkexec systemctl disable --now bluetooth && pkexec systemctl mask bluetooth; else pkexec systemctl unmask bluetooth ; pkexec systemctl enable --now bluetooth; fi
+Exec=if [[ $(systemctl is-active bluetooth) == "active" ]]; then pkexec sh -c "systemctl disable --now bluetooth && systemctl mask bluetooth"; else pkexec sh -c "systemctl unmask bluetooth && systemctl enable --now bluetooth"; fi
 GenericName=disable/ enable bluetooth with systemd
+Comment=disable/ enable bluetooth with systemd
 Icon=network-bluetooth
 Name=Toggle Bluetooth
 Type=Application
