@@ -84,7 +84,7 @@ EOF
 ### 2. A timer repeating that service daily
 
 ```
-sudo cat > /etc/systemd/system/auto-updates.timer <<EOF
+sudo tee > /etc/systemd/system/auto-updates.timer <<EOF
 [Unit]
 Description=Run system updates every day
 
