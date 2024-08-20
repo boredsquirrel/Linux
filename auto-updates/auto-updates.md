@@ -1,12 +1,15 @@
-## Automatic rpm-ostree updates, done right
+## Automatic system updates, done right
 
 Fedora Atomic Desktops are currently not completely usable, as they follow the same unelegant path as "traditional" distributions, where users need to consent in doing updates.
 
-This means that you cannot install these Distributions as they are on "your grandmas PC", because she will never click on that tray icon and simply forget it.
+This means that you cannot install these Distributions on "your grandmas PC", because she will never click on that tray icon and simply forget it.
 
 Instead of relying on the user to determine when an update is wanted, this should be done logically and automated.
 
-Also take a look at [ublue-update](https://github.com/ublue-os/ublue-update), a project doing something very similar, but in a more generalistic way, using [topgrade](https://github.com/topgrade-rs/topgrade).
+This, in addition to removing the GUI software store integrations, also speeds up performance quite a lot. See below.
+
+> [!NOTE]
+> Also take a look at [ublue-update](https://github.com/ublue-os/ublue-update), a project doing something very similar, but in a more generalistic way, using [topgrade](https://github.com/topgrade-rs/topgrade).
 
 ### 1. A Service detecting if conditions are met
 
@@ -16,31 +19,40 @@ Conditions:
 - Active network must not be "metered"
 
 ```
-sudo cat > /etc/systemd/system/rpm-ostree-update.service <<EOF
+sudo tee > /etc/systemd/system/auto-updates.service <<EOF
 [Unit]
 Description=Upgrade system when conditions are met
 After=network-online.target
 
 [Service]
 Type=oneshot
+
+######## CONDITIONS ###########
 # require a power connection (optional)
-# ExecStartPre=sh -c '[ $(cat /sys/class/power_supply/AC/online) = 1 ]'
+#ExecStartPre=sh -c '[ $(cat /sys/class/power_supply/AC/online) = 1 ]'
 
 # require battery over 40%
 ExecStartPre=sh -c '[ $(cat /sys/class/power_supply/BAT0/capacity) -ge 40 ]'
 
 # require the connected network to NOT be "metered"
-# this value is not assigned by default! Go to your network settings,
-# to set phone hotspots etc. as "metered" and avoid high data usage
+# this value is not assigned by default!
+# Go to your network settings to set phone hotspots etc. as "metered" to avoid high data usage
 ExecStartPre=sh -c '! $(nmcli -t -f GENERAL.METERED dev show | grep -q 'yes')'
 
+######## UPDATES ###########
+ExecStart=/usr/bin/flatpak update -y
+ExecStart=/usr/bin/flatpak uninstall --unused
 ExecStart=/usr/bin/rpm-ostree update
-# you might add everything you need
-# ExecStart=/usr/bin/distrobox upgrade --all
-# ExecStart=/usr/bin/flatpak update -y
+ExecStart=/usr/bin/distrobox upgrade --all
 
-# delete old logs (disabled for testing)
-# ExecStartPost=rm -f /var/log/rpm-ostree-automatic.log
+# Firmware updates
+# These require a restart and may be interruptive.
+# A good system needs to be found
+#ExecStart=/usr/bin/fwupdmgr upgrade
+
+####### LOGS #########
+# delete old logs
+ExecStartPost=rm -f /var/log/rpm-ostree-automatic.log
 # log the updates
 ExecStartPost=sh -c 'echo "Last system update: $(date)" > /var/log/rpm-ostree-automatic.log'
 # write errors to log
@@ -48,9 +60,13 @@ StandardError=file:/var/log/rpm-ostree-automatic.log
 # GUI message displaying package changes, never disappearing
 ExecStartPost=/usr/bin/notify-send -t 0 -a "System" "System upgrade finished." "$(rpm-ostree db diff | awk '/Upgraded:/,0')"
 # run with low priority, when idling
-Nice=15
+
+######## BACKGROUND #########
+# To avoid high usage, noisiness etc. These may be too much
+#Nice=15
 IOSchedulingClass=idle
 
+######### REPEAT #############
 # when conditions were not met, try again after 15 minutes
 Restart=on-failure
 RestartSec=900
@@ -60,16 +76,17 @@ WantedBy=multi-user.target
 EOF
 ```
 
-It is important to manually set metered networks as so, as Networkmanager has no way of differentiating phone hotspots, USB-tethering over a phone or other indirectly metered connections from regular Wifis.
+> [!WARNING]
+> It is important to manually set metered networks as so, as Networkmanager has no way of differentiating phone hotspots, USB-tethering over a phone or other indirectly metered connections from regular Wifis.
 
-(This is way easier on Android, where one can assume that cell data is limited and the device uses a different antenna for it, and Wifi is mostly unmetered.)
+*(This is way easier on Android/phones, where one can assume that cell data is limited and the device uses a different antenna for it, and Wifi is mostly unmetered.)*
 
 ### 2. A timer repeating that service daily
 
 ```
-sudo cat > /etc/systemd/system/rpm-ostree-update.timer <<EOF
+sudo cat > /etc/systemd/system/auto-updates.timer <<EOF
 [Unit]
-Description=Run rpm-ostree updates every day
+Description=Run system updates every day
 
 [Timer]
 # run daily at 20:00
@@ -84,7 +101,7 @@ EOF
 
 ### 3. Change some parameters if needed
 In the service:
-- enable removing old logs
+- disable removing old logs for testing
 - change `Nice=15` and `IOSchedulingClass=idle` if they prevent updates
 
 In the timer:
