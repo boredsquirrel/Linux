@@ -52,11 +52,11 @@ ExecStart=/usr/bin/distrobox upgrade --all
 
 ####### LOGS #########
 # delete old logs
-ExecStartPost=rm -f /var/log/rpm-ostree-automatic.log
+ExecStartPost=rm -f /var/log/auto-updates.log
 # log the updates
-ExecStartPost=sh -c 'echo "Last system update: $(date)" > /var/log/rpm-ostree-automatic.log'
+ExecStartPost=sh -c 'echo "Last system update: $(date)" > /var/log/auto-updates.log'
 # write errors to log
-StandardError=file:/var/log/rpm-ostree-automatic.log
+StandardError=file:/var/log/auto-updates.log
 # GUI message displaying package changes, never disappearing
 ExecStartPost=/usr/bin/notify-send -t 0 -a "System" "System upgrade finished." "$(rpm-ostree db diff | awk '/Upgraded:/,0')"
 # run with low priority, when idling
@@ -84,7 +84,7 @@ EOF
 ### 2. A timer repeating that service daily
 
 ```
-sudo tee > /etc/systemd/system/auto-updates.timer <<EOF
+sudo tee > /etc/systemd/system/auto-updates.timer <<EOF && echo "timer placed"
 [Unit]
 Description=Run system updates every day
 
@@ -110,8 +110,8 @@ In the timer:
 ### 4. Start the service
 
 ```
-sudo systemctl enable --now rpm-ostree-update.service
-sudo systemctl enable --now rpm-ostree-update.timer
+sudo systemctl enable --now auto-updates.service
+sudo systemctl enable --now auto-updates.timer
 ```
 
 You may want to remove the redundant GUI store integration. It works well but is not needed.
@@ -121,7 +121,7 @@ You may want to remove the redundant GUI store integration. It works well but is
 rpm-ostree override remove gnome-software-rpm-ostree
 
 # Kinoite / KDE Atomic
-rpm-ostree override remove plasma-discover-rpm-ostree
+rpm-ostree override remove plasma-discover-rpm-ostree plasma-discover-notifier
 ```
 
 ### Note
