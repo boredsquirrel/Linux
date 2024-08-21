@@ -6,7 +6,9 @@ This means that you cannot install these Distributions on "your grandmas PC", be
 
 Instead of relying on the user to determine when an update is wanted, this should be done logically and automated.
 
-This, in addition to removing the GUI software store integrations, also speeds up performance quite a lot. See below.
+This, in addition to removing the GUI software store integrations, can lead to possible speed improvements too.
+
+The native integrations of rpm-ostree, flatpak, distrobox and fwupdmgr avoid using packagekit, and thus sync issues and additional overhead.
 
 > [!NOTE]
 > Also take a look at [ublue-update](https://github.com/ublue-os/ublue-update), a project doing something very similar, but in a more generalistic way, using [topgrade](https://github.com/topgrade-rs/topgrade).
@@ -74,3 +76,4 @@ Fedora wants to implement automatic updates in future releases, as does ublue by
 - [ ] info popups
   - [ ] warn on security critical updates (Secadvisories)
   - [ ] warn on firmware updates (workaround for unpredictable fwupdmgr behavior)
+- [ ] rewrite in Rust
