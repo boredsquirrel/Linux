@@ -63,15 +63,13 @@ rpm-ostree override remove plasma-discover-rpm-ostree plasma-discover-notifier
 Fedora wants to implement automatic updates in future releases, as does ublue by default. If this service is not upstreamed, disable those services to avoid high data usage or other unwanted behaviors.
 
 ### ToDo
-- [ ] custom non-daily interval
+- [x] custom non-daily interval (in the timer)
+- [x] automatic flatpak updates (in the script)
+- [x] automatic `distrobox upgrade --all` (in the script)
 - [ ] interactive message using zenity or kdialog
+  - [ ] interactive reboot button
+  - [ ] distro upgrade button: warn when distro version is EOL, add an upgrade button
 - [ ] list updated apps in message
-- [ ] warn on security critical updates
-
-Similar todos:
-- [ ] notify when a system upgrade is there (possible to suspend or ignore)
-- [ ] notify when version is EOL without the possibility to ignore (but not enforcing)
-- [ ] notify on firmware updates
-- [ ] automatic flatpak updates (could just be added here)
-- [ ] automatic `distrobox upgrade --all` (could just be added here)
-- [ ] add a reboot button to the message (especially on security critical updates)
+- [ ] info popups
+  - [ ] warn on security critical updates (Secadvisories)
+  - [ ] warn on firmware updates (workaround for unpredictable fwupdmgr behavior)
