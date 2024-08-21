@@ -10,6 +10,7 @@ This, in addition to removing the GUI software store integrations, also speeds u
 
 > [!NOTE]
 > Also take a look at [ublue-update](https://github.com/ublue-os/ublue-update), a project doing something very similar, but in a more generalistic way, using [topgrade](https://github.com/topgrade-rs/topgrade).
+> They seem to struggle with maintenance, and I prefer a more minimal approach to keep it simple.
 
 ### 1. A script checking for the conditions
 *see the script `auto-updates` in the setup script*
