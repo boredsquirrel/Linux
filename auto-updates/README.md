@@ -24,6 +24,8 @@ Conditions:
 
 > [!WARNING]
 > It is important to manually set metered networks as so, as Networkmanager has no way of differentiating phone hotspots, USB-tethering over a phone or other indirectly metered connections from regular Wifis.
+>
+> Note also that KDE Plasma seems to not be able to differentiate a LAN connection from a USB-tethered phone hotspot.
 
 *(This is way easier on Android/phones, where one can assume that cell data is limited and the device uses a different antenna for it, and Wifi is mostly unmetered.)*
 
