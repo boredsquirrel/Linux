@@ -11,138 +11,44 @@ This, in addition to removing the GUI software store integrations, also speeds u
 > [!NOTE]
 > Also take a look at [ublue-update](https://github.com/ublue-os/ublue-update), a project doing something very similar, but in a more generalistic way, using [topgrade](https://github.com/topgrade-rs/topgrade).
 
-### 1. A Service detecting if conditions are met
+### 1. A script checking for the conditions
+*see the script `auto-updates` in the setup script*
 
 Conditions:
 - Device must be charging (optional)
 - Device must have over x% charge (default 40)
 - Active network must not be "metered"
 
-```
-sudo tee > /etc/systemd/system/auto-updates.service <<EOF
-[Unit]
-Description=Upgrade system when conditions are met
-After=network-online.target
-
-[Service]
-Type=oneshot
-
-######## CONDITIONS ###########
-# require a power connection (optional)
-#ExecStartPre=sh -c '[ $(cat /sys/class/power_supply/AC/online) = 1 ]'
-
-# require battery over 40%
-ExecStartPre=sh -c '[ $(cat /sys/class/power_supply/BAT0/capacity) -ge 40 ]'
-
-# require the connected network to NOT be "metered"
-# this value is not assigned by default!
-# Go to your network settings to set phone hotspots etc. as "metered"/"getaktet" to avoid high data usage
-ExecStartPre=sh -c '! $(nmcli -t -f GENERAL.METERED dev show | grep -q 'yes')'
-
-######## UPDATES ###########
-# delete old logs
-ExecStartPre=echo "Auto-Update Logs:" > /var/log/auto-updates.log
-
-# timestamp
-ExecStartPre=sh -c 'echo "Last system update: $(date)" > /var/log/auto-updates.log'
-
-# Flatpak
-ExecStart=/usr/bin/echo "Flatpak Updates:" >> /var/log/auto-updates.log
-ExecStart=/usr/bin/flatpak update -y >> /var/log/auto-updates.log
-ExecStart=/usr/bin/echo "Flatpak Cleanups:" >> /var/log/auto-updates.log
-ExecStart=/usr/bin/flatpak uninstall --unused >> /var/log/auto-updates.log
-
-# rpm-ostree
-ExecStart=/usr/bin/echo "System:" >> /var/log/auto-updates.log
-ExecStart=/usr/bin/rpm-ostree update >> /var/log/auto-updates.log
-
-# Distrobox
-ExecStart=/usr/bin/echo "Distrobox:" >> /var/log/auto-updates.log
-ExecStart=/usr/bin/distrobox upgrade --all >> /var/log/auto-updates.log
-
-# Firmware updates
-# These require a restart and may be interruptive.
-# A good system needs to be found
-#ExecStart=/usr/bin/echo "Firmware:" >> /var/log/auto-updates.log
-#ExecStart=/usr/bin/fwupdmgr upgrade >> /var/log/auto-updates.log
-
-# redundant: write errors to log
-#StandardError=file:/var/log/auto-updates.log
-
-######## NOTIFICATION ##########
-# GUI message displaying package changes, never disappearing
-# TODO: implement short change note with infos
-ExecStartPost=/usr/bin/notify-send -t 0 -a "System" "System upgrade finished." "Check '/var/log/auto-updates.log' for changes."
-
-######## BACKGROUND #########
-# To avoid high usage, noisiness etc. These may be too much
-#Nice=15
-IOSchedulingClass=idle
-
-######### REPEAT #############
-# when conditions were not met, try again after 15 minutes
-Restart=on-failure
-RestartSec=900
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-
-
-sudo tee > /etc/systemd/system/auto-updates.timer <<EOF && echo "timer placed"
-[Unit]
-Description=Run system updates every day
-
-[Timer]
-# run daily at 20:00
-OnCalendar=*-*-* 20:00:00
-# when not possible to start, repeat as soon as possible
-Persistent=true
-
-[Install]
-WantedBy=timers.target
-EOF
-```
-
 > [!WARNING]
 > It is important to manually set metered networks as so, as Networkmanager has no way of differentiating phone hotspots, USB-tethering over a phone or other indirectly metered connections from regular Wifis.
 
 *(This is way easier on Android/phones, where one can assume that cell data is limited and the device uses a different antenna for it, and Wifi is mostly unmetered.)*
 
-### 2. A timer repeating that service daily
+### 2. A simple systemd service running a script
+*See the `auto-updates.service` in the setup script*
 
-```
-sudo tee > /etc/systemd/system/auto-updates.timer <<EOF && echo "timer placed"
-[Unit]
-Description=Run system updates every day
+### 3. A timer repeating that service daily
+*See the `auto-updates.timer` in the script*
 
-[Timer]
-# run daily at 20:00
-OnCalendar=*-*-* 20:00:00
-# when not possible to start, repeat as soon as possible
-Persistent=true
+### 4. Change some parameters
+In the script:
+- enable AC requirement
+- change ran commands
+- uncomment fwupdmgr updates
 
-[Install]
-WantedBy=timers.target
-EOF
-```
-
-### 3. Change some parameters if needed
 In the service:
-- disable removing old logs for testing
-- change `Nice=15` and `IOSchedulingClass=idle` if they prevent updates
+- change run conditions
 
 In the timer:
 - change interval
 
-### 4. Start the service
+### 5. Start the service
 
 ```
-sudo systemctl enable --now auto-updates.service
 sudo systemctl enable --now auto-updates.timer
 ```
 
+### 6. Debloat
 You may want to remove the redundant GUI store integration. It works well but is not needed.
 
 ```
