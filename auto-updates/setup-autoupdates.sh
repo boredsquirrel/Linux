@@ -8,7 +8,7 @@ sudo systemctl disable --now auto-updates.service
 sudo systemctl disable --now auto-updates.timer
 
 ########## SCRIPT ##############
-sudo tee > /var/usrlocal/bin/autoupdates <<EOF
+sudo tee > /var/usrlocal/bin/auto-updates <<EOF
 #!/usr/bin/sh
 
 check_conditions() {
@@ -73,7 +73,7 @@ After=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/var/usrlocal/bin/autostart
+ExecStart=/var/usrlocal/bin/auto-updates
 
 StandardOutput=append:/var/log/auto-updates.log
 StandardError=inherit
