@@ -13,24 +13,17 @@ X-DBUS-ServiceName=org.kde.dolphin
 X-KDE-Shortcuts=Meta+E
 StartupWMClass=dolphin
 
-###### CUSTOM #######
-# These actions allow to have 2 "profiles" for Dolphin, one for work and one private
-# The profiles work by manipulating the session file and backing it up
-# You can add as many profiles as you want!
-# 1. Add it to the "Actions" below
-# 2. Add a correct block below
-
 Actions=work;private;
+
 
 [Desktop Action work]
 Name=Work
 Name[de]=Arbeit
 Icon=tools-symbolic
-Exec=mv $HOME/.config/session/dolphin_dolphin_dolphin.work $HOME/.config/session/dolphin_dolphin_dolphin && dolphin && mv $HOME/.config/session/dolphin_dolphin_dolphin $HOME/.config/session/dolphin_dolphin_dolphin.work
+Exec=mv $HOME/.config/session/dolphin_dolphin_dolphin.work $HOME/.config/session/dolphin_dolphin_dolphin ; dolphin && mv $HOME/.config/session/dolphin_dolphin_dolphin $HOME/.config/session/dolphin_dolphin_dolphin.work
 
 [Desktop Action private]
 Name=Private
 Name[de]=Privat
 Icon=user-home-symbolic
-Exec=mv $HOME/.config/session/dolphin_dolphin_dolphin.private $HOME/.config/session/dolphin_dolphin_dolphin && dolphin && mv $HOME/.config/session/dolphin_dolphin_dolphin $HOME/.config/session/dolphin_dolphin_dolphin.private
-  
+Exec=mv $HOME/.config/session/dolphin_dolphin_dolphin.private $HOME/.config/session/dolphin_dolphin_dolphin ; dolphin && mv $HOME/.config/session/dolphin_dolphin_dolphin $HOME/.config/session/dolphin_dolphin_dolphin.private
