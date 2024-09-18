@@ -1,0 +1,26 @@
+[Desktop Entry]
+Name=Thunderbird
+Comment=Send and receive mail with Thunderbird
+GenericName=Mail Client
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=thunderbird --file-forwarding org.mozilla.Thunderbird @@u %u @@
+Terminal=false
+Type=Application
+Icon=org.mozilla.Thunderbird
+Categories=Network;Email;
+MimeType=message/rfc822;x-scheme-handler/mailto;text/calendar;text/vcard;text/x-vcard;x-scheme-handler/webcal;x-scheme-handler/webcals;x-scheme-handler/mid;
+StartupNotify=true
+StartupWMClass=thunderbird-esr
+Actions=work;private;
+X-Flatpak=org.mozilla.Thunderbird
+
+[Desktop Action work]
+Name=Work
+Name[de]=Arbeit
+Icon=tools-symbolic
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=thunderbird --file-forwarding org.mozilla.Thunderbird --profile work || /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=thunderbird --file-forwarding org.mozilla.Thunderbird -p
+
+[Desktop Action private]
+Name=Private
+Name[de]=Privat
+Icon=user-home-symbolic
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=thunderbird --file-forwarding org.mozilla.Thunderbird --profile default-esr || /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=thunderbird --file-forwarding org.mozilla.Thunderbird -p
