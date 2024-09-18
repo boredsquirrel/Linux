@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=GIMP beta
+Exec=/usr/bin/flatpak run --branch=beta --arch=x86_64 --command=gimp-2.10 --file-forwarding org.gimp.GIMP @@u %U @@
+Icon=org.gimp.GIMP
+Terminal=false
+Categories=Graphics;2DGraphics;RasterGraphics;GTK;
+StartupNotify=true
+MimeType=image/bmp;image/g3fax;image/gif;image/x-fits;image/x-pcx;image/x-portable-anymap;image/x-portable-bitmap;image/x-portable-graymap;image/x-portable-pixmap;image/x-psd;image/x-sgi;image/x-tga;image/x-xbitmap;image/x-xwindowdump;image/x-xcf;image/x-compressed-xcf;image/x-gimp-gbr;image/x-gimp-pat;image/x-gimp-gih;image/x-sun-raster;image/tiff;image/jpeg;image/x-psp;application/postscript;image/png;image/x-icon;image/x-xpixmap;image/x-exr;image/webp;image/x-webp;image/heif;image/heic;image/avif;image/jxl;image/svg+xml;application/pdf;image/x-wmf;image/jp2;image/x-xcursor;image/openraster;
+StartupWMClass=gimp-2.10
+X-Flatpak-RenamedFrom=gimp.desktop;
+X-Flatpak-Tags=beta;
+X-Flatpak=org.gimp.GIMP
