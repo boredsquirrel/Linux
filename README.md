@@ -25,23 +25,11 @@ This repository contains tools, scripts, and tweaks that simplify the experience
 ### **Setupscripts**
 - Simple scripts to help upgrade Fedora Kinoite for root configurations.
 
-### **System Repair**
-- Essential system recovery scripts and configurations.
-
 ### **Waydroid**
 - Resources for running Android apps in Linux.
 
-### **Auto-Updates**
-- Configuration for automatic updates with KDE-specific considerations.
-
-### **Polkit**
-- Removes password prompts for privileged users.
-
 ### **Captive-Portal-Tricks.md**
-- Tips and tricks for bypassing or managing captive portals on Linux systems.
-
-### **LICENSE**
-- Repository license file.
+- Tips for bypassing or managing captive portals on Linux systems.
 
 ### **PRIVACY.md**
 - Privacy considerations for Linux users.
@@ -55,7 +43,3 @@ This repository contains tools, scripts, and tweaks that simplify the experience
 
 - **[Dotfiles](https://github.com/boredsquirrel/dotfiles)**  
   Explore a custom **fish shell** configurations and additional scripts for personalization and productivity.
-
----
-
-This repository reflects experience of trying different Linux distributions and environments, culminating in current focus on **Fedora Kinoite**. KDE Plasma provides flexibility, but many settings and scripts here apply broadly to other distros as well.
