@@ -31,7 +31,7 @@ This repository contains tools, scripts, and tweaks that simplify the experience
 ### **Captive-Portal-Tricks.md**
 - Tips for bypassing or managing captive portals on Linux systems.
 
-### [**PRIVACY.md**] (https://github.com/primalbeing/Linux/blob/main/PRIVACY.md)
+### [**PRIVACY.md**] (https://github.com/boredsquirrel/Linux/blob/main/PRIVACY.md)
 - Privacy considerations for Linux users.
 
 ### **Secure-Second-Profile.md**
