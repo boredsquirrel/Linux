@@ -22,22 +22,25 @@ function del_old() {
 # Usage: del_old <directory_path> <num_days>
 
 function del_outdated() {
-    dir=$1
-    num_files_to_keep=$2
+  dir=$1
+  num_files_to_keep=$2
 
-    # Change to the specified directory
-    cd "$dir" || return
+  # Change to the specified directory
+  cd "$dir" || return
 
-    # Get a list of all files and sort them by modification time (newest first)
-    files=($(ls -t))
+  # Get a list of all files and sort them by modification time (newest first)
+  files=($(ls -t))
 
-    # Determine the number of files to delete
-    num_files_to_delete=$(( ${#files[@]} - $num_files_to_keep ))
+  # Determine the number of files to delete
+  num_files_to_delete=$((${#files[@]} - $num_files_to_keep))
 
-    # Loop through the list of files and delete the excess ones
-    for (( i=0; i<$num_files_to_delete; i++ )); do
-        rm "${files[$i]}"
-    done
+  # Loop through the list of files and delete the excess ones
+  for ((i = 0; i < $num_files_to_delete; i++)); do
+    rm "${files[$i]}"
+  done
 }
 
 # Usage: del_outdated <directory_path> <num_files_to_keep>
+
+# Example: Firefox SimpleTabGroups
+# del_outdated $USER/Downloads/STG

@@ -1,4 +1,6 @@
-local word=$1
+#!/bin/bash local
+
+word=$1
 local file=$2
 
 if [ "$word" = "-h" ]; then

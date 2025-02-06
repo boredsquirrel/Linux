@@ -1,19 +1,50 @@
 Polkit rules to allow certain actions. Place them in `/etc/polkit-1/rules.d/`. 
 
-Note: the old pkla format is deprecated and should not be used.
+> [!NOTE]
+> the old pkla format is deprecated and should not be used.
 
-Prefer to use separate groups, on Fedora
+Both polkit rules allow specific privileges, without requiring the user to have `sudo` access.
+
+[Use this script](https://github.com/boredsquirrel/unsudo) to add a dedicated admin user and remove these privileges from your normal user.
+
+## udisks2
+
+> ![WARNING]
+> Normally, devices detected as "removable" (pendrives, external hard drives, ...) should not require a password.
+> For some reason, many such external devices are not detected correctly
+> Using this is a dirty workaround, instead, udev rules should be used.
+> [Read this forum post with an explanation](https://discussion.fedoraproject.org/t/f42-change-proposal-unprivileged-disk-management-system-wide/124334/23)
+
+This allows passwordless LUKS unlock and mount of ***ALL*** disks using udisks2.
+
+Prefer to use separate groups per privilege, on Fedora:
 
 ```
-# create new group
-sudo groupadd udisks2
-
-# add user to group
-sudo usermod -aG udisks2 $USER
+run0 sh -c '
+    # create new group
+    groupadd udisks2
+    # add user to group
+    usermod -aG udisks2 $USER
+    '
 ```
 
-### udisks2
-This allows passwordless LUKS unlock and mount of disks using udisks2
+## libvirt
+> [!WARING]
+> This rule allows regular users to access root-level virtualization
+> This can be used by a user to elevate their privileges.
 
-### rpm-ostree
-This is the hopefully soon upstreamed, more secure rule that restrict rpm-ostree privileges
+Instead, use a "QEMU user session" in virt-manager or GNOME Boxes.
+
+If you really want to open this attack vector (for example for GPU forwarding), use a dedicated group:
+
+```
+run0 sh -c '
+    # create new group
+    groupadd libvirt
+    # add user to group
+    usermod -aG libvirt $USER
+    '
+```
+
+## rpm-ostree
+The rule was upstreamed.

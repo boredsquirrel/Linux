@@ -17,17 +17,19 @@ Wichtig bei der Einrichtung:
 
 # Nach der Installation
 
-Wechseln zu Kinoite von [uBlue](https://universal-blue.org): 
+Möchte man mehr Pakete vorinstalliert haben, die einem das Leben erleichtern, kann man zu Kinoite von [uBlue](https://universal-blue.org) wechseln.
 
 normal:
 ```
-rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:($rpm -E %fedora)
+rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:latest
 
 # nach dem neutart, wichtig
-rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/ublue-os/kinoite-main:($rpm -E %fedora)
+rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/ublue-os/kinoite-main:latest
 ```
 
-Für nVIDIA, Framework, Asus, Surface und andere Varianten, [ein Abbild aus dieser Liste wählen](https://github.com/orgs/ublue-os/packages).
+Für NVIDIA, Framework, Asus, Surface und andere Varianten, [ein Abbild aus dieser Liste wählen](https://github.com/orgs/ublue-os/packages).
+
+Für das "uBlue Gesamtpaket" kann man [Aurora](getaurora.dev) oder [Bluefin](projectbluefin.io) nehmen.
 
 ### Nach dem Neustart
 
@@ -46,8 +48,7 @@ cat <<EOF
 
 Fedora Kinoite Einrichtung
 
-Ein paar Tricks, um die Nutzung
-zu vereinfachen!
+Ein paar Tricks, um die Nutzung zu vereinfachen!
 
 ===========================================
 
@@ -60,27 +61,27 @@ flatpak remote-delete fedora -y
 
 cat <<EOF
 # Mehr Flatpak repositories
-github.com/trytomakeyouprivate/flatpak-remotes
+github.com/boredsquirrel/flatpak-remotes
 
 # Empfohlene Flatpak-Apps
-github.com/trytomakeyouprivate/recommended-flatpak-apps
+github.com/boredsquirrel/recommended-flatpak-apps
 
 # Alias deiner Flatpaks zum einfachen Öffnen 
-github.com/trytomakeyouprivate/flatalias
+github.com/boredsquirrel/flatalias
 
 # Löschen ungenutzter Daten alter Flatpak apps
-github.com/trytomakeyouprivate/flatpak-trash-remover
+github.com/boredsquirrel/flatpak-trash-remover
 
 # COPR Repositories einfach hinzufügen
-github.com/trytomakeyouprivate/copr-command
+github.com/boredsquirrel/copr-command
 
 EOF
 
-xdg-open github.com/trytomakeyouprivate/flatpak-remotes
-xdg-open github.com/trytomakeyouprivate/recommended-flatpak-apps
-xdg-open github.com/trytomakeyouprivate/flatalias
-xdg-open github.com/trytomakeyouprivate/flatpak-trash-remover
-xdg-open github.com/trytomakeyouprivate/copr-command
+xdg-open github.com/boredsquirrel/flatpak-remotes
+xdg-open github.com/boredsquirrel/recommended-flatpak-apps
+xdg-open github.com/boredsquirrel/flatalias
+xdg-open github.com/boredsquirrel/flatpak-trash-remover
+xdg-open github.com/boredsquirrel/copr-command
 
 echo "Discover Quellen aktualisieren"
 pkcon refresh
@@ -134,18 +135,17 @@ alias conf="kwrite ~/.bashrc"
 EOF
 ```
 
-### Some recommended Apps to layer
+### Einige empfohlene Apps zum Layern
 
 distrobox ist bereits installiert
 
 Grundlegende Shell Apps
-- `fish`
-- `[rust coreutils](https://github.com/uutils/coreutils) ([gute COPR](https://copr.fedorainfracloud.org/coprs/salimma/rust-coreutils))`
+- `fish` ist eine einfachere Shell mit Auto-Vervollständigung und mehr
 - `helix` (vim in rust)
 - `bat eza glow` und weitere coreutil Ersatze in Rust, die nicht 1:1 kompatibel sind 
 
 Virtualisierung
-- `virt-manager qemu qemu-kvm`
+- [Siehe Forumpost](https://discussion.fedoraproject.org/t/minimal-virt-manager-install/119709/4), ersetze "dnf" mit "rpm-ostree"
 - andere Architekturen finden mit `rpm-ostree search qemu-system`
 
 ### Firmware updaten

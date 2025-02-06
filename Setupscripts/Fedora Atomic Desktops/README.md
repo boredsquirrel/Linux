@@ -18,17 +18,19 @@ important:
 
 # Post Installation
 
-Switch to Fedora Kinoite from [uBlue](https://universal-blue.org): 
+If you want an easier experience with less packages to layer, switch to Fedora Kinoite from [uBlue](https://universal-blue.org): 
 
 normal:
 ```
-rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:($rpm -E %fedora)
+rpm-ostree rebase --reboot ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:latest
 
 # after reboot, important
-rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/ublue-os/kinoite-main:($rpm -E %fedora)
+rpm-ostree rebase --reboot ostree-image-signed:docker://ghcr.io/ublue-os/kinoite-main:latest
 ```
 
-For nVIDIA, Framework, Asus, Surface and other variants, [see their image list](https://github.com/orgs/ublue-os/packages).
+For NVIDIA, Framework, Asus, Surface and other variants, [see their image list](https://github.com/orgs/ublue-os/packages).
+
+For the "full uBlue experience", use [Aurora](getaurora.dev) or [Bluefin](projectbluefin.io).
 
 ### after reboot
 
@@ -59,27 +61,27 @@ flatpak remote-delete fedora -y
 
 cat <<EOF
 # More Flatpak repos
-github.com/trytomakeyouprivate/flatpak-remotes
+github.com/boredsquirrel/flatpak-remotes
 
 # Recommended Flatpak apps
-github.com/trytomakeyouprivate/recommended-flatpak-apps
+github.com/boredsquirrel/recommended-flatpak-apps
 
 # Alias your flatpak apps for cli usage
-github.com/trytomakeyouprivate/flatalias
+github.com/boredsquirrel/flatalias
 
 # Cleanup unused flatpak data
-github.com/trytomakeyouprivate/flatpak-trash-remover
+github.com/boredsquirrel/flatpak-trash-remover
 
 # Add COPR repos easily
-github.com/trytomakeyouprivate/copr-command
+github.com/boredsquirrel/copr-command
 
 EOF
 
-xdg-open github.com/trytomakeyouprivate/flatpak-remotes
-xdg-open github.com/trytomakeyouprivate/recommended-flatpak-apps
-xdg-open github.com/trytomakeyouprivate/flatalias
-xdg-open github.com/trytomakeyouprivate/flatpak-trash-remover
-xdg-open github.com/trytomakeyouprivate/copr-command
+xdg-open github.com/boredsquirrel/flatpak-remotes
+xdg-open github.com/boredsquirrel/recommended-flatpak-apps
+xdg-open github.com/boredsquirrel/flatalias
+xdg-open github.com/boredsquirrel/flatpak-trash-remover
+xdg-open github.com/boredsquirrel/copr-command
 
 echo "refresh Discover sources"
 pkcon refresh
@@ -135,16 +137,15 @@ EOF
 
 ### Some recommended Apps to layer
 
-distrobox is already installed
+distrobox is already installed (on uBlue)
 
 Basic shell stuff
-- `fish`
-- `[rust coreutils](https://github.com/uutils/coreutils) ([good COPR](https://copr.fedorainfracloud.org/coprs/salimma/rust-coreutils))`
+- `fish` is friendly shell with autocompletion and more
 - `helix` (vim in rust)
 - `bat eza glow` and more better replacements for coreutils that dont try to be 1:1 compatible
 
 Virtualization
-- `virt-manager qemu qemu-kvm`
+- [See this forum post for instructions for a minimal Virt-manager install](https://discussion.fedoraproject.org/t/minimal-virt-manager-install/119709/4). Replace "dnf" with "rpm-ostree"
 - find different architectures with `rpm-ostree search qemu-system`
 
 ### Update firmware

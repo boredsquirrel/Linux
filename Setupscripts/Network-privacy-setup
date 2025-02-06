@@ -1,0 +1,92 @@
+#!/bin/bash
+
+cat <<EOF
+
+-------------- MAC-Address ----------------
+
+Set MAC address randomization when using NetworkManager (default on GNOME and KDE)
+Every new Wifi gets a random static MAC, which is not changing
+This does not leak your device MAC, but repeated logins are trackable.
+
+It is also a security measurement, as malicious fake networks cannot sniff the device MAC and use that to bypass MAC-based access controls.
+
+https://fedoraproject.org/wiki/Changes/StableSSIDMACAddress
+
+EOF
+run0 sh -c '
+    mkdir /etc/NetworkManager/conf.d
+    cat > /etc/NetworkManager/conf.d/random-mac.conf <<EOF
+    [device-mac-randomization]
+    # "yes" is already the default for scanning
+    wifi.scan-rand-mac-address=yes
+
+    [connection-mac-randomization]
+    # Generate a random MAC for each Network and associate the two permanently.
+    ethernet.cloned-mac-address=stable
+    wifi.cloned-mac-address=stable
+    EOF
+
+    cat <<EOF
+---------------- Hostname ------------------
+Change your hostname to "PC"
+otherwise many distros scream out their name, making you very identifiable in Wifis
+
+EOF
+
+    hostnamectl hostname PC
+    echo "PC" > /etc/hostname
+
+    cat <<EOF
+
+--------------- DNS ------------------------
+Secure DNS breaks Captive portals (Train, cafes, hotel etc.; Wifis with a login page)
+When using systemd-resolved (default on most distributions)
+
+Disable it by renaming the file:
+
+mv /etc/systemd/resolved.conf.d/securedns.conf /etc/systemd/resolved.conf.d/securedns.conf.disabled
+
+EOF
+
+    mkdir /etc/systemd/resolved.conf.d
+    cat /etc/systemd/resolved.conf.d/securedns.conf <<EOF
+    # DNS Server
+    # https://www.privacy-handbuch.de/handbuch_93d.htm
+    # Mullvad with Filter: 194.242.2.3, 193.19.108.3 2a07:e340::3 adblock.doh.mullvad.net
+    # Mullvad without Filter: 194.242.2.2, 193.19.108.2 2a07:e340::2 doh.mullvad.net
+    # Adguard with Filter: 94.140.14.14 94.140.15.15  2a10:50c0::ad1:ff 2a10:50c0::ad2:ff dns.adguard-dns.com
+    # Adguard without Filter: 94.140.14.140 94.140.14.141 2a10:50c0::1:ff 2a10:50c0::2:ff unfiltered.adguard-dns.com
+    # Digitale Gesellschaft CH: 185.95.218.42 185.95.218.43 2a05:fc84::42 2a05:fc84::43 dns.digitale-gesellschaft.ch
+    # Freifunk München: 5.1.66.255 185.150.99.255 2001:678:e68:f000:: 2001:678:ed0:f000:: dot.ffmuc.net
+    # Dismail.de: 116.203.32.217 159.69.114.157 2a01:4f8:1c1b:44aa::1 2a01:4f8:c17:739a::2 fdns1.dismail.de fdns2.dismail.de
+    # DNSForge: 176.9.93.198 176.9.1.117 2a01:4f8:151:34aa::198 2a01:4f8:141:316d::117 dnsforge.de
+    # BlahDNS.com: 78.46.244.143 45.91.92.121 2a01:4f8:c17:ec67::1 2a0e:dc0:6:23::2 dot-de.blahdns.com dot-ch.blahdns.com
+
+
+    [Resolve]
+    DNS=185.95.218.43 194.242.2.2
+    FallbackDNS=45.91.92.121 185.150.99.255
+    #Domains=
+    LLMNR=yes
+    #MulticastdNS=no
+    DNSOverTLS=yes
+    Cache=yes
+    #DNSStubListener=yes
+    DNSSEC=true
+    EOF
+'
+
+# ------------ More Privacy tips ----------
+
+cat <<EOF
+
+Use Flatpaks if they are well maintained. Its the easiest way to get a working permission system on Linux.
+
+
+Use Tails if you need systemwide onion-routing
+notable projects:
+https://github.com/hardcore-sushi/TorVirt
+https://flathub.org/apps/io.frama.tractor.carburetor
+EOF
+
+xdg-open github.com/boredsquirrel/recommended-flatpak-apps

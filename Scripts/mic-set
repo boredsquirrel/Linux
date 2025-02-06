@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # This mutes your mic and sets the volume to 40%
-# Solves the issue of an overdriven Mic
+# Solves the issue of an overdriven
+
+# NOTE
+# Adapt the value to what your mic actually needs
 
 pactl set-source-volume $(pactl get-default-source) 40%
 pactl set-source-mute $(pactl get-default-source) 1

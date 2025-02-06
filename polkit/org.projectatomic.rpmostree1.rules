@@ -1,6 +1,0 @@
-polkit.addRule(function(action, subject) {
-    if ((action.id == "org.projectatomic.rpmostree1.repo-refresh" ||
-         action.id == "org.projectatomic.rpmostree1.upgrade") {
-            return polkit.Result.YES;
-    }
-});

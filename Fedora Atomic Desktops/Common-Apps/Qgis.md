@@ -3,19 +3,18 @@
      width="250"
      height="70" />
      
-Create a minimal Fedora Distrobox (Container)
+Use the upstream instructions instead.
 
-```
-distrobox-create Fedora -i registry.fedoraproject.org/fedora-toolbox:$(rpm -E %fedora) #or use the latest version manually
-distrobox-enter Fedora
-```
+- [Flatpak](https://qgis.org/resources/installation-guide/#flatpak) (recommended, you can install plugins with a trick!)
+- [Fedora and Atomic Desktops](https://qgis.org/resources/installation-guide/#fedora)
+- [Distrobox and Toolbx](https://qgis.org/resources/installation-guide/#distrobox--toolbx)
 
-Install QGIS & needed Dependencies
-```
-sudo dnf install -y qgis python3-qgis
-```
+## Trick: Run the App with XWayland
 
-Create a custom App launcher that forces X11/XWayland (needed to prevent breakages on Wayland, until Qt6 port is done)
+Create a custom App launcher that forces X11/XWayland
+
+(needed to prevent breakages on Wayland, until Qt6 port is done)
+
 ```
 cat > ~/.local/share/applications/Distrobox-org.qgis.qgis.desktop <<EOF
 [Desktop Entry]
@@ -28,10 +27,4 @@ Name=QGIS Desktop (Distrobox)
 StartupWMClass=QGIS3
 Type=Application
 EOF
-```
-
-Keep your apps updated!
-
-```
-distrobox upgrade --all
 ```

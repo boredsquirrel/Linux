@@ -1,7 +1,7 @@
 #!/bin/bash
 # this fixes weird character problems when using German UTF8
 
-pkexec localectl set-locale LANG=de_DE.UTF-8
+run0 localectl set-locale LANG=de_DE.UTF-8
 
-# pkexec localectl set-locale LANG=en_US.UTF-8
+# run0 localectl set-locale LANG=en_US.UTF-8
 # would do the same for standard US English

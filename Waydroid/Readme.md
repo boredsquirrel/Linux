@@ -1,13 +1,16 @@
 ## Waydroid
 
-This is not an emulator. Like Distrobox or other Linux distros, you can run Android as a container. The kernel stays your native one, but all the libraries match to the OS.
+> [!WARNING]
+> I do not recommend to use Waydroid anymore.
+> While promising at the beginning, the project seems to have stalled.
+> They are still using a many years EOL version of Android.
 
-This means you can run lots of Android apps on your Linux Laptop, increasing its usability a lot.
+Also note, that Android uses SELinux as a core part of it's sandboxing. Only distros with SELinux enabled (like Fedora, CentOS, Enterprise Linux) can make this work at all.
 
-## Setup
+Still, Waydroid drastically reduces the security benefits of Android.
 
-1. [Install waydroid from your Distro](https://docs.waydro.id/usage/install-on-desktops)
+Instead, running a system like [BlissOS](https://blissos.org/) in a Virtual Machine is less insecure, but their latest version "Zenith" is Android 13 and probably unstable.
 
-2. Setup Appstarters and Tools
+The project seems to be a successor to Waydroid in part.
 
-3. 
+It is critical that the "Linux on Phones" community relies on Waydroid so much.

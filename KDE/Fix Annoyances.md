@@ -48,36 +48,22 @@ touch ~/.local/share/applications/org.kde.kdeconnect.daemon.desktop
 ```
 
 ## Geoclue
-A background service used for geolocation based on IP, likely not needed.
+A background service used for geolocation based on IP.
+
+It can be used with [beaconDB](https://beacondb.net) but you may not use it and want to disable it.
+
+With systemD:
 
 ```
 sudo systemctl disable geoclue &&\
 sudo systemctl mask geoclue
+sudo systemctl disable --user geoclue &&\
+sudo systemctl mask --user geoclue
 ```
 
 ## Power-profiles-daemon
-If your Hardware works with [TLP](https://linrunner.de/tlp), use that instead. Fedora will switch to [tuned](https://github.com/redhat-performance/tuned) in the future, and [ublue](https://universal-blue.org) already uses it.
+You might want to switch to tuneD, it is great
 
-Consider
-- disabling cores (brutal method)
-- switching the governor (TLP, tuned)
-- changing the CPU,GPU and bus clock ([Ryzenadj](https://github.com/FlyGoat/RyzenAdj), ...)
+[see this post on how to switch to it on older Atomic Desktops](https://discussion.fedoraproject.org/t/how-to-switch-to-tuned-on-fedora-40-atomic-desktops/134897)
 
-```
-sudo systemctl disable power-profiles-daemon &&\
-sudo systemctl mask power-profiles-daemon
-```
-
-enable TLP
-
-```
-PACKAGEMANAGER install tlp
-systemctl enable --now tlp.service
-```
-
-If you get issues with USB devices not working anymore, disable "`USB_AUTOSUSPEND`":
-
-```
-sudo sed -i 's/USB_AUTOSUSPEND=1/USB_AUTOSUSPEND=0/g' /etc/tlp.conf
-```
-
+the `tuned-ppd` package deals with Desktop integration, so that your existing sliders etc. will work. tuneD has way more options though.
