@@ -2,30 +2,38 @@
 
 **Making Linux Distros Easier to Use**
 
-This repository is to simplify the use of a handful of Linux distributions. While these resources are designed with general usability in mind, they are best practiced for environments and sytems like **KDE** and **Fedora Kinoite**.
+This repository is to simplify the use of a handful of Linux distributions.
+
+Some instructions are general, others target **KDE** and **Fedora Kinoite**.
 
 ---
 
 ## 📂 Repository Overview
 
-### [**Common-Apps**](https://github.com/boredsquirrel/Linux/tree/main/Common-Apps)
-- Tools and configurations for common applications to enhance usability.
+### [**Guides**](https://github.com/boredsquirrel/Linux/tree/main/Guides)
+- General HowTo Guides. Many more can be found at [the Fedora forum](https://discussion.fedoraproject.org/search?q=%23howto%20%40boredsquirrel%20order%3Alatest)
+
+### [**Desktop Entries**](https://github.com/boredsquirrel/Linux/tree/main/Desktop%20Entries)
+- Custom desktop entries that fix some issues or functionality
+
+### [**Fedora Atomic Desktops**](https://github.com/boredsquirrel/Linux/tree/main/Fedora%20Atomic%20Desktops)
+- Specific to Fedora Silverblue, Kinoite, uBlue and other variants
+- [add COPR repos](https://github.com/boredsquirrel/COPR-command)
+- [install some web browsers](https://github.com/boredsquirrel/browserscript-fedora-atomic)
 
 ### [**KDE**](https://github.com/boredsquirrel/Linux/tree/main/KDE)
 - Custom tweaks and settings for KDE Plasma environments.
 
-### [**Waydroid**](https://github.com/boredsquirrel/Linux/tree/main/Waydroid)
-- How to run Android apps on Linux.
+### [**Scripts**](https://github.com/boredsquirrel/Linux/tree/main/Scripts)
+- A collection of small tools
 
-### [**PRIVACY.md**](https://github.com/boredsquirrel/Linux/blob/main/PRIVACY.md)
-- Privacy considerations for Linux users.
+### [**System Repair**](https://github.com/boredsquirrel/Linux/tree/main/System%20Repair)
+- some tips on how to fix broken systems. Add more if you want!
 
-### [**Secure-Second-Profile.md**](https://github.com/boredsquirrel/Linux/blob/main/secure-second-profile.md)
-- Instructions on creating a secure second profile for sensitive tasks.
+### [**Polkit**](https://github.com/boredsquirrel/Linux/tree/main/polkit)
+- some rules how to allow specific privileges to users without requiring entering a password
+- see [this repo](https://github.com/boredsquirrel/unsudo) on more integration of this
 
 ---
 
-## 🔗 Additional Resources
-
-- **[Dotfiles](https://github.com/boredsquirrel/dotfiles)**  
-  Explore a custom **fish shell** configurations and additional scripts for personalization and productivity.
+## 🔗 [Additional Resources](https://github.com/boredsquirrel/My-Repos)
