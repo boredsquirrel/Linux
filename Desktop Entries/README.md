@@ -115,19 +115,19 @@
 
 | ```sh |
 | firefox -p --private-window |
-| ``` |
+|``` |
 
 | Exclude a custom insecure profile from VPN: |
 
 | ```sh |
 | mullvad-exclude firefox -p INSECURE |
-| ``` |
+|``` |
 
 | Open a link in such an excluded browser: |
 
 | ```sh |
 | mullvad-exclude firefox -p INSECURE http://insecure.link.com |
-| ``` |
+|``` |
 
 | This is needed for logging into captive portals (yes, they suck...) or using |
 | sites that block VPN servers. |
@@ -137,7 +137,7 @@
 | ```sh |
 | cp /usr/share/applications/org.mozilla.firefox.desktop  |
 | ~/.local/share/applications/ |
-| ``` |
+|``` |
 
 | ### Delete App Data After Launching |
 

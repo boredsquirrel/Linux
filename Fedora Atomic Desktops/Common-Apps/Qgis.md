@@ -2,14 +2,14 @@
 <img src="https://fedoraproject.org/assets/images/logos/fedora-blue.png"
      width="250"
      height="70" />
-     
+
 Use the upstream instructions instead.
 
-- [Flatpak](https://qgis.org/resources/installation-guide/#flatpak) 
+- [Flatpak](https://qgis.org/resources/installation-guide/#flatpak)
 (recommended, you can install plugins with a trick!)
-- [Fedora and Atomic 
+- [Fedora and Atomic
 Desktops](https://qgis.org/resources/installation-guide/#fedora)
-- [Distrobox and 
+- [Distrobox and
 Toolbx](https://qgis.org/resources/installation-guide/#distrobox--toolbx)
 
 ## Trick: Run the App with XWayland

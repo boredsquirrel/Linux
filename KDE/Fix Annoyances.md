@@ -1,4 +1,4 @@
-## Fix KDE Annoyances
+# Fix KDE Annoyances
 
 ### Baloo
 
@@ -31,7 +31,7 @@ cat > ~/.config/autostart/kill-plasma-notifier <<EOF
 #!/bin/sh
 # Wait a bit
 sleep 10
-killall -15 DiscoverNotifier && notify-send -a "Terminator" "Plasma Notifier 
+killall -15 DiscoverNotifier && notify-send -a "Terminator" "Plasma Notifier
 killed."
 EOF
 chmod +x ~/.config/autostart/kill-plasma-notifier

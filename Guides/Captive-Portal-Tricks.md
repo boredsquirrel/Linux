@@ -7,7 +7,7 @@ A Captive Portal is the website you see when logging in on a public Wi-Fi.
 ```bash
 Welcome to our Wifi-Customer-Experience-Allround service!
 
-Accept that we save all your connections* and sell your data, and you are free 
+Accept that we save all your connections* and sell your data, and you are free
 to go!
 
 [ ]
@@ -94,7 +94,7 @@ mkdir -p ~/.bin
 cat > ~/.bin/mullvad-captive <<EOF
 #!/bin/sh
 mullvad disconnect
-notify-send -a "Captive Portal" "VPN Paused" "Sign into the captive portal, 
+notify-send -a "Captive Portal" "VPN Paused" "Sign into the captive portal,
 your VPN will be enabled when you close the window again"
 firefox --new-window http://captive.kuketz.de
 wait $!
@@ -121,7 +121,7 @@ mkdir -p ~/.bin
 cat > ~/.bin/mullvad-captive <<EOF
 #!/bin/sh
 mullvad disconnect
-notify-send -a "Captive Portal" "VPN Paused" "Sign into the captive portal, 
+notify-send -a "Captive Portal" "VPN Paused" "Sign into the captive portal,
 your VPN will be enabled when you close the window again"
 firefox -p CAPTIVE http://captive.kuketz.de
 wait $!
@@ -166,7 +166,7 @@ Currently, this does not work as expected, as DNS still gets resolved:
 
 ```sh
 mkdir -p /etc/systemd/resolved.conf.d
-cp /etc/systemd/resolved.conf 
+cp /etc/systemd/resolved.conf
 /etc/systemd/resolved.conf.d/block-dns-without-vpn.conf
 
 cat >> /etc/systemd/resolved.conf.d/block-dns-without-vpn.conf <<EOF
@@ -177,8 +177,8 @@ cat >> /etc/systemd/resolved.conf.d/block-dns-without-vpn.conf <<EOF
 DNS=#
 
 # Whitelist captive portal websites
-Domains=~captive.kuketz.de ~captive.open-mind-culture.org ~httpforever.com 
-~connectivitycheck.grapheneos.network/generate_204 
+Domains=~captive.kuketz.de ~captive.open-mind-culture.org ~httpforever.com
+~connectivitycheck.grapheneos.network/generate_204
 ~grapheneos.online/generate_204
 EOF
 

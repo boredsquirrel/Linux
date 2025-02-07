@@ -14,7 +14,7 @@ There are different use cases for systems:
 
 ### Mobile
 
-Use [GrapheneOS](https://grapheneos.org/)—there is nothing better.  
+Use [GrapheneOS](https://grapheneos.org/)—there is nothing better.
 [See my Android Repo for
 tips](https://github.com/trytomakeyouprivate/Android-Tipps).
 
@@ -22,7 +22,7 @@ tips](https://github.com/trytomakeyouprivate/Android-Tipps).
 
 Use [QubesOS](https://www.qubes-os.org) with **certified hardware**, running
 every "task group" in a dedicated [virtualized
-environment](https://en.wikipedia.org/wiki/Virtual_machine).  
+environment](https://en.wikipedia.org/wiki/Virtual_machine).
 
 - Use **Coreboot** with the **HEADS** payload for measured boot and
 anti-evil-maid attack prevention.
@@ -34,7 +34,7 @@ anti-evil-maid attack prevention.
 Use [Tails](https://tails.net/), which runs on the
 [Tor](https://www.torproject.org/) network, with or without persistent storage.
 
-Note:  
+Note:
 Tails is not optimized for app containerization, malware prevention, or
 bypassing malicious firmware.
 
@@ -55,10 +55,10 @@ recommendations](<https://github.com/trytomakeyouprivate/recommended-flatpak-app
 
 Use **hardware with updated firmware** that is free of backdoors like the
 [Intel ME](https://github.com/corna/me_cleaner?tab=readme-ov-file#intel-me) and
-is as free as possible.  
+is as free as possible.
 
 ⚠ **There is no performant, affordable hardware with 100% free firmware!** Keep
-that in mind.  
+that in mind.
 
 ### Recommended Hardware
 
@@ -70,10 +70,10 @@ Coreboot](https://dasharo.com) ([Code](https://github.com/dasharo))
 [MrChromebox](https://mrchromebox.tech/) and
 [Chrultrabook](https://docs.chrultrabook.com/)
 - [Libreboot](https://libreboot.org/docs/hardware/) and
-[Coreboot](https://www.coreboot.org/Supported_Chipsets_and_Devices) hardware  
+[Coreboot](https://www.coreboot.org/Supported_Chipsets_and_Devices) hardware
   *(Mostly outdated and vulnerable to
 [Spectre](https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)) &
 [Meltdown](https://en.wikipedia.org/wiki/Meltdown_(security_vulnerability)))*
-- **Google Pixel** phones, foldable phones, and tablets for **GrapheneOS**  
+- **Google Pixel** phones, foldable phones, and tablets for **GrapheneOS**
   *(See [GrapheneOS' hardware
 requirements](https://grapheneos.org/faq#future-devices) for future devices.)*

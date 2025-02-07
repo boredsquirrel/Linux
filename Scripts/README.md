@@ -3,13 +3,13 @@
 ```markdown
 # Some Useful Scripts
 
-## [sysinfo (KDE debug 
+## [sysinfo (KDE debug
 info)](https://github.com/trytomakeyouprivate/KDE-sysinfo-CLI)
 
-This replicates the KDE system info output from System Settings but  
+This replicates the KDE system info output from System Settings but
 from the terminal.
 
-By adding an app name (`sysinfo kate`), you also get information about  
+By adding an app name (`sysinfo kate`), you also get information about
 an installed app (many package managers, including Flatpak, are supported!).
 
 It supports automatic copying on Wayland and X11.
@@ -42,14 +42,14 @@ Two scripts that are part of a **UDEV rule + Systemd service + script** setup.
 ### Goal
 
 1. Detect battery and AC state.
-2. If energy-saving mode is useful, deactivate a set number of  
+2. If energy-saving mode is useful, deactivate a set number of
    random CPU cores.
 3. On AC, activate all cores again.
 
-This works on all systems where TLP doesn't work. "Random" means  
+This works on all systems where TLP doesn't work. "Random" means
 different cores get disabled each time to avoid unequal usage.
 
-It's a brute-force solution compared to setting a battery-saving  
+It's a brute-force solution compared to setting a battery-saving
 governor, but it's reliable.
 
 ## flatpak-permission-cleaner
@@ -90,12 +90,12 @@ Useful for Fedora Kinoite, Silverblue, Sericea, etc.
 
 ## Rsync Helper
 
-Backup software on Linux can be a struggle. Many GUI tools are bloated,  
+Backup software on Linux can be a struggle. Many GUI tools are bloated,
 unreliable in the background, or waste resources.
 
 Rsync is built into most Linux distros and supports offline backups perfectly.
 
-This script helps you set up an automatic Rsync service with a specified  
+This script helps you set up an automatic Rsync service with a specified
 backup location.
 
 ## [fwupd-GUI](https://github.com/trytomakeyouprivate/fwupd-GUI)
@@ -110,14 +110,14 @@ This script prompts you via a GUI to accept or postpone updates.
 
 Helper](<https://github.com/trytomakeyouprivate/easy-bash-loops>)
 
-Interactively create **yes/no loops** for scripts.  
+Interactively create **yes/no loops** for scripts.
 The user is asked a question, and you define actions for "yes" and "no."
 
 Supports copying the result to the clipboard or saving it to a file.
 
 ## [Polkit Helper](https://github.com/trytomakeyouprivate/Polkit-helper)
 
-Easily create **polkit rules** so that you don't need to enter a  
+Easily create **polkit rules** so that you don't need to enter a
 password to launch applications like Virt-Manager or mount LUKS drives.
 
 ⚠ **Use sparingly!**
@@ -128,9 +128,9 @@ password to launch applications like Virt-Manager or mount LUKS drives.
 
 Keep Flatpak apps updated via a **systemd service**.
 
-A simpler alternative to  
+A simpler alternative to
 [this Python
-script](https://gist.github.com/ssokolow/db565fd8a82d6002baada946adb81f68),  
+script](https://gist.github.com/ssokolow/db565fd8a82d6002baada946adb81f68),
 working with aliases instead of runfiles.
 
 ## cd2
@@ -193,12 +193,12 @@ Linker](<<https://github.com/trytomakeyouprivate/Linux/blob/main/Scripts/Flatpak
 b>
 inaries)
 
-Searches for Flatpak apps and links binaries (like `ffmpeg`) to `~/.bin`  
+Searches for Flatpak apps and links binaries (like `ffmpeg`) to `~/.bin`
 for direct access.
 
 ## Keelock
 
-A customizable command for unlocking a **KeePassXC wallet** using a  
+A customizable command for unlocking a **KeePassXC wallet** using a
 password stored in **KWallet**.
 
 Could be extended to **GNOME Keyring**.
@@ -243,7 +243,7 @@ Originally used for KDE search engine `.desktop` files but can be extended.
 *(Currently not working.)*
 
 Goal: Keep the **GUI app open in the system tray** when the VPN is
-disconnected,  
+disconnected,
 so you remember to reconnect.
 
 ## [Systemd Hold
@@ -252,7 +252,7 @@ Active](<https://github.com/trytomakeyouprivate/systemd-hold-active>)
 
 *(Experimental, currently not working.)*
 
-Enables a **service**, launches an **app**, and disables the service when  
+Enables a **service**, launches an **app**, and disables the service when
 the app closes.
 
 ## [Matlab GUI System
