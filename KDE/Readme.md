@@ -3,24 +3,25 @@
 Here are some things that make it better for certain use cases.
 
 ## Dolphin
-### ServiceMenus
-If you know the syntax, you can create lots of useful right-click actions for Dolphin.
 
-Just download a service-menu (.desktop) to the folder (~/.local/share/kservices5/ServiceMenus) and it will work!
+### Service Menus
+If you know the syntax, you can create many useful right-click actions for Dolphin.
+
+Just download a service menu (`.desktop`) file to `~/.local/share/kservices5/ServiceMenus/`, and it will work!
 
 ### App Desktop Entries
-Desktop entries are the graphical icons with text for running apps.
+Desktop entries are the graphical icons with text used to launch applications.
 
-Create your own in `~/.local/share/applications/`, and [follow this syntax](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html)
+Create your own in `~/.local/share/applications/`, and [follow this syntax](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html).
 
-These entries are preferred over system and Flatpak entries, so if you want to edit apps, do it there!
+These entries take priority over system and Flatpak entries, so if you want to customize applications, edit them here!
 
 Examples:
-- [Custom Konsole entry](https://lemmy.kde.social/post/947963) with actions for Distrobox, root shell and ssh
+- [Custom Konsole entry](https://lemmy.kde.social/post/947963) with actions for Distrobox, root shell, and SSH
 - Custom Firefox entry (coming soon)
 
-Konsole:
-```
+#### Konsole Example:
+```ini
 [Desktop Entry]
 Type=Application
 TryExec=konsole
@@ -36,23 +37,25 @@ StartupWMClass=konsole
 Keywords=terminal;console
 Name=Konsole
 GenericName=Terminal
-Comment="$GenericName"
+Comment=$GenericName
 
 [Desktop Action FedoraBox]
 Name=Distrobox
 Icon=fedora-logo-icon
-Exec=konsole --profile FedoraBox # this launches "distrobox enter FedoraBox"
+Exec=konsole --profile FedoraBox # Launches "distrobox enter FedoraBox"
 
 [Desktop Action root]
-Name=root Terminal
+Name=Root Terminal
 Icon=folder-root-symbolic
-Exec=konsole -e pkexec $SHELL #or define a shell
+Exec=konsole -e pkexec $SHELL # Define a shell if needed
 
 [Desktop Action ssh]
-Name=ssh to X
+Name=SSH to X
 Icon=folder-remote-symbolic
-Exec=konsole -e ssh user@IP:PORT -i /path/to/key
+Exec=konsole -e ssh user@IP -p PORT -i /path/to/key
 ```
 
-### SDDM-Themes
-There are awesome presets online, buy SDDM needs them placed in a `/usr` directory, which is not writable on Fedora Atomic and other "immutable" Distros. You can use [sddm2rpm](https://github.com/Lunarequest/sddm2rpm) ([crate](https://crates.io/crates/sddm2rpm)) to convert the theme files to RPMs, which can be layered!
+### SDDM Themes
+There are many great SDDM themes available, but SDDM requires them to be placed in a `/usr` directory, which is not writable on Fedora Atomic and other "immutable" distributions. 
+
+You can use [sddm2rpm](https://github.com/Lunarequest/sddm2rpm) ([crate](https://crates.io/crates/sddm2rpm)) to convert theme files into RPM packages that can be layered!
