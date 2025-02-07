@@ -1,57 +1,55 @@
 # Custom Desktop Entries
 
-Desktop entries are the graphical icons+name in your app menu, and in other areas. They follow [the Freedesktop specification](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html) and are used by all apps (not Appimages lol) and in other areas.
+Desktop entries are the graphical icons + names in your app menu and other areas. They follow [the Freedesktop specification](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html) and are used by all apps (not AppImages, though) and in other areas.
 
 ## System Actions
-Some useful system actions can be "gui-fied" using desktop entries. They will show up as apps.
+Some useful system actions can be "GUI-fied" using desktop entries. They will show up as apps.
 
 If you want to run `sudo` actions, use `pkexec` instead, which shows a GUI password prompt.
 
-### Bluetooth toggle
-If you want to disable bluetooth for good, but keep the ability to enable it when wanted.
+### Bluetooth Toggle
+If you want to disable Bluetooth permanently but keep the ability to enable it when needed, use the user variant by performing these steps:
 
-I recommend to use the user variant, but it requires these steps before:
-
-```
-# copy system service to user dir
+```sh
+# Copy system service to user directory
 sudo cp /usr/lib/systemd/system/bluetooth.service /etc/systemd/user/bluetooth-user.service
 
-# disable and mask the system service
+# Disable and mask the system service
 sudo systemctl disable --now bluetooth
 sudo systemctl mask bluetooth
 
-# reload to make it work
+# Reload to apply changes
 systemctl --user daemon-reload
 ```
 
 The user variant does not require `wheel` group permissions and does not display a password prompt.
 
-### Execute or install files
-Some files like .jar archives, or Android .apk packages don't have a graphical "app" registered to execute them.
+### Execute or Install Files
+Some files, like `.jar` archives or Android `.apk` packages, don't have a graphical "app" registered to execute them.
 
-Most others, like system packages or also `.flatpakref`, `.flatpakrepo` normally have a  graphical appstore assigned to open them.
+Most others, like system packages or `.flatpakref`, `.flatpakrepo`, normally have a graphical app store assigned to open them.
 
-### Journalctl errors
-Sometimes you may need to get some logs of your system. Systemd's `journalctl` is pretty standardized as the way to get them.
+### Journalctl Errors
+Sometimes, you may need to retrieve logs from your system. Systemd's `journalctl` is the standard way to do this.
 
-That entry uses multiple actions for the log types.
+This entry uses multiple actions for different log types.
 
-![screenshot of the journalctl error entry](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/journalctl-entry.jpg)
+![Screenshot of the journalctl error entry](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/journalctl-entry.jpg)
 
 ## Applications
 
-Systemwide installed applications have their .desktop entry in `/usr/share/applications/`, to edit them, copy them to `~/.local/share/applications/`. These will be preferred over the system entries, practically overwriting them.
+System-wide installed applications have their `.desktop` entries in `/usr/share/applications/`. To edit them, copy them to `~/.local/share/applications/`, where they will override system entries.
 
 ### Konsole
-![screenshot](https://raw.githubusercontent.com/trytomakeyouprivate/Linux/main/Desktop%20Entries/Images/konsole-desktop-entry.jpg)
+![Screenshot](https://raw.githubusercontent.com/trytomakeyouprivate/Linux/main/Desktop%20Entries/Images/konsole-desktop-entry.jpg)
 
-Konsole has a few annoyances that can be easily fixed. It always opens in a new Window, while it has support for tabs.
+Konsole has a few annoyances that can be easily fixed. By default, it always opens in a new window, though it supports tabs.
 
-You may also want to add custom actions and profiles for certain tasks.
+You may also want to add custom actions and profiles for specific tasks.
 
-Adding a profile to launch inside a Distrobox:
+#### Adding a Profile to Launch Inside a Distrobox
 
-```
+```sh
 mkdir -v ~/.local/share/konsole
 cat > ~/.local/share/konsole/FedoraBox.profile <<EOF
 [Appearance]
@@ -65,141 +63,140 @@ Parent=FALLBACK/
 EOF
 ```
 
-You can do the same for 
-- running as root
-- running over ssh
+Similar profiles can be created for:
+- Running as root
+- Running over SSH
 
-Now place my desktop entry in the correct location and it will change immediately.
+Now, place the modified desktop entry in the correct location, and it will take effect immediately.
 
 ### Firefox
-![screenshot](https://raw.githubusercontent.com/trytomakeyouprivate/Linux/main/Desktop%20Entries/Images/firefox-desktop-entry.jpg)
+![Screenshot](https://raw.githubusercontent.com/trytomakeyouprivate/Linux/main/Desktop%20Entries/Images/firefox-desktop-entry.jpg)
 
-Firefox can use Profiles too. Or you might want to run it in private browsing mode, or exclude it from a VPN (here MullvadVPN as example)
+Firefox supports multiple profiles, private browsing mode, and VPN exclusions (e.g., MullvadVPN).
 
-Use `firefox -p` or `flatpak run org.mozilla.firefox -p` respectively, create a new profile, use a custom location and use a Folder with a dedicated name. Otherwise it will be a cryptic sequence of symbols.
+#### Running a Profile in Private Browsing Mode
 
-Run that profile but in private browsing:
-
-```
+```sh
 firefox -p --private-window
 ```
 
-Exclude a custom insecure profile from VPN
-```
+#### Excluding a Custom Insecure Profile from VPN
+
+```sh
 mullvad-exclude firefox -p INSECURE
 ```
 
-Open a link in such an excluded browser:
+#### Opening a Link in an Excluded Profile
 
-```
+```sh
 mullvad-exclude firefox -p INSECURE http://insecure.link.com
 ```
 
-This is needed for logging into captive portals (yes, they suck...) or using shitty websites that block VPN servers.
+This is useful for logging into captive portals or accessing sites that block VPN servers.
 
-Edit the Firefox desktop entry like that:
-```
+#### Editing the Firefox Desktop Entry
+
+```sh
 cp /usr/share/applications/org.mozilla.firefox.desktop ~/.local/share/applications/
 ```
 
-### Delete App data after launching
-This is Flatpak specific and very useful. For example the app [Decoder](https://flathub.org/apps/com.belmoussaoui.Decoder) will keep a history of all copied elements, even though this may not be wanted (i.e. sending passwords)
+### Delete App Data After Launching
+This is Flatpak-specific and very useful. For example, the app [Decoder](https://flathub.org/apps/com.belmoussaoui.Decoder) retains a history of copied elements, which might not be desired.
 
-Flatpaks have their desktop entries in `/var/lib/flatpak/app/APPNAME/current/active/export/share/applications/`, copy that to `~/.local/share/applications/` and edit it here.
+Flatpaks have their `.desktop` entries in `/var/lib/flatpak/app/APPNAME/current/active/export/share/applications/`. Copy the relevant entry to `~/.local/share/applications/` and edit it.
 
-Flatpaks store their appdata in `~/.var/app/APPNAME/` which makes deleting it really easy, just add `&& rm -rf ~/.var/app/APPNAME` after the `Exec=` command and it will delete it self after closing the app.
+Flatpaks store their app data in `~/.var/app/APPNAME/`, making deletion simple. Just append `&& rm -rf ~/.var/app/APPNAME` after the `Exec=` command to remove the data upon closing the app.
 
-### Other applications
-There are more appplications with custom actions:
+### Other Applications
 
-Stream a media file with VLC:
-```
+#### Streaming a Media File with VLC
+```sh
 vlc -vvv http://example.com/stream
 ```
 
-Start a libreoffice program with a specified template:
-```
+#### Launching LibreOffice with a Specific Template
+```sh
 libreoffice --writer --template "name"
 ```
 
-Thunderbird, same profile feature as Firefox, offline mode
-```
+#### Thunderbird: Using Multiple Profiles and Offline Mode
+```sh
 thunderbird --no-remote -P "profile"
 thunderbird --offline
 ```
 
-Audacity/Tenacity, record immediately
-```
+#### Audacity/Tenacity: Start Recording Immediately
+```sh
 audacity --record
 ```
 
-Start KDEnlive in a specific Workspace
-```
+#### Starting KDEnlive in a Specific Workspace
+```sh
 kdenlive --workspace "MyWorkspace"
 ```
 
-Open Telegram Desktop with specific account:
-```
+#### Opening Telegram Desktop with a Specific Account
+```sh
 telegram-desktop --account "account_name"
 ```
 
-Signal Desktop, different profile, start in tray
-```
+#### Signal Desktop: Different Profile and Start in Tray
+```sh
 signal-desktop --profile="/path/to/profile"
 signal-desktop --start-in-tray
 ```
 
-Element Desktop
-```
+#### Element Desktop
+```sh
 element-desktop --profile="/path/to/profile"
 element-desktop --start-minimized
 element-desktop --enable-tray-notifications
 ```
 
-OBS Studio
-```
+#### OBS Studio
+```sh
 obs --studio-mode
 obs --startrecording
 obs --startstreaming
 obs --profile "profile_name"
 ```
 
-KeepassXC
-```
+#### KeepassXC
+```sh
 keepassxc --keyfile="/path/to/keyfile"
 ```
 
 ## Tips
 If you want to find system icons or mimetypes (the name a file is recognized by), you can do both graphically in KDE.
 
-### Find System Icons
+### Finding System Icons
 
 | Open the app menu | Find the icon name in the list |
 |---------|---------|
-| ![applauncher](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/applauncher-find-icons.jpg) | ![app icon list](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/find-icons.jpg) |
+| ![App Launcher](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/applauncher-find-icons.jpg) | ![App Icon List](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/find-icons.jpg) |
 
-Change "programs" to "all" to display all icons. These names can directly be used in the `Icon=` line.
+Change "programs" to "all" to display all icons. These names can be used directly in the `Icon=` line of a desktop entry.
 
-### Find Mimetypes
-To associate an "app" to a specific filetype (see "adb install" and "java execute"), in the terminal, you can use
+### Finding Mimetypes
+To associate an "app" with a specific file type (e.g., `.jar` for Java applications), use:
 
-```
+```sh
 cat /etc/mime.types | grep FILEEXTENSION
 
-# example:
+# Example:
 cat /etc/mime.types | grep jar
 ```
 
-Or you can use KDE's "file association" settings page and search for the file extension (here "jar").
+Alternatively, use KDE's "File Associations" settings page to search for a file extension (e.g., "jar").
 
-![systemsettings page for mimetypes](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/file-names.jpg)
+![System Settings Page for Mimetypes](https://raw.githubusercontent.com/boredsquirrel/Linux/main/Desktop%20Entries/Images/file-names.jpg)
 
-Here the mimetype is `application/x-java-archive`.
+For example, the mimetype for `.jar` files is `application/x-java-archive`.
 
-As an example, see KDE Discover's associated mimetypes:
-
-```bash
+#### Example: KDE Discover's Associated Mimetypes
+```sh
 $ cat /usr/share/applications/org.kde.discover.desktop | grep Mime
 
 MimeType=application/x-rpm;application/vnd.flatpak;application/vnd.flatpak.repo;application/vnd.flatpak.ref;
 ```
+
