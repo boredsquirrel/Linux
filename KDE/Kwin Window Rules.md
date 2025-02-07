@@ -18,7 +18,7 @@ maximizevertrule=3
 types=1
 wmclass=firefox
 wmclassmatch=1
-```
+```bash
 
 ### Haruna Video Player
 
@@ -33,7 +33,7 @@ types=1
 wmclass=haruna
 wmclasscomplete=true
 wmclassmatch=2
-```
+```bash
 
 ### Thunderbird
 
@@ -47,7 +47,7 @@ maximizevertrule=3
 types=1
 wmclass=thunderbird
 wmclassmatch=1
-```
+```bash
 
 ### Dolphin File Manager
 
@@ -61,7 +61,7 @@ maximizevertrule=3
 types=1
 wmclass=dolphin
 wmclassmatch=1
-```
+```bash
 
 ### Kate Editor
 
@@ -75,7 +75,7 @@ maximizevertrule=3
 types=1
 wmclass=kate
 wmclassmatch=1
-```
+```bash
 
 ### COSMIC Term
 
@@ -89,7 +89,7 @@ maximizevertrule=3
 types=1
 wmclass=com.system76.CosmicTerm
 wmclassmatch=1
-```
+```bash
 
 ## Fix COSMIC Terminal
 
@@ -105,7 +105,7 @@ title=winit window
 titlematch=1
 types=1
 wmclass=COSMIC Terminal
-```
+```bash
 
 ## Pin tray popup windows to the corner
 
@@ -121,4 +121,4 @@ position=1085,244
 positionrule=3
 wmclass=nextcloud
 wmclassmatch=2
-```
+```bash

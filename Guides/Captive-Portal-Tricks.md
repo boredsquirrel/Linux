@@ -4,7 +4,7 @@
 
 A Captive Portal is the website you see when logging in on a public Wi-Fi.
 
-```
+```bash
 Welcome to our Wifi-Customer-Experience-Allround service!
 
 Accept that we save all your connections* and sell your data, and you are free 
@@ -13,7 +13,7 @@ to go!
 [ ]
 
 *we will give everything to law enforcement if they politely ask.
-```
+```bash
 
 These sites redirect any HTTP request to their internally hosted website. This
 has a lot of flaws, but it’s what we need to use.
@@ -43,7 +43,7 @@ Run this:
 
 ```sh
 firefox -p
-```
+```bash
 
 A dialog opens. Create a new profile named **CAPTIVE** and configure it as
 securely as you want.
@@ -61,7 +61,7 @@ Icon=network-wireless-symbolic
 Name=Captive Portal
 Type=Application
 EOF
-```
+```bash
 
 If you want to use your normal profile:
 
@@ -73,7 +73,7 @@ Icon=network-wireless-symbolic
 Name=Captive Portal
 Type=Application
 EOF
-```
+```bash
 
 *(Replace `firefox` with `flatpak run org.mozilla.firefox` if you use the
 Flatpak. Replace it with the location of the binary if you use a different
@@ -111,7 +111,7 @@ Icon=network-wireless-symbolic
 Name=Captive Portal
 Type=Application
 EOF
-```
+```bash
 
 Using your normal browser profile (opening a new window):
 
@@ -138,7 +138,7 @@ Icon=network-wireless-symbolic
 Name=Captive Portal
 Type=Application
 EOF
-```
+```bash
 
 **Not-so-fun-fact**: On Android, captive portals work even with VPN enabled
 because the Chromium dialog **"Captive-Portal-Chooser"** (and any other system
@@ -160,7 +160,7 @@ Run:
 
 ```sh
 sudo -i
-```
+```bash
 
 Currently, this does not work as expected, as DNS still gets resolved:
 
@@ -183,7 +183,7 @@ Domains=~captive.kuketz.de ~captive.open-mind-culture.org ~httpforever.com
 EOF
 
 systemctl restart systemd-resolved
-```
+```bash
 
 Even with Mullvad turned off (no blocking), it can resolve domains.
 
@@ -191,4 +191,4 @@ An alternative would be to whitelist the browser profile as an app ("Split
 Tunneling") to connect without the VPN. While this works well on Android, it
 crashes my client on Linux.
 
-```
+```bash

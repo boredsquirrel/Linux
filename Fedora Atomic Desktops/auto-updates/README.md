@@ -66,21 +66,21 @@ In the timer:
 
 ### 5. Start the service
 
-```
+```bash
 sudo systemctl enable --now auto-updates.timer
-```
+```bash
 
 ### 6. Debloat
 You may want to remove the redundant GUI store integration. It works well but 
 is not needed.
 
-```
+```bash
 # Silverblue / Workstation Atomic / GNOME Atomic
 rpm-ostree override remove gnome-software-rpm-ostree
 
 # Kinoite / KDE Atomic
 rpm-ostree override remove plasma-discover-rpm-ostree plasma-discover-notifier
-```
+```bash
 
 ### Note
 Fedora wants to implement automatic updates in future releases, as does ublue 

@@ -8,7 +8,7 @@ from doing anything stupid, here is how it works:
 
 To add a user from the terminal, use this command:
 
-```
+```bash
 # select between sudo and run0
 if [[ $(systemctl --version | awk 'NR==1{print $2}') -ge 256 ]]; then
     alias privesc=run0
@@ -21,7 +21,7 @@ read -p "Enter the name of the second user" username
 useradd $username
 passwd $username
 '
-```
+```bash
 
 Alternatively you can add them from your settings app. This works at least in 
 KDE Plasma, GNOME and COSMIC.
@@ -34,9 +34,9 @@ delete them.
 
 You can solve this problem with one command:
 
-```
+```bash
 chmod 700 ~
-```
+```bash
 
 ## 2. Only safe with LUKS disk encryption
 
@@ -52,17 +52,17 @@ another computer with sudo rights.
 You can add different LUKS encryption keys, so you don't need to share your 
 password:
 
-```
+```bash
 lsblk
 
 cryptsetup luksAddKey /dev/DEVICENAME
-```
+```bash
 
 If you want to change your LUKS password, use this:
 
-```
+```bash
 cryptsetup luksChangeKey /dev/DEVICENAME
-```
+```bash
 
 This is possible because the password is only used to decrypt the actual key 
 used to encrypt your disk.

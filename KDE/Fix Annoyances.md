@@ -6,7 +6,7 @@
 balooctl disable &&\
 balooctl purge &&\
 echo "Baloo disabled!"
-```
+```bash
 
 ### Discover Notifier
 
@@ -35,7 +35,7 @@ killall -15 DiscoverNotifier && notify-send -a "Terminator" "Plasma Notifier
 killed."
 EOF
 chmod +x ~/.config/autostart/kill-plasma-notifier
-```
+```bash
 
 ### KDE Connect
 
@@ -47,14 +47,14 @@ Just prevent it from autostarting:
 ```sh
 # Empty override autostart entry
 touch ~/.config/autostart/org.kde.kdeconnect.daemon.desktop
-```
+```bash
 
 Disable it entirely:
 
 ```sh
 # Empty desktop entry
 touch ~/.local/share/applications/org.kde.kdeconnect.daemon.desktop
-```
+```bash
 
 ### Geoclue
 
@@ -70,7 +70,7 @@ sudo systemctl disable geoclue &&\
 sudo systemctl mask geoclue
 sudo systemctl disable --user geoclue &&\
 sudo systemctl mask --user geoclue
-```
+```bash
 
 ### Power-Profiles-Daemon
 

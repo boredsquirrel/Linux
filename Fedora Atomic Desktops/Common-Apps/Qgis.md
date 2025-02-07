@@ -18,7 +18,7 @@ Create a custom App launcher that forces X11/XWayland
 
 (needed to prevent breakages on Wayland, until Qt6 port is done)
 
-```
+```bash
 cat > ~/.local/share/applications/Distrobox-org.qgis.qgis.desktop <<EOF
 [Desktop Entry]
 Categories=Education;Science;Geography;
@@ -32,4 +32,4 @@ Name=QGIS Desktop (Distrobox)
 StartupWMClass=QGIS3
 Type=Application
 EOF
-```
+```bash

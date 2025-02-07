@@ -9,14 +9,14 @@ builtin package managers though.
 
 Distrobox makes this extremely easy:
 
-```
+```bash
 distrobox upgrade --all
-```
+```bash
 
 We can create a simple systemd service that does this every 3 days 
 automatically:
 
-```
+```bash
 sudo cat > /etc/systemd/system/distrobox-upgrade.service <<EOF
 [Unit]
 Description=Upgrade all Distroboxes every 3 days
@@ -38,7 +38,7 @@ WantedBy=multi-user.target
 EOF
 
 systemctl enable --now distrobox-upgrade
-```
+```bash
 
 - `Nice=15`: priority from 19 to -20, the higher, the less
 - `IOSchedulingClass=idle`: will only run when the PC is idle

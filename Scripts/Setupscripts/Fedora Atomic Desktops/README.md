@@ -48,7 +48,7 @@ ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:latest
 # After reboot, important
 rpm-ostree rebase --reboot 
 ostree-image-signed:docker://ghcr.io/ublue-os/kinoite-main:latest
-```
+```bash
 
 For NVIDIA, Framework, Asus, Surface, and other variants,  
 [see their image list](https://github.com/orgs/ublue-os/packages).
@@ -66,14 +66,14 @@ These are some small tweaks that improve
 the experience of this awesome distro!
 ==========================================
 EOF
-```
+```bash
 
 #### **Enable Flathub**
 ```sh
 flatpak remote-add --if-not-exists --user flathub 
 https://flathub.org/repo/flathub.flatpakrepo
 flatpak remote-delete fedora -y
-```
+```bash
 
 #### **More Flatpak Repos**
 ```sh
@@ -82,7 +82,7 @@ xdg-open github.com/boredsquirrel/recommended-flatpak-apps
 xdg-open github.com/boredsquirrel/flatalias
 xdg-open github.com/boredsquirrel/flatpak-trash-remover
 xdg-open github.com/boredsquirrel/copr-command
-```
+```bash
 
 #### **Other Fixes**
 ```sh
@@ -98,7 +98,7 @@ touch ~/.local/share/applications/geoclue-demo-agent.desktop
 
 echo "Disable DiscoverNotifier"
 touch ~/.local/share/applications/org.kde.discover.notifier.desktop
-```
+```bash
 
 ### **Bash Aliases for Convenience**
 ```sh
@@ -137,7 +137,7 @@ alias httpcode="curl --head --silent --output /dev/null --write-out
 
 alias conf="kwrite ~/.bashrc"
 EOF
-```
+```bash
 
 ## **Recommended Apps to Layer**
 **Distrobox is already installed (on UBlue).**
@@ -162,4 +162,4 @@ install](https://discussion.fedoraproject.org/t/minimal-virt-manager-install/119
 ## **Update Firmware**
 ```sh
 fwupdmgr update
-```
+```bash

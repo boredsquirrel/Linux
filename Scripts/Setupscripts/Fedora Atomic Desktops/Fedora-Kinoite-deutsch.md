@@ -28,14 +28,14 @@ Möchte man mehr Pakete vorinstalliert haben, die einem das Leben erleichtern,
 kann man zu Kinoite von [uBlue](https://universal-blue.org) wechseln.
 
 normal:
-```
+```bash
 rpm-ostree rebase --reboot 
 ostree-unverified-registry:ghcr.io/ublue-os/kinoite-main:latest
 
 # nach dem neutart, wichtig
 rpm-ostree rebase --reboot 
 ostree-image-signed:docker://ghcr.io/ublue-os/kinoite-main:latest
-```
+```bash
 
 Für NVIDIA, Framework, Asus, Surface und andere Varianten, [ein Abbild aus 
 dieser Liste wählen](https://github.com/orgs/ublue-os/packages).
@@ -47,7 +47,7 @@ Für das "uBlue Gesamtpaket" kann man [Aurora](getaurora.dev) oder
 
 Terminal öffnen, das hier einfügen
 
-```
+```bash
 cat <<EOF
 
 
@@ -148,7 +148,7 @@ alias httpcode="curl --head --silent --output /dev/null --write-out
 alias conf="kwrite ~/.bashrc"
 
 EOF
-```
+```bash
 
 ### Einige empfohlene Apps zum Layern
 
@@ -170,6 +170,6 @@ Forumpost](https://discussion.fedoraproject.org/t/minimal-virt-manager-install/1
 
 ### Firmware updaten
 
-```
+```bash
 fwupdmgr update
-```
+```bash

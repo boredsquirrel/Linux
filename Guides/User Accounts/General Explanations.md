@@ -66,11 +66,11 @@ This is why your daily user should not be in the `sudo` (Debian, Ubuntu) or
 
 Check it with `id`:
 
-```
+```bash
 ❯❯❯ id
 uid=1003(user) gid=1004(user) Gruppen=1004(user),1012(usbguard) 
 Kontext=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
-```
+```bash
 
 To create a separate admin user, follow the Guide "secure admin user" in this 
 directory.
@@ -82,7 +82,7 @@ This command works with any location of the home directory, e.g. Fedora
 Silverblue/Kionite too.
 
 An explaining table of the values:
-```
+```bash
 r/w/x | binary | octal
  ---  |  000   |   0
  --x  |  001   |   1
@@ -92,7 +92,7 @@ r/w/x | binary | octal
  r-x  |  101   |   5
  rw-  |  110   |   6
  rwx  |  111   |   7
-```
+```bash
 
 So "user" has rwx (read write delete) permissions, and the others have none.
 
@@ -130,7 +130,7 @@ This is where SELinux is used a lot though.
 Using the `-Z` flag you can make a lot of coreutils "SELinux aware", example 
 `ls`:
 
-```
+```bash
 cd /
 ls -lZ
 lrwxrwxrwx.   7 root root system_u:object_r:bin_t:s0           7  4. Dez 2023  
@@ -175,14 +175,14 @@ drwxr-xr-x.   1 root root system_u:object_r:usr_t:s0         106  1. Jan 1970
 usr/
 drwxr-xr-x.   1 root root system_u:object_r:var_t:s0         266 29. Jan 22:20 
 var/
-```
+```bash
 
 This shows the different contexts of system files, and setting them correctly 
 can act as an extra protection.
 
 For example if you edit a config file in `/etc`:
 
-```
+```bash
 # create an overwrite directory
 
 mkdir /etc/systemd/resolved.conf.d
@@ -197,7 +197,7 @@ DNSOverTLS=yes
 DNS=185.150.99.255 5.1.66.255 2001:678:e68:f000:: 2001:678:ed0:f000::
 FallbackDNS=9.9.9.9 149.112.112.112
 EOF
-```
+```bash
 
 This sets a "trustworthy DNS provider" as per [these 
 2](https://www.privacy-handbuch.de/handbuch_93d.htm) 
@@ -214,11 +214,11 @@ If we now look at the resulting config file, we see that the SELinux labels are
 
 incorrect.
 
-```
+```bash
 ls -lZ
 -rw-r--r--. 1 root root unconfined_u:object_r:etc_t:s0 143  6. Feb 14:20 
 private-dns.conf
-```
+```bash
 
 Look at `unconfined_u`, this means that ***no SELinux protection is used***. 
 Instead, all systemwide config files should have the label 
@@ -226,9 +226,9 @@ Instead, all systemwide config files should have the label
 
 Normally this can be automatically fixed with the `restorecon` tool:
 
-```
+```bash
 restorecon -R /path/that/has/incorrect/labels
-```
+```bash
 
 But in many cases, especially such override config files seem to not have a 
 default value.
@@ -236,6 +236,6 @@ default value.
 Instead, check the values it *should* have (in this case 
 `system_u:object_r:etc_t:s0`) and apply it manually
 
-```
+```bash
 chcon -R system_u:object_r:etc_t:s0 /etc/systemd/resolved.conf.d
-```
+```bash

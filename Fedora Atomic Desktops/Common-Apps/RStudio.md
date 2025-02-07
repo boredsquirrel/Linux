@@ -1,18 +1,18 @@
 # Install RStudio on Fedora
 
 Create a Distrobox for Fedora
-```
+```bash
 distrobox-create Fedora -i registry.fedoraproject.org/fedora-toolbox:$(rpm -E 
 %fedora) #or enter version manually
 distrobox-enter Fedora
-```
+```bash
 
 Add the COPR for all the modules, install the packages
-```
+```bash
 sudo dnf copr enable iucar/cran
 sudo dnf install -y rstudio-desktop R-CoprManager
 distrobox-export --app rstudio-desktop
-```
+```bash
 
 [List of available R 
 modules](https://copr.fedorainfracloud.org/coprs/iucar/cran/packages/)

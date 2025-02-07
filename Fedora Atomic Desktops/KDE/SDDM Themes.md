@@ -17,7 +17,7 @@ noite/37773)
 
 Create an override conf where you change the `ThemeDir` variable:
 
-```
+```bash
 runo sh -c '
     mkdir -p /var/usrlocal/share/sddm/themes
     cp -R /usr/share/sddm/themes/* /var/usrlocal/share/sddm/themes/
@@ -25,15 +25,15 @@ runo sh -c '
     echo "ThemeDir='/var/usrlocal/share/sddm/themes'" > 
 /etc/sddm.conf.d/mutable-themes.conf
 '
-```
+```bash
 
 This will make the KDE Settings work, you can install custom themes, but you 
 will not get theme updates by the distribution. To get updated themes from the 
 distribution, use
 
-```
+```bash
 run0 cp -Rf /usr/share/sddm/themes/* /var/usrlocal/share/sddm/themes/
-```
+```bash
 
 ## The RPM workaround
 
@@ -43,13 +43,13 @@ See the second topic above.
 
 install:
 
-```
+```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 cd ~
 cargo init
 cargo install sddm2rpm
-```
+```bash
 
 Download an RPM theme archive, and convert it using the tool. Then layer the 
 RPM using `rpm-ostree install theme.rpm`

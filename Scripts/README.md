@@ -33,7 +33,7 @@ CPU: AMD Ryzen 5 PRO 3500U w/ Radeon Vega Mobile Gfx
 RAM: 13.5 GB
 GPU: AMD Radeon Vega 8 Graphics
 Video Memory: 2048MB
-```
+```bash
 
 ## [Energysaver](https://github.com/trytomakeyouprivate/battery-saving)
 
@@ -80,7 +80,7 @@ QGIS-Desktop    org.qgis.qgis 3.30.1  stable  flathub system
 
 # Alias:
 alias qgisdesktop="flatpak run org.qgis.qgis"
-```
+```bash
 
 ## [copr](https://github.com/trytomakeyouprivate/COPR-command)
 
@@ -161,7 +161,7 @@ Easily verify if an **Android app** is secure.
 
 ```sh
 apkverify test.apk
-```
+```bash
 
 ## logout
 
@@ -175,7 +175,7 @@ A combination of `whereis` and your editor of choice (e.g., Kate).
 
 ```sh
 findmod sysinfo
-```
+```bash
 
 Opens the corresponding file in your editor.
 

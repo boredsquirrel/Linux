@@ -30,7 +30,7 @@ Prefer to use separate groups per privilege. On Fedora:
 ```sh
 sudo groupadd udisks2
 sudo usermod -aG udisks2 $USER
-```
+```bash
 
 ## libvirt  
 
@@ -46,13 +46,13 @@ forwarding), use a dedicated group:
 ```sh
 sudo groupadd libvirt
 sudo usermod -aG libvirt $USER
-```
+```bash
 
 ## rpm-ostree  
 
 The rule was upstreamed.
 
-```
+```bash
 
 This version is correctly formatted, ensuring it won't break your CI pipeline. 
 Let me know if you need anything else.
