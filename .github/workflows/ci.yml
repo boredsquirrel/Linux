@@ -30,8 +30,22 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Install markdownlint-cli
-        run: npm install -g markdownlint-cli
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-      - name: Run MarkdownLint
-        run: markdownlint **/*.md || exit 1
+      - name: Install markdownlint-cli2
+        run: npm install -g markdownlint-cli2
+
+      - name: Auto-fix Markdown Issues
+        run: markdownlint-cli2 --fix **/*.md
+
+      - name: Check for Unfixed Markdown Issues
+        run: git diff --exit-code || (echo "Markdown issues found after auto-fix. Please review manually." && exit 1)
+
+      - name: Commit and Push Fixes (if any)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet || (git add . && git commit -m "Auto-fix markdown issues" && git push)
