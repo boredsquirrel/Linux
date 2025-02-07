@@ -1,8 +1,11 @@
-Distrobox makes using Podman containers of various Linux Distributions very easy.
+Distrobox makes using Podman containers of various Linux Distributions very 
+easy.
 
-Normally those containers are not updated using package managers, but by pulling new complete container images. 
+Normally those containers are not updated using package managers, but by 
+pulling new complete container images. 
 
-For the use case of installing apps inside containers, we need to use the builtin package managers though.
+For the use case of installing apps inside containers, we need to use the 
+builtin package managers though.
 
 Distrobox makes this extremely easy:
 
@@ -10,7 +13,8 @@ Distrobox makes this extremely easy:
 distrobox upgrade --all
 ```
 
-We can create a simple systemd service that does this every 3 days automatically:
+We can create a simple systemd service that does this every 3 days 
+automatically:
 
 ```
 sudo cat > /etc/systemd/system/distrobox-upgrade.service <<EOF
@@ -41,4 +45,5 @@ systemctl enable --now distrobox-upgrade
 - `OnActiveSec=3d`: after running once, it waits 3 days to run again
 - `Persistent=true`: if that delay is missed, it will run as soon as it boots up
 
-This will make sure that the service runs in the background, without annoying you.
+This will make sure that the service runs in the background, without annoying 
+you.

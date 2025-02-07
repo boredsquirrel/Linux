@@ -2,7 +2,8 @@
 ```markdown
 # Some Useful Scripts
 
-## [sysinfo (KDE debug info)](https://github.com/trytomakeyouprivate/KDE-sysinfo-CLI)
+## [sysinfo (KDE debug 
+info)](https://github.com/trytomakeyouprivate/KDE-sysinfo-CLI)
 
 This replicates the KDE system info output from System Settings but  
 from the terminal.
@@ -101,7 +102,8 @@ This script prompts you via a GUI to accept or postpone updates.
 
 *(Currently unfinished.)*
 
-## [Easy Bash Loop Helper](https://github.com/trytomakeyouprivate/easy-bash-loops)
+## [Easy Bash Loop 
+Helper](https://github.com/trytomakeyouprivate/easy-bash-loops)
 
 Interactively create **yes/no loops** for scripts.  
 The user is asked a question, and you define actions for "yes" and "no."
@@ -122,7 +124,8 @@ password to launch applications like Virt-Manager or mount LUKS drives.
 Keep Flatpak apps updated via a **systemd service**.
 
 A simpler alternative to  
-[this Python script](https://gist.github.com/ssokolow/db565fd8a82d6002baada946adb81f68),  
+[this Python 
+script](https://gist.github.com/ssokolow/db565fd8a82d6002baada946adb81f68),  
 working with aliases instead of runfiles.
 
 ## cd2
@@ -141,7 +144,9 @@ Custom shortcuts allow:
 
 *(Currently broken.)*
 
-## [apkverify](https://github.com/trytomakeyouprivate/Android-Tipps/tree/main/APK-Signer)
+## 
+[apkverify](https://github.com/trytomakeyouprivate/Android-Tipps/tree/main/APK-S
+igner)
 
 Easily verify if an **Android app** is secure.
 ```sh
@@ -162,13 +167,16 @@ findmod sysinfo
 ```
 Opens the corresponding file in your editor.
 
-## [flatpurge (not ready)](https://github.com/trytomakeyouprivate/Flatpak-trash-remover)
+## [flatpurge (not 
+ready)](https://github.com/trytomakeyouprivate/Flatpak-trash-remover)
 
 Find and remove leftover directories of deleted Flatpak apps.
 
 ⚠ **Interactive—nothing is deleted without user consent.**
 
-## [Flatpak Binary Linker](https://github.com/trytomakeyouprivate/Linux/blob/main/Scripts/Flatpak-binaries)
+## [Flatpak Binary 
+Linker](https://github.com/trytomakeyouprivate/Linux/blob/main/Scripts/Flatpak-b
+inaries)
 
 Searches for Flatpak apps and links binaries (like `ffmpeg`) to `~/.bin`  
 for direct access.
@@ -180,7 +188,8 @@ password stored in **KWallet**.
 
 Could be extended to **GNOME Keyring**.
 
-## [Distrobox Autosetup](https://github.com/trytomakeyouprivate/Distrobox-autosetup)
+## [Distrobox 
+Autosetup](https://github.com/trytomakeyouprivate/Distrobox-autosetup)
 
 Setup scripts for common Linux environments.
 
@@ -216,17 +225,20 @@ Originally used for KDE search engine `.desktop` files but can be extended.
 
 *(Currently not working.)*
 
-Goal: Keep the **GUI app open in the system tray** when the VPN is disconnected,  
+Goal: Keep the **GUI app open in the system tray** when the VPN is 
+disconnected,  
 so you remember to reconnect.
 
-## [Systemd Hold Active](https://github.com/trytomakeyouprivate/systemd-hold-active)
+## [Systemd Hold 
+Active](https://github.com/trytomakeyouprivate/systemd-hold-active)
 
 *(Experimental, currently not working.)*
 
 Enables a **service**, launches an **app**, and disables the service when  
 the app closes.
 
-## [Matlab GUI System Integration](https://github.com/trytomakeyouprivate/Matlab-Linux-Install)
+## [Matlab GUI System 
+Integration](https://github.com/trytomakeyouprivate/Matlab-Linux-Install)
 
 - Fish, Bash, Zsh integration.
 - Binary linking.
@@ -235,7 +247,8 @@ the app closes.
 
 ## remove
 
-A simple tool for deleting `.exe`, `.bat`, and `.dmg` files from downloaded archives.
+A simple tool for deleting `.exe`, `.bat`, and `.dmg` files from downloaded 
+archives.
 
 ## utf8
 

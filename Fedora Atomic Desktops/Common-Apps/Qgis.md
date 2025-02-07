@@ -5,9 +5,12 @@
      
 Use the upstream instructions instead.
 
-- [Flatpak](https://qgis.org/resources/installation-guide/#flatpak) (recommended, you can install plugins with a trick!)
-- [Fedora and Atomic Desktops](https://qgis.org/resources/installation-guide/#fedora)
-- [Distrobox and Toolbx](https://qgis.org/resources/installation-guide/#distrobox--toolbx)
+- [Flatpak](https://qgis.org/resources/installation-guide/#flatpak) 
+(recommended, you can install plugins with a trick!)
+- [Fedora and Atomic 
+Desktops](https://qgis.org/resources/installation-guide/#fedora)
+- [Distrobox and 
+Toolbx](https://qgis.org/resources/installation-guide/#distrobox--toolbx)
 
 ## Trick: Run the App with XWayland
 
@@ -22,7 +25,8 @@ Categories=Education;Science;Geography;
 Exec=env QT_QPA_PLATFORM=xcb /usr/bin/distrobox-enter Fedora -- qgis %F
 Icon=qgis
 Keywords=map;globe;postgis;wms;wfs;ogc;osgeo;
-MimeType=image/tiff;image/jpeg;image/jp2;application/vnd.google-earth.kmz;application/vnd.google-earth.kml+xml;
+MimeType=image/tiff;image/jpeg;image/jp2;application/vnd.google-earth.kmz;applic
+ation/vnd.google-earth.kml+xml;
 Name=QGIS Desktop (Distrobox)
 StartupWMClass=QGIS3
 Type=Application

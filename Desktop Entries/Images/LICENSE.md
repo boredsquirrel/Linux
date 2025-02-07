@@ -1,4 +1,7 @@
-The Creative Commons Attribution (CC BY) license is a widely used open license that allows others to distribute, remix, adapt, and build upon your work, even commercially, as long as they give appropriate credit to the original creator. Here's the full text of the CC BY license:
+The Creative Commons Attribution (CC BY) license is a widely used open license 
+that allows others to distribute, remix, adapt, and build upon your work, even 
+commercially, as long as they give appropriate credit to the original creator. 
+Here's the full text of the CC BY license:
 
 ```
 Creative Commons Legal Code

@@ -1,4 +1,5 @@
-Situation: you installed some random .deb and its broken, can't be removed or uninstalled. Here is a solution for it
+Situation: you installed some random .deb and its broken, can't be removed or 
+uninstalled. Here is a solution for it
 
 ```
 sudo -i

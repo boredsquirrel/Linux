@@ -1,17 +1,25 @@
 # Simple Firefox Menus
 
-This is a preset built upon [SimpleMenuWizard](https://github.com/stonecrusher/simpleMenuWizard), which is a nice prebuilt CSS.
+This is a preset built upon 
+[SimpleMenuWizard](https://github.com/stonecrusher/simpleMenuWizard), which is 
+a nice prebuilt CSS.
 
-It removes as many useless (for me) entries of the Firefox right-click menus as possible, to make it a less cluttered experience.
+It removes as many useless (for me) entries of the Firefox right-click menus as 
+possible, to make it a less cluttered experience.
 
-If you like it, share it with others! Making your Firefox more basic is a pretty contradictory "mod," as mods are normally done by people seeking more features.
+If you like it, share it with others! Making your Firefox more basic is a 
+pretty contradictory "mod," as mods are normally done by people seeking more 
+features.
 
 ## Use
 
-1. Open `about:profiles` and find your profile folder, then link that folder to a better location.
+1. Open `about:profiles` and find your profile folder, then link that folder to 
+a better location.
 2. Delete the folders of profiles you don't use.
-3. In your profile folder, create a folder named `chrome` (yes, this is a Firefox term for "Browser interface"—Google copied it).
-4. Download this folder here, so that the `UserChrome.css` file is in that folder.
+3. In your profile folder, create a folder named `chrome` (yes, this is a 
+Firefox term for "Browser interface"—Google copied it).
+4. Download this folder here, so that the `UserChrome.css` file is in that 
+folder.
 5. In your browser, search for `about:config`.
 6. Set `toolkit.legacyUserProfileCustomizations.stylesheets` to `true`.
 7. Restart your browser.

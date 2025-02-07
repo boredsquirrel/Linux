@@ -93,7 +93,8 @@ wmclassmatch=1
 
 ## Fix COSMIC Terminal
 
-By default, it shows a "winit" window with no content. You can hide it easily from the panel.
+By default, it shows a "winit" window with no content. You can hide it easily 
+from the panel.
 
 ```ini
 [336d0b17-c70b-4f6f-8a89-e825f0aaf410]
@@ -108,7 +109,8 @@ wmclass=COSMIC Terminal
 
 ## Pin tray popup windows to the corner
 
-Popup windows like Nextcloud or your VPN should not display in the middle of the screen.
+Popup windows like Nextcloud or your VPN should not display in the middle of 
+the screen.
 
 Currently, my rule is broken when using multiple monitors, but the idea is:
 
