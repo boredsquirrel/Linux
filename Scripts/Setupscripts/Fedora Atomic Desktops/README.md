@@ -23,6 +23,7 @@ Download from [kinoite.fedoraproject.org](https://kinoite.fedoraproject.org),
 burn with [Balena Etcher](https://etcher.balena.io/#download-etcher) or  
 [Fedora Media Writer](https://flathub.org/apps/org.fedoraproject.MediaWriter).  
 
+
 **Ventoy does not work as far as I have tested.**  
 
 ### Important:
@@ -35,6 +36,7 @@ networks.
 ## Post Installation
 
 For an easier experience with fewer packages to layer, switch to Fedora Kinoite 
+
 from [UBlue](https://universal-blue.org).
 
 ### **Switching to UBlue**
@@ -105,6 +107,7 @@ cat >> ~/.bashrc <<EOF
 
 alias logout="qdbus org.kde.ksmserver /KSMServer logout 0 0 1"
 alias update='flatpak update -y && notify-send -a "Updates" "Flatpaks updated"; 
+
 distrobox upgrade --all; rpm-ostree update'
 alias upfin='update && shutdown -h now'
 alias rstat="rpm-ostree status"
@@ -148,6 +151,7 @@ compatible).
 ### **Virtualization**
 - [Minimal Virt-manager 
 install](https://discussion.fedoraproject.org/t/minimal-virt-manager-install/119
+
 709/4)  
   *(Replace `dnf` with `rpm-ostree`.)*
 - Find different architectures with:

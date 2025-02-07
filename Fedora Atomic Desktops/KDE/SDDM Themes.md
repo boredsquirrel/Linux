@@ -9,9 +9,11 @@ also breaks global themes.
 Discussion Topics
 - [Topic 
 1](https://discussion.fedoraproject.org/t/another-way-to-customize-sddm-under-ki
+
 noite/37773)
 - [Topic 
 2](https://discussion.fedoraproject.org/t/sddm-themeing-or-lack-thereof/32695/2)
+
 
 Create an override conf where you change the `ThemeDir` variable:
 

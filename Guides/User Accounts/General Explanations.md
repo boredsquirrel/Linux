@@ -29,10 +29,12 @@ In your home folder, all your files are stored. You can access everything in
 there without sudo permissions!
 - Folders you create like **Pictures, Downloads, Files,...**
 - The **Nextcloud** folder, that `nextcloud-client` (The end-user app) uses for 
+
 synchronisation
 - in `~/.config/`: config files of apps like **Firefox** Profiles, 
 **Thunderbird**, **KDE Desktop**, ...
 - in `~/.wine/`: your complete Windows-filesystem with apps e.g. when using WINE
+
 - in `~/.var/app/` all Flatpak app data is stored
 - in `~/.ssh/` all SSH-keys are, used for remote control over a terminal
 - in `~/.gnupg/` all your PGP-keys are
@@ -97,6 +99,7 @@ So "user" has rwx (read write delete) permissions, and the others have none.
 Graphically you can do this in the Dolphin-Filemanager of KDE by going to 
 `/home/` or `/var/home/` respectively and right-clicking on the Folder 
 "USERNAME", switching to "Permissions", setting the owner to "USERNAME" and the 
+
 access of "group" and "others" to "no access" instead of "read only".
 
 Nautilus will have something for that too.
@@ -106,6 +109,7 @@ Nautilus will have something for that too.
 ### User apps
 No Desktop Linux distro uses SELinux for user programs to it's full 
 capabilities, unlike Android, where SELinux (also called "SEAndroid") is a core 
+
 part of the App sandbox.
 
 The Fedora project is working on "selinux confined users", you can follow the 
@@ -115,8 +119,10 @@ process here:
 documentation](https://fedoraproject.org/wiki/SELinux/ConfinedUsers)
 - [Forum 
 tag](https://discussion.fedoraproject.org/search?q=%23selinux-confined-users%20o
+
 rder%3Alatest)
 - [Fedora SELinux policy repo](https://github.com/fedora-selinux/selinux-policy)
+
 
 ### System files
 This is where SELinux is used a lot though.
@@ -196,13 +202,16 @@ EOF
 This sets a "trustworthy DNS provider" as per [these 
 2](https://www.privacy-handbuch.de/handbuch_93d.htm) 
 [websites](https://www.heise.de/ratgeber/DNSSEC-Know-how-Werkzeuge-und-Software-
+
 fuer-den-Administrator-2643530.html), which has support for DNSSEC and DOT (DNS 
+
 over TLS). As fallback DNS, Quad9 is used. DNSSEC and DOT are protection 
 mechanisms that encrypt the DNS and help against 
 [spoofing](https://en.wikipedia.org/wiki/Spoofing_attack) and traffic analysis 
 from the DNS provider.
 
 If we now look at the resulting config file, we see that the SELinux labels are 
+
 incorrect.
 
 ```

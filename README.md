@@ -13,6 +13,7 @@ Some instructions are general, others target **KDE** and **Fedora Kinoite**.
 ### [**Guides**](https://github.com/boredsquirrel/Linux/tree/main/Guides)
 - General HowTo Guides. Many more can be found at [the Fedora 
 forum](https://discussion.fedoraproject.org/search?q=%23howto%20%40boredsquirrel
+
 %20order%3Alatest)
 
 ### [**Desktop 
@@ -21,6 +22,7 @@ Entries**](https://github.com/boredsquirrel/Linux/tree/main/Desktop%20Entries)
 
 ### [**Fedora Atomic 
 Desktops**](https://github.com/boredsquirrel/Linux/tree/main/Fedora%20Atomic%20D
+
 esktops)
 - Specific to Fedora Silverblue, Kinoite, uBlue and other variants
 - [add COPR repos](https://github.com/boredsquirrel/COPR-command)

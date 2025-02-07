@@ -45,5 +45,6 @@ systemctl enable --now distrobox-upgrade
 - `OnActiveSec=3d`: after running once, it waits 3 days to run again
 - `Persistent=true`: if that delay is missed, it will run as soon as it boots up
 
+
 This will make sure that the service runs in the background, without annoying 
 you.

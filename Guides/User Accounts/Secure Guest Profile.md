@@ -45,6 +45,7 @@ your computer, if you have also enabled `LUKS` or `LVM encryption` with a good
 password at system setup.
 
 Always encrypt your whole drive, performance is perfect and its the only way to 
+
 secure your files really, as anyone could plug out your drive and view it on 
 another computer with sudo rights.
 

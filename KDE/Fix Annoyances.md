@@ -11,7 +11,8 @@ echo "Baloo disabled!"
 ### Discover Notifier
 
 [Docs about disabling autostart
-files](<https://docs.kde.org/stable5/en/plasma-workspace/kcontrol/autostart/index>
+files](<<https://docs.kde.org/stable5/en/plasma-workspace/kcontrol/autostart/inde>
+x>
 .html#disabling_autostart).
 
 1. Enable autoupdates through a systemd service using your package manager and
@@ -76,7 +77,8 @@ sudo systemctl mask --user geoclue
 You might want to switch to TuneD, it is great.
 
 [See this post on how to switch to it on older Atomic
-Desktops](<https://discussion.fedoraproject.org/t/how-to-switch-to-tuned-on-fedor>
+Desktops](<<https://discussion.fedoraproject.org/t/how-to-switch-to-tuned-on-fedo>
+r>
 a-40-atomic-desktops/134897).
 
 The `tuned-ppd` package deals with desktop integration, so that your existing

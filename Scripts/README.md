@@ -153,7 +153,8 @@ Custom shortcuts allow:
 
 ##
 
-[apkverify](<https://github.com/trytomakeyouprivate/Android-Tipps/tree/main/APK-S>
+[apkverify](<<https://github.com/trytomakeyouprivate/Android-Tipps/tree/main/APK->
+S>
 igner)
 
 Easily verify if an **Android app** is secure.
@@ -188,7 +189,8 @@ Find and remove leftover directories of deleted Flatpak apps.
 
 ## [Flatpak Binary
 
-Linker](<https://github.com/trytomakeyouprivate/Linux/blob/main/Scripts/Flatpak-b>
+Linker](<<https://github.com/trytomakeyouprivate/Linux/blob/main/Scripts/Flatpak->
+b>
 inaries)
 
 Searches for Flatpak apps and links binaries (like `ffmpeg`) to `~/.bin`  

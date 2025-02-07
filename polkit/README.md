@@ -18,7 +18,8 @@ etc.) should not require a password.
 > However, some external devices are not detected correctly.  
 > Using this is a dirty workaround; instead, udev rules should be used.  
 > [Read this forum post with an
-explanation](<https://discussion.fedoraproject.org/t/f42-change-proposal-unprivil>
+explanation](<<https://discussion.fedoraproject.org/t/f42-change-proposal-unprivi>
+l>
 eged-disk-management-system-wide/124334/23).  
 
 This allows passwordless LUKS unlock and mount of ***ALL*** disks using

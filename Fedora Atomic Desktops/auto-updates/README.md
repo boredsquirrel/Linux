@@ -2,6 +2,7 @@
 
 Fedora Atomic Desktops are currently not completely usable, as they follow the 
 same unelegant path as "traditional" distributions, where users need to consent 
+
 in doing updates.
 
 This means that you cannot install these Distributions on "your grandmas PC", 
@@ -18,6 +19,7 @@ using packagekit, and thus sync issues and additional overhead.
 
 > [!NOTE]
 > Also take a look at [ublue-update](https://github.com/ublue-os/ublue-update), 
+
 a project doing something very similar, but in a more generalistic way, using 
 [topgrade](https://github.com/topgrade-rs/topgrade).
 > They seem to struggle with maintenance, and I prefer a more minimal approach 
@@ -33,6 +35,7 @@ Conditions:
 
 > [!WARNING]
 > It is important to manually set metered networks as so, as Networkmanager has 
+
 no way of differentiating phone hotspots, USB-tethering over a phone or other 
 indirectly metered connections from regular Wifis.
 >

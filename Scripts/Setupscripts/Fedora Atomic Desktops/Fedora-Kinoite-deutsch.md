@@ -158,11 +158,13 @@ Grundlegende Shell Apps
 - `fish` ist eine einfachere Shell mit Auto-Vervollständigung und mehr
 - `helix` (vim in rust)
 - `bat eza glow` und weitere coreutil Ersatze in Rust, die nicht 1:1 kompatibel 
+
 sind 
 
 Virtualisierung
 - [Siehe 
 Forumpost](https://discussion.fedoraproject.org/t/minimal-virt-manager-install/1
+
 19709/4), ersetze "dnf" mit "rpm-ostree"
 - andere Architekturen finden mit `rpm-ostree search qemu-system`
 

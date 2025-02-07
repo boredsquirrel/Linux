@@ -44,8 +44,10 @@ Use something like [Secureblue](https://github.com/secureblue/secureblue),
 which features:
 
 - **Flatpak apps** ([See my list of
-recommendations](https://github.com/trytomakeyouprivate/recommended-flatpak-apps
+recommendations](<https://github.com/trytomakeyouprivate/recommended-flatpak-apps>
+
 ))
+
 - **Restricted Podman containers**
 - **Virtual machines**
 

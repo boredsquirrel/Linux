@@ -17,7 +17,8 @@ Just download a service menu (`.desktop`) to the folder
 Desktop entries are the graphical icons with text for running apps.
 
 Create your own in `~/.local/share/applications/`, and [follow this
-syntax](<https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry->
+syntax](<<https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry>
+->
 spec-latest.html).
 
 These entries are preferred over system and Flatpak entries, so if you want to
