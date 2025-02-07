@@ -6,5 +6,5 @@
 # NOTE
 # Adapt the value to what your mic actually needs
 
-pactl set-source-volume $(pactl get-default-source) 40%
-pactl set-source-mute $(pactl get-default-source) 1
+pactl set-source-volume "$(pactl get-default-source)" 40%
+pactl set-source-mute "$(pactl get-default-source)" 1
