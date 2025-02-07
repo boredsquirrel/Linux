@@ -1,16 +1,28 @@
-#!/bin/bash local
+#!/bin/bash
 
-word=$1
-local file=$2
+copy_lines() {
+  local word=$1
+  local file=$2
 
-if [ "$word" = "-h" ]; then
-  echo
-  echo "Usage: copylines WORD FILE"
-  echo "Copy lines containing WORD from FILE to the clipboard."
-  echo "Example: copylines usb dmesg-log.txt"
-  echo
-  return
-fi
-      
-sed -n "/$word/p" file.txt | wl-copy
-echo "Lines including $word copied."
+  if [ "$word" = "-h" ]; then
+    echo
+    echo "Usage: copylines WORD FILE"
+    echo "Copy lines containing WORD from FILE to the clipboard."
+    echo "Example: copylines usb dmesg-log.txt"
+    echo
+    exit 0
+  fi
+
+  # Ensure the file exists before running sed
+  if [[ ! -f "$file" ]]; then
+    echo "Error: File '$file' not found."
+    exit 1
+  fi
+
+  # Extract lines and copy to clipboard
+  sed -n "/$word/p" "$file" | wl-copy
+  echo "Lines including '$word' copied."
+}
+
+# Run the function with passed arguments
+copy_lines "$@"
