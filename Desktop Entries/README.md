@@ -1,4 +1,3 @@
-```md
 # Custom Desktop Entries
 
 Desktop entries are the graphical icons and names in your app menu and other areas. They follow [the Freedesktop specification](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html) and are used by all apps (not AppImages) and in other areas.
@@ -153,3 +152,5 @@ As an example, see KDE Discover's associated mimetypes:
 $ cat /usr/share/applications/org.kde.discover.desktop | grep Mime
 
 MimeType=application/x-rpm;application/vnd.flatpak;application/vnd.flatpak.repo;application/vnd.flatpak.ref;
+```
+
