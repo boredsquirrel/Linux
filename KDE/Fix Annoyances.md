@@ -1,6 +1,6 @@
 # Fix KDE Annoyances
 
-### Baloo
+## Baloo
 
 ```sh
 balooctl disable &&\
