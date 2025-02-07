@@ -10,11 +10,11 @@ echo "Baloo disabled!"
 
 ### Discover Notifier
 
-[Docs about disabling autostart 
-files](https://docs.kde.org/stable5/en/plasma-workspace/kcontrol/autostart/index
+[Docs about disabling autostart
+files](<https://docs.kde.org/stable5/en/plasma-workspace/kcontrol/autostart/index>
 .html#disabling_autostart).
 
-1. Enable autoupdates through a systemd service using your package manager and 
+1. Enable autoupdates through a systemd service using your package manager and
 Flatpak.
 2. Override the notifier to prevent it from starting.
 
@@ -38,7 +38,7 @@ chmod +x ~/.config/autostart/kill-plasma-notifier
 
 ### KDE Connect
 
-KDE Connect works over Wi-Fi and Bluetooth (since Plasma 6) and is very useful. 
+KDE Connect works over Wi-Fi and Bluetooth (since Plasma 6) and is very useful.
 It may be a security risk though, and you can disable it manually.
 
 Just prevent it from autostarting:
@@ -59,7 +59,7 @@ touch ~/.local/share/applications/org.kde.kdeconnect.daemon.desktop
 
 A background service used for geolocation based on IP.
 
-It can be used with [beaconDB](https://beacondb.net) but you may not use it and 
+It can be used with [beaconDB](https://beacondb.net) but you may not use it and
 want to disable it.
 
 With systemd:
@@ -75,9 +75,9 @@ sudo systemctl mask --user geoclue
 
 You might want to switch to TuneD, it is great.
 
-[See this post on how to switch to it on older Atomic 
-Desktops](https://discussion.fedoraproject.org/t/how-to-switch-to-tuned-on-fedor
+[See this post on how to switch to it on older Atomic
+Desktops](<https://discussion.fedoraproject.org/t/how-to-switch-to-tuned-on-fedor>
 a-40-atomic-desktops/134897).
 
-The `tuned-ppd` package deals with desktop integration, so that your existing 
+The `tuned-ppd` package deals with desktop integration, so that your existing
 sliders etc. will work. TuneD has way more options though.

@@ -6,26 +6,26 @@ Here are some things that make it better for certain use cases.
 
 ### Service Menus
 
-If you know the syntax, you can create lots of useful right-click actions for 
+If you know the syntax, you can create lots of useful right-click actions for
 Dolphin.
 
-Just download a service menu (`.desktop`) to the folder 
+Just download a service menu (`.desktop`) to the folder
 `~/.local/share/kservices5/ServiceMenus/`, and it will work!
 
 ### App Desktop Entries
 
 Desktop entries are the graphical icons with text for running apps.
 
-Create your own in `~/.local/share/applications/`, and [follow this 
-syntax](https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry-
+Create your own in `~/.local/share/applications/`, and [follow this
+syntax](<https://specifications.freedesktop.org/desktop-entry-spec/desktop-entry->
 spec-latest.html).
 
-These entries are preferred over system and Flatpak entries, so if you want to 
+These entries are preferred over system and Flatpak entries, so if you want to
 edit apps, do it there!
 
 Examples:
 
-- [Custom Konsole entry](https://lemmy.kde.social/post/947963) with actions for 
+- [Custom Konsole entry](https://lemmy.kde.social/post/947963) with actions for
 Distrobox, root shell, and SSH.
 - Custom Firefox entry (coming soon).
 

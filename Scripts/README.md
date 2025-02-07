@@ -1,4 +1,5 @@
 ### **Fixed Markdown:**
+
 ```markdown
 # Some Useful Scripts
 
@@ -38,7 +39,8 @@ Video Memory: 2048MB
 
 Two scripts that are part of a **UDEV rule + Systemd service + script** setup.
 
-### Goal:
+### Goal
+
 1. Detect battery and AC state.
 2. If energy-saving mode is useful, deactivate a set number of  
    random CPU cores.
@@ -55,6 +57,7 @@ governor, but it's reliable.
 Many Flatpak apps have full root access to your system for compatibility.
 
 This script replaces those permissions with:
+
 - Home access.
 - Mounted drives.
 - SMB shares.
@@ -69,7 +72,8 @@ This simple script does the following:
 4. Checks if the app ID is already aliased. If not:
 5. Creates an alias in `bashrc`, `zshrc`, and `fish.conf`.
 
-### Example:
+### Example
+
 ```sh
 # Installed app:
 QGIS-Desktop    org.qgis.qgis 3.30.1  stable  flathub system
@@ -102,8 +106,9 @@ This script prompts you via a GUI to accept or postpone updates.
 
 *(Currently unfinished.)*
 
-## [Easy Bash Loop 
-Helper](https://github.com/trytomakeyouprivate/easy-bash-loops)
+## [Easy Bash Loop
+
+Helper](<https://github.com/trytomakeyouprivate/easy-bash-loops>)
 
 Interactively create **yes/no loops** for scripts.  
 The user is asked a question, and you define actions for "yes" and "no."
@@ -124,7 +129,7 @@ password to launch applications like Virt-Manager or mount LUKS drives.
 Keep Flatpak apps updated via a **systemd service**.
 
 A simpler alternative to  
-[this Python 
+[this Python
 script](https://gist.github.com/ssokolow/db565fd8a82d6002baada946adb81f68),  
 working with aliases instead of runfiles.
 
@@ -133,22 +138,26 @@ working with aliases instead of runfiles.
 An improved **Linux file manager terminal experience**.
 
 Combines:
+
 - `cd` for directory navigation.
 - `ls` for listing contents.
 - A formatted display of the current location.
 
 Custom shortcuts allow:
+
 - Sorting files by size.
 - Sorting files by newest first.
 - Displaying advanced info.
 
 *(Currently broken.)*
 
-## 
-[apkverify](https://github.com/trytomakeyouprivate/Android-Tipps/tree/main/APK-S
+##
+
+[apkverify](<https://github.com/trytomakeyouprivate/Android-Tipps/tree/main/APK-S>
 igner)
 
 Easily verify if an **Android app** is secure.
+
 ```sh
 apkverify test.apk
 ```
@@ -162,20 +171,24 @@ This script **logs you out from a KDE Wayland session**.
 ## findmod
 
 A combination of `whereis` and your editor of choice (e.g., Kate).
+
 ```sh
 findmod sysinfo
 ```
+
 Opens the corresponding file in your editor.
 
-## [flatpurge (not 
-ready)](https://github.com/trytomakeyouprivate/Flatpak-trash-remover)
+## [flatpurge (not
+
+ready)](<https://github.com/trytomakeyouprivate/Flatpak-trash-remover>)
 
 Find and remove leftover directories of deleted Flatpak apps.
 
 ⚠ **Interactive—nothing is deleted without user consent.**
 
-## [Flatpak Binary 
-Linker](https://github.com/trytomakeyouprivate/Linux/blob/main/Scripts/Flatpak-b
+## [Flatpak Binary
+
+Linker](<https://github.com/trytomakeyouprivate/Linux/blob/main/Scripts/Flatpak-b>
 inaries)
 
 Searches for Flatpak apps and links binaries (like `ffmpeg`) to `~/.bin`  
@@ -188,8 +201,9 @@ password stored in **KWallet**.
 
 Could be extended to **GNOME Keyring**.
 
-## [Distrobox 
-Autosetup](https://github.com/trytomakeyouprivate/Distrobox-autosetup)
+## [Distrobox
+
+Autosetup](<https://github.com/trytomakeyouprivate/Distrobox-autosetup>)
 
 Setup scripts for common Linux environments.
 
@@ -210,6 +224,7 @@ Clone **all repositories** for a specified user or group.
 Fix **overamplified microphones**.
 
 This script runs in `~/.config/autostart/` and:
+
 - Sets mic volume to **40%**.
 - **Mutes** the mic by default.
 
@@ -225,20 +240,22 @@ Originally used for KDE search engine `.desktop` files but can be extended.
 
 *(Currently not working.)*
 
-Goal: Keep the **GUI app open in the system tray** when the VPN is 
+Goal: Keep the **GUI app open in the system tray** when the VPN is
 disconnected,  
 so you remember to reconnect.
 
-## [Systemd Hold 
-Active](https://github.com/trytomakeyouprivate/systemd-hold-active)
+## [Systemd Hold
+
+Active](<https://github.com/trytomakeyouprivate/systemd-hold-active>)
 
 *(Experimental, currently not working.)*
 
 Enables a **service**, launches an **app**, and disables the service when  
 the app closes.
 
-## [Matlab GUI System 
-Integration](https://github.com/trytomakeyouprivate/Matlab-Linux-Install)
+## [Matlab GUI System
+
+Integration](<https://github.com/trytomakeyouprivate/Matlab-Linux-Install>)
 
 - Fish, Bash, Zsh integration.
 - Binary linking.
@@ -247,7 +264,7 @@ Integration](https://github.com/trytomakeyouprivate/Matlab-Linux-Install)
 
 ## remove
 
-A simple tool for deleting `.exe`, `.bat`, and `.dmg` files from downloaded 
+A simple tool for deleting `.exe`, `.bat`, and `.dmg` files from downloaded
 archives.
 
 ## utf8
