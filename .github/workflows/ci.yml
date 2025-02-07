@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -40,12 +42,19 @@ jobs:
       - name: Run MarkdownLint Auto-Fix
         run: markdownlint-cli2 --fix **/*.md
 
-      - name: Commit any changes made by MarkdownLint
+      - name: Check for changes
+        id: git-diff
+        run: |
+          git diff --exit-code || echo "changes_detected=true" >> $GITHUB_ENV
+
+      - name: Commit and Push Fixes
+        if: env.changes_detected == 'true'
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git diff --staged --quiet || git commit -m "Auto-fix MarkdownLint issues"
+          git commit -m "Auto-fix MarkdownLint issues"
+          git push
 
-      - name: Run MarkdownLint again to ensure no remaining errors
+      - name: Run MarkdownLint Again to Ensure No Errors
         run: markdownlint-cli2 **/*.md
