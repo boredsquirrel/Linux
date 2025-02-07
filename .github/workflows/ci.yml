@@ -14,38 +14,38 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
-      
+        uses: actions/checkout@v3
+
       - name: Install ShellCheck
         run: sudo apt-get install -y shellcheck
 
       - name: Run ShellCheck on scripts
         run: find Scripts Scripts/Setupscripts -type f -name "*.sh" -exec shellcheck {} + || exit 1
 
-
   markdownlint:
     name: Markdown Linter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Install Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 18
 
       - name: Install markdownlint-cli2
         run: npm install -g markdownlint-cli2
 
-      - name: Auto-fix Markdown Issues
+      - name: Run MarkdownLint Auto-Fix
         run: markdownlint-cli2 --fix **/*.md
 
-      - name: Check for Unfixed Markdown Issues
-        run: git diff --exit-code || (echo "Markdown issues found after auto-fix. Please review manually." && exit 1)
-
-      - name: Commit and Push Fixes (if any)
+      - name: Commit any changes made by MarkdownLint
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git diff --quiet || (git add . && git commit -m "Auto-fix markdown issues" && git push)
+          git add .
+          git diff --staged --quiet || git commit -m "Auto-fix MarkdownLint issues"
+
+      - name: Run MarkdownLint again to ensure no remaining errors
+        run: markdownlint-cli2 **/*.md
