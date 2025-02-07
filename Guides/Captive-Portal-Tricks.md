@@ -2,7 +2,7 @@
 
 ## Explanation
 
-A **Captive Portal** is the webpage you see when logging into a public Wi-Fi network.
+A Captive Portal is the website you see when logging in on a public Wi-Fi.
 
 ```
 Welcome to our Wifi-Customer-Experience-Allround service!
@@ -11,43 +11,39 @@ Accept that we save all your connections* and sell your data, and you are free t
 
 [ ]
 
-*We will give everything to law enforcement if they politely ask.
+*we will give everything to law enforcement if they politely ask.
 ```
 
-These sites intercept any **HTTP** request and redirect it to their internally hosted login page. The system has many flaws, but it’s what we have to work with.
-
----
+These sites redirect any HTTP request to their internally hosted website. This has a lot of flaws, but it’s what we need to use.
 
 ## Requirements
 
-Captive Portals are problematic. They only work if your **DNS is insecure** and your **VPN is disconnected**.
+Captive Portals only work if your DNS is insecure, and your VPN is disconnected.
 
-To ensure they work:
+So:
 
-- **Disable DNSSEC** and custom DNS servers in `systemd-resolved`. You must use the **DHCP-assigned DNS**.
-- **Disable security features** in any other DNS tools you use.
-- **Temporarily disable your VPN** to allow connections without it.
-- **Open an HTTP URL** (not HTTPS), as many browsers automatically upgrade HTTP requests to HTTPS.
+- `systemd-resolve`: Disable DNSSec and maybe even custom DNS servers in `systemd-resolve`. You need to use the DNS advertised by DHCP.
+- If you use any other tools, disable security features there too.
+- If you use a VPN, you need to temporarily disable it. You must allow connections without it.
+- You need to open an HTTP domain. If your browser upgrades it to HTTPS by default, this may be tricky.
 
-**WARNING:** Do not modify default config files like `resolved.conf`! Use an **override config file** instead (explained later).
+**WARNING:** Do **not** change any default config files, such as `resolved.conf`! Use an override config file as explained.
 
----
-
-## Captive Portal App Starter
+## Captive Portal Appstarter
 
 *(Optimized for KDE and Firefox.)*
 
-Run:
+Run this:
 
 ```sh
 firefox -p
 ```
 
-A profile manager window opens. **Create a new profile named `CAPTIVE`** and configure it as securely as you want.
+A dialog opens. Create a new profile named **CAPTIVE** and configure it as securely as you want.
 
-*(You can also use your default profile, but it may block Captive Portals for security reasons.)*
+*(You can also use your default profile, but that may block captive portals for a good reason.)*
 
-### Create the App Starter
+Create the app starter:
 
 ```sh
 cat > ~/.local/share/applications/captiveportal.desktop <<EOF
@@ -59,7 +55,7 @@ Type=Application
 EOF
 ```
 
-**If you want to use your normal profile instead**:
+If you want to use your normal profile:
 
 ```sh
 cat > ~/.local/share/applications/captiveportal.desktop <<EOF
@@ -71,23 +67,15 @@ Type=Application
 EOF
 ```
 
-**If using the Firefox Flatpak**, replace `firefox` with:
+*(Replace `firefox` with `flatpak run org.mozilla.firefox` if you use the Flatpak. Replace it with the location of the binary if you use a different installation method.)*
 
-```sh
-flatpak run org.mozilla.firefox
-```
+## VPN
 
-Or, if using a custom-installed binary, adjust the path accordingly.
+A good approach is to temporarily disable the VPN, open the captive portal page, accept their terms, and then re-enable the VPN.
 
----
+Otherwise, you need to disable it manually.
 
-## Handling VPN Connections
-
-A more convenient way is to temporarily **disable the VPN**, log into the Captive Portal, then re-enable the VPN automatically.
-
-### Example for Mullvad VPN
-
-#### Create the VPN-Aware App Starter
+Example for Mullvad (replacement app starter):
 
 ```sh
 mkdir -p ~/.bin
@@ -95,10 +83,11 @@ mkdir -p ~/.bin
 cat > ~/.bin/mullvad-captive <<EOF
 #!/bin/sh
 mullvad disconnect
-notify-send -a "Captive Portal" "VPN Paused" "Sign into the Captive Portal. Your VPN will be re-enabled when you close the window."
+notify-send -a "Captive Portal" "VPN Paused" "Sign into the captive portal, your VPN will be enabled when you close the window again"
 firefox --new-window http://captive.kuketz.de
 wait $!
-mullvad connect && notify-send -a "Captive Portal" "VPN Enabled"
+mullvad connect &&\
+notify-send -a "Captive Portal" "VPN Enabled"
 EOF
 
 chmod +x ~/.bin/mullvad-captive
@@ -112,7 +101,7 @@ Type=Application
 EOF
 ```
 
-#### Using Your Normal Browser Profile
+Using your normal browser profile (opening a new window):
 
 ```sh
 mkdir -p ~/.bin
@@ -120,10 +109,11 @@ mkdir -p ~/.bin
 cat > ~/.bin/mullvad-captive <<EOF
 #!/bin/sh
 mullvad disconnect
-notify-send -a "Captive Portal" "VPN Paused" "Sign into the Captive Portal. Your VPN will be re-enabled when you close the window."
+notify-send -a "Captive Portal" "VPN Paused" "Sign into the captive portal, your VPN will be enabled when you close the window again"
 firefox -p CAPTIVE http://captive.kuketz.de
 wait $!
-mullvad connect && notify-send -a "Captive Portal" "VPN Enabled"
+mullvad connect &&\
+notify-send -a "Captive Portal" "VPN Enabled"
 EOF
 
 chmod +x ~/.bin/mullvad-captive
@@ -137,52 +127,43 @@ Type=Application
 EOF
 ```
 
----
+**Not-so-fun-fact**: On Android, captive portals work even with VPN enabled because the Chromium dialog **"Captive-Portal-Chooser"** (and any other system app) can bypass the "always on, block other connections" VPN. This is a privacy risk.
 
-## **Fun Fact (Or Privacy Nightmare)**
+## `systemd-resolve` settings
 
-On **Android**, Captive Portals **work even with an active VPN** because system apps (like the built-in Captive Portal chooser in Chromium) can **bypass "always-on" and "block other connections" VPN settings**. This is a privacy issue.
+For additional security, the VPN app has its own DNS (which is good), so you can block most domains when the VPN is not enabled.
 
----
+Captive portals are sites within the LAN of the connected network. You do not need DNS for these.
 
-## **systemd-resolved Settings (Optional)**
+All addresses you need to resolve are the ones for captive portal detection (e.g., an HTTP site that redirects you).
 
-For **extra security**, block most DNS queries when the VPN is **not enabled**.
+Run:
 
-**Captive Portals use LAN-based sites**, so DNS is only needed for the initial HTTP redirect.
+```sh
+sudo -i
+```
 
-### Steps
+Currently, this does not work as expected, as DNS still gets resolved:
 
-1. **Switch to root:**
-   ```sh
-   sudo -i
-   ```
+```sh
+mkdir -p /etc/systemd/resolved.conf.d
+cp /etc/systemd/resolved.conf /etc/systemd/resolved.conf.d/block-dns-without-vpn.conf
 
-2. **Create an override configuration file:**
-   ```sh
-   mkdir -p /etc/systemd/resolved.conf.d
-   cat > /etc/systemd/resolved.conf.d/block-dns-without-vpn.conf <<EOF
-   #
-   #
-   #
-   #   BLOCK INTERNET WITHOUT VPN
-   #
-   #
-   # Disable the DNS by placing an incorrect value
-   DNS=#
-   #
-   # Whitelist Captive Portal websites
-   Domains=~captive.kuketz.de ~captive.open-mind-culture.org ~httpforever.com ~connectivitycheck.grapheneos.network/generate_204 ~grapheneos.online/generate_204
-   EOF
-   ```
+cat >> /etc/systemd/resolved.conf.d/block-dns-without-vpn.conf <<EOF
+#
+# BLOCK INTERNET WITHOUT VPN
+#
+# Disable DNS by placing an incorrect value
+DNS=#
 
-3. **Restart `systemd-resolved`:**
-   ```sh
-   systemctl restart systemd-resolved
-   ```
+# Whitelist captive portal websites
+Domains=~captive.kuketz.de ~captive.open-mind-culture.org ~httpforever.com ~connectivitycheck.grapheneos.network/generate_204 ~grapheneos.online/generate_204
+EOF
 
-### Issues with This Approach
+systemctl restart systemd-resolved
+```
 
-Even with **Mullvad VPN turned off**, DNS queries may still resolve, which could be a problem.
+Even with Mullvad turned off (no blocking), it can resolve domains.
 
-An alternative solution would be **split-tunneling**, allowing only the browser profile to bypass the VPN. However, while this works on **Android**, it **causes crashes** on some Linux VPN clients.
+An alternative would be to whitelist the browser profile as an app ("Split Tunneling") to connect without the VPN. While this works well on Android, it crashes my client on Linux.
+```
