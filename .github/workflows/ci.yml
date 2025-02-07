@@ -39,8 +39,8 @@ jobs:
       - name: Install markdownlint-cli2
         run: npm install -g markdownlint-cli2
 
-      - name: Run MarkdownLint Auto-Fix
-        run: markdownlint-cli2 --fix **/*.md
+      - name: Run MarkdownLint Auto-Fix (excluding Desktop Entries/README.md)
+        run: markdownlint-cli2 --fix "**/*.md" --ignore "Desktop Entries/README.md"
 
       - name: Check for changes
         id: git-diff
@@ -56,5 +56,5 @@ jobs:
           git commit -m "Auto-fix MarkdownLint issues"
           git push
 
-      - name: Run MarkdownLint Again to Ensure No Errors
-        run: markdownlint-cli2 **/*.md
+      - name: Run MarkdownLint Again to Ensure No Errors (excluding Desktop Entries/README.md)
+        run: markdownlint-cli2 "**/*.md" --ignore "Desktop Entries/README.md"
