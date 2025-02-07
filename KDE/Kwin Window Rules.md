@@ -1,13 +1,10 @@
-# KWin Rules: Fixing App Behavior
+## KDE Kwin Window Rules
 
 Using this tool, you can fix some app behavior.
 
-The config file is located at:  
-`~/.config/kwinrulesrc`
+The config file is in `~/.config/kwinrulesrc`
 
----
-
-## Fullscreen Some Apps
+## Fullscreen some apps
 
 ### Firefox
 
@@ -22,8 +19,6 @@ types=1
 wmclass=firefox
 wmclassmatch=1
 ```
-
----
 
 ### Haruna Video Player
 
@@ -40,8 +35,6 @@ wmclasscomplete=true
 wmclassmatch=2
 ```
 
----
-
 ### Thunderbird
 
 ```ini
@@ -55,8 +48,6 @@ types=1
 wmclass=thunderbird
 wmclassmatch=1
 ```
-
----
 
 ### Dolphin File Manager
 
@@ -72,8 +63,6 @@ wmclass=dolphin
 wmclassmatch=1
 ```
 
----
-
 ### Kate Editor
 
 ```ini
@@ -87,8 +76,6 @@ types=1
 wmclass=kate
 wmclassmatch=1
 ```
-
----
 
 ### COSMIC Term
 
@@ -104,11 +91,9 @@ wmclass=com.system76.CosmicTerm
 wmclassmatch=1
 ```
 
----
-
 ## Fix COSMIC Terminal
 
-By default, it shows a **"winit"** window with no content. You can hide it easily from the panel.
+By default, it shows a "winit" window with no content. You can hide it easily from the panel.
 
 ```ini
 [336d0b17-c70b-4f6f-8a89-e825f0aaf410]
@@ -121,11 +106,9 @@ types=1
 wmclass=COSMIC Terminal
 ```
 
----
+## Pin tray popup windows to the corner
 
-## Pin Tray Popup Windows to the Corner
-
-Popup windows like **Nextcloud** or your **VPN** should not appear in the middle of the screen.
+Popup windows like Nextcloud or your VPN should not display in the middle of the screen.
 
 Currently, my rule is broken when using multiple monitors, but the idea is:
 
@@ -137,3 +120,4 @@ positionrule=3
 wmclass=nextcloud
 wmclassmatch=2
 ```
+
