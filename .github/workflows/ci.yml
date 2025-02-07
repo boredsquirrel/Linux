@@ -20,7 +20,8 @@ jobs:
         run: sudo apt-get install -y shellcheck
 
       - name: Run ShellCheck on scripts
-        run: shellcheck Scripts/* Scripts/Setupscripts/* || exit 1
+        run: find Scripts Scripts/Setupscripts -type f -name "*.sh" -exec shellcheck {} + || exit 1
+
 
   markdownlint:
     name: Markdown Linter
