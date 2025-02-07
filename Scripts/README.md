@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ## Some useful Scripts
 
 ### [sysinfo (KDE debug info)](https://github.com/trytomakeyouprivate/KDE-sysinfo-CLI)
