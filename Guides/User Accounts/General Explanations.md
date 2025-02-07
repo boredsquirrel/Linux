@@ -1,4 +1,4 @@
-## 1. Word explanations
+# 1. Word explanations
 **root**: has access over all files on your laptop
 
 **su**: using root privileges.

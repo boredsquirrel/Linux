@@ -1,4 +1,4 @@
-## Waydroid
+# Waydroid
 
 > [!WARNING]
 > I do not recommend to use Waydroid anymore.

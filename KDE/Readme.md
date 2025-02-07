@@ -1,4 +1,4 @@
-## KDE is awesome
+# KDE is awesome
 
 Here are some things that make it better for certain use cases.
 

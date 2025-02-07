@@ -1,4 +1,4 @@
-## KDE Kwin Window Rules
+# KDE Kwin Window Rules
 
 Using this tool, you can fix some app behavior.
 
