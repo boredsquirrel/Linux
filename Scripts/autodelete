@@ -29,15 +29,16 @@ function del_outdated() {
   cd "$dir" || return
 
   # Get a list of all files and sort them by modification time (newest first)
-  files=($(ls -t))
+# Use mapfile instead of ls
+mapfile -t files < <(ls -t)
 
-  # Determine the number of files to delete
-  num_files_to_delete=$((${#files[@]} - $num_files_to_keep))
+# Remove unnecessary $ in arithmetic expressions
+num_files_to_delete=$(( ${#files[@]} - num_files_to_keep ))
 
-  # Loop through the list of files and delete the excess ones
-  for ((i = 0; i < $num_files_to_delete; i++)); do
-    rm "${files[$i]}"
-  done
+for ((i = 0; i < num_files_to_delete; i++)); do
+    rm -f "${files[$i]}"
+done
+
 }
 
 # Usage: del_outdated <directory_path> <num_files_to_keep>
