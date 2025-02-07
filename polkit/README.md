@@ -1,50 +1,63 @@
-Polkit rules to allow certain actions. Place them in `/etc/polkit-1/rules.d/`. 
+# Polkit Rules for Specific Actions
 
-> [!NOTE]
-> the old pkla format is deprecated and should not be used.
+Polkit rules allow certain actions without requiring `sudo` access. Place them in:  
+`/etc/polkit-1/rules.d/`
 
-Both polkit rules allow specific privileges, without requiring the user to have `sudo` access.
+> **Note:**  
+> The old `.pkla` format is deprecated and should not be used.
+
+Both polkit rules below allow specific privileges without requiring the user to have `sudo` access.
 
 [Use this script](https://github.com/boredsquirrel/unsudo) to add a dedicated admin user and remove these privileges from your normal user.
 
+---
+
 ## udisks2
 
-> ![WARNING]
-> Normally, devices detected as "removable" (pendrives, external hard drives, ...) should not require a password.
-> For some reason, many such external devices are not detected correctly
-> Using this is a dirty workaround, instead, udev rules should be used.
-> [Read this forum post with an explanation](https://discussion.fedoraproject.org/t/f42-change-proposal-unprivileged-disk-management-system-wide/124334/23)
+> **Warning:**  
+> Normally, devices detected as "removable" (pendrives, external hard drives, etc.) should not require a password.  
+> However, some external devices are not detected correctly.  
+> This is a **dirty workaround**—instead, **udev rules** should be used.  
+> [Read this forum post with an explanation](https://discussion.fedoraproject.org/t/f42-change-proposal-unprivileged-disk-management-system-wide/124334/23).
 
-This allows passwordless LUKS unlock and mount of ***ALL*** disks using udisks2.
+This rule allows passwordless **LUKS unlock and mounting of all disks** using **udisks2**.
 
-Prefer to use separate groups per privilege, on Fedora:
+### Use Separate Groups Per Privilege
 
-```
-run0 sh -c '
+On **Fedora**, create and assign a dedicated group:
+
+```sh
+sudo sh -c '
     # create new group
     groupadd udisks2
     # add user to group
     usermod -aG udisks2 $USER
-    '
+'
 ```
+
+---
 
 ## libvirt
-> [!WARING]
-> This rule allows regular users to access root-level virtualization
-> This can be used by a user to elevate their privileges.
 
-Instead, use a "QEMU user session" in virt-manager or GNOME Boxes.
+> **Warning:**  
+> This rule allows regular users to access **root-level virtualization**.  
+> A user can exploit this to **escalate privileges**.
 
-If you really want to open this attack vector (for example for GPU forwarding), use a dedicated group:
+Instead, **use a "QEMU user session"** in **virt-manager** or **GNOME Boxes**.
 
-```
-run0 sh -c '
+If you **must** open this attack vector (e.g., for GPU forwarding), create and use a dedicated group:
+
+```sh
+sudo sh -c '
     # create new group
     groupadd libvirt
     # add user to group
     usermod -aG libvirt $USER
-    '
+'
 ```
 
+---
+
 ## rpm-ostree
-The rule was upstreamed.
+
+This rule **has already been upstreamed** and does not require manual intervention.
