@@ -1,4 +1,4 @@
-### Create a secure admin account
+# Create a secure admin account
 
 It is important to not use a root user daily.
 
