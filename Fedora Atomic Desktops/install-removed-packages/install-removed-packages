@@ -1,0 +1,69 @@
+#!/bin/bash
+
+# Replace the names with what you want
+# Run this script in a toolbox or install rpmbuild using rpm-ostree
+
+PACKAGENAME="require-firefox"
+AUTHOR=author
+MAIL=mail
+PACKAGES="Firefox and language packs"
+
+# Install required packages
+command -v rpmbuild >/dev/null || sudo dnf install -y rpm-build && echo "rpmbuild installed"
+
+# Create necessary directories
+mkdir -p ./BUILD ./RPMS ./SOURCES ./SPECS ./SRPMS && echo "directories created"
+
+# Save the spec file
+cat >"./SPECS/$PACKAGENAME.spec" <<EOF
+Name:           $PACKAGENAME
+Version:        1.0
+Release:        1%{?dist}
+Summary:        Meta package requiring "$PACKAGES"
+
+License:        Public Domain
+Requires:       firefox
+Requires:       firefox-langpacks
+BuildArch:      noarch
+
+%description
+A simple meta package that allows to install $PACKAGES even if they were uninstalled previously.
+
+%prep
+
+%build
+
+%install
+
+%files
+
+%changelog
+* Sat Mar 01 2025 $AUTHOR $MAIL - 1.0-1
+- Initial package
+EOF
+
+# Check if the file was created
+if [ -f "./SPECS/$PACKAGENAME.spec" ]; then
+    echo "Spec file written"
+else
+    echo "ERROR writing spec file"
+fi
+
+# Build the RPM in the current directory
+rpmbuild --define "_topdir $(pwd)" -bb "./SPECS/$PACKAGENAME.spec" && echo "RPM created" || echo "ERROR building RPM"
+
+# move the RPM
+mv ./RPMS/noarch/* .
+
+# delete build directories
+find . -type d -exec rm -rf {} + 2>/dev/null
+
+cat <<EOF
+Deleted unneeded build directories.
+
+==== DONE ====
+
+Now install the package and remove it, first exit the distrobox/toolbox.
+
+rpm-ostree install "$PACKAGENAME.rpm" && rm -f "$PACKAGENAME.rpm"
+EOF
