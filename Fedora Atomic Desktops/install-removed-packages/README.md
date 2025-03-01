@@ -13,4 +13,4 @@ Now you can search for these packages with dnf (and I made a script in fish for 
 
 So instead, create a local RPM package with no contents, that requires all the packages you want! I made a script which uses firefox, but you can add as many packages as you want.
 
-You find the script in "install-removed-packages" and an empty RPM installing Firefox there too. Look at the script before running it!
+You find the script "install-removed-packages" here and an empty RPM installing Firefox too. Look at the script before running it!
