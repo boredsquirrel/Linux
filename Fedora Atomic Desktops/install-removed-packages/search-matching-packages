@@ -1,0 +1,59 @@
+#!/usr/bin/env fish
+
+set -l start_time (date +%s)
+
+# Usage: howtoinstall PACKAGE
+# Example: howtoinstall firefox
+
+# determine the available DNF version
+set DNF ""
+for cmd in dnf5 dnf dnf4
+    if command -v $cmd > /dev/null
+        set DNF $cmd
+        echo "Using $cmd"
+        break
+    end
+end
+if not set -q DNF
+    echo "Error: No suitable DNF version found." >&2
+    exit 1
+end
+
+
+if test (count $argv) -eq 0
+    echo "
+Usage: howtoinstall PACKAGE
+Example: howtoinstall firefox
+
+"
+    exit 1
+end
+
+set PACKAGE $argv[1]
+
+echo "searching..."
+echo "These packages install \"$PACKAGE\" and require this many additional packages:"
+
+touch howtoinstall-results
+
+for pkg in ($DNF repoquery --whatrequires $PACKAGE 2>&1 | grep -v -e "Repository" -e "Last metadata")
+    set counter 0
+    for dep in ($DNF repoquery --requires $pkg 2>&1 | grep -v -e "Repository" -e "Last metadata")
+        rpm -q $dep > /dev/null 2>&1; or begin
+            set counter (math $counter + 1)
+            echo $dep >> howtoinstall-log-$pkg
+        end
+    end
+    echo "- $pkg: $counter" >> howtoinstall-results
+end
+
+
+set -l end_time (date +%s)
+echo "" >> howtoinstall-results
+echo "The search took $(math $end_time - $start_time) seconds." >> howtoinstall-results
+
+clear
+cat howtoinstall-results && rm -f howtoinstall-results
+echo
+echo 'Use "cat howtoinstall-log-packagename" to show what dependencies that package would install.'
+echo 'Use "rm howtoinstall-log-*" to remove those logs.'
