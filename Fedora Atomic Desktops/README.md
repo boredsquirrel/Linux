@@ -12,3 +12,5 @@ Unless... you use the workaround that "RoyalOughtness" found [in this thread](ht
 Now you can search for these packages with dnf (and I made a script in fish for that which I upload here for fun) but in the case of Firefox, unless you are on GNOME, all such packages will add unnecessary bloat to the system. (the package with least additional requirements is a kiosk package, which pulls in the entire `gnome-session`).
 
 So instead, create a local RPM package with no contents, that requires all the packages you want! I made a script which uses firefox, but you can add as many packages as you want.
+
+You find the script in "install-removed-packages" and an empty RPM installing Firefox there too. Look at the script before running it!
