@@ -351,3 +351,13 @@ sudo nix-channel --add https://channels.nixos.org/nixos-24.11 nixos
 sudo nix-channel --update
 sudo nixos-rebuild switch
 ```
+
+To use different kernels, add this to your config
+
+```
+# 6.12 LTS
+boot.kernelPackages = pkgs.linuxPackages_6_12;
+
+# latest
+boot.kernelPackages = pkgs.linuxPackages_latest;
+```
