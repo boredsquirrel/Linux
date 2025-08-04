@@ -13,7 +13,7 @@ to go!
 [ ]
 
 *we will give everything to law enforcement if they politely ask.
-```bash
+```
 
 These sites redirect any HTTP request to their internally hosted website. This
 has a lot of flaws, but it’s what we need to use.
